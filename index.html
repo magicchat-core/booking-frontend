@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Booking System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="skeletonStyle.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* extra for user dropdown */
+    .user-dropdown { position: relative; display: inline-block; }
+    .user-dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .user-dropdown:hover .user-dropdown-content { display: block; }
+    .btn-sm { padding: 4px 8px; font-size: 0.875rem; }
+    #tezkit-auth-area { min-width: 200px; text-align: right; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo"><img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="logo" /></div>
+      <div class="logo"><div>Hotel Booking System</div></div>
+      <div class="burger-icon"><i class="fas fa-bars"></i></div>
+      <div class="right-nav">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Rooms</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div id="tezkit-auth-area" class="tezkit-auth-area"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="contentWrap">
+    <main>
+      <section id="intro" class="banner-section">
+        <div class="banner"><img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="Placeholder Banner" class="hero-image" /></div>
+        <div class="text-overlay">
+          <div class="content">
+            <h2>Book Your Perfect Stay</h2>
+            <p>Discover our comfortable rooms and exclusive offers.</p>
+            <button class="btn" onclick="location.href='/rooms.html'">Explore Rooms</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="product-section">
+        <h3>Our Rooms</h3>
+        <div class="product-grid">
+          <!-- static example – you can later load from API -->
+          <div class="cards"><div class="card"><div class="image"></div><div class="content"><h2>Deluxe Room</h2><p>Starting at $120/night</p></div></div></div>
+          <div class="cards"><div class="card"><div class="image"></div><div class="content"><h2>Suite</h2><p>Starting at $200/night</p></div></div></div>
+          <div class="cards"><div class="card"><div class="image"></div><div class="content"><h2>Standard Room</h2><p>Starting at $80/night</p></div></div></div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <h3>About Us</h3>
+        <div class="about-content">
+          <img src="https://archive.org/download/placeholder-image/placeholder-image.jpg" alt="About Us" />
+          <div class="text">
+            <h2>Who We Are</h2>
+            <p>We provide premium accommodations with exceptional service.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <h3>Contact Us</h3>
+        <div class="contact-content">
+          <div class="contact-info"><h4>Our Office</h4><p>123 Main Street, Anytown, USA<br />Phone: (123) 456-7890</p></div>
+          <div class="contact-form"><h4>Get In Touch</h4><form><input type="text" placeholder="Name" /><input type="email" placeholder="Email" /><textarea rows="4" placeholder="Message"></textarea><button class="btn">Send</button></form></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><!-- same footer as before --></footer>
+  </div>
+
+  <!-- MagicChat scripts -->
+  <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+  <!-- Use CDN for reliability; replace with local if needed -->
+    <script src="node_modules/chathead-consumer-client/dist/bundle.js"></script>
+
+  <script src="./config.js"></script>
+
+  <script>
+    // MagicChat setup & initialisation (with user id if logged in)
+    document.addEventListener("DOMContentLoaded", async function() {
+      await window.magicchat_io.setUp(
+        window.__APP_CONFIG__.APP_NAME,
+        window.__APP_CONFIG__.API_KEY,
+        window.__APP_CONFIG__.REGION,
+        window.__APP_CONFIG__.APP_VERSION,
+        false
+      );
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const res = await fetch(`${window.__APP_CONFIG__.API_BASE_URL}/auth/profile`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.ok) {
+            const user = await res.json();
+            await window.magicchat_io.initialize({ uid: user.id.toString() });
+          } else {
+            localStorage.removeItem('token');
+            await window.magicchat_io.initialize();
+          }
+        } catch(e) {
+          await window.magicchat_io.initialize();
+        }
+      } else {
+        await window.magicchat_io.initialize();
+      }
+    });
+  </script>
+
+  <!-- Authentication UI logic -->
+  <script>
+    const API_BASE = window.__APP_CONFIG__.API_BASE_URL;
+    const authArea = document.getElementById('tezkit-auth-area');
+
+    async function updateAuthUI() {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        authArea.innerHTML = `<a href="/signup.html" class="btn-sm">Sign Up</a> <a href="/login.html" class="btn-sm">Login</a>`;
+        return;
+      }
+      try {
+        const res = await fetch(`${API_BASE}/auth/profile`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) throw new Error();
+        const user = await res.json();
+        authArea.innerHTML = `
+          <div class="user-dropdown">
+            <span>👋 ${user.full_name || user.email}</span>
+            <div class="user-dropdown-content">
+              <a href="/profile.html">My Profile</a>
+              <a href="#" id="logoutBtn">Logout</a>
+            </div>
+          </div>
+        `;
+        document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+          e.preventDefault();
+          localStorage.removeItem('token');
+          if (window.magicchat_io?.logout) window.magicchat_io.logout();
+          window.location.href = '/';
+        });
+      } catch (err) {
+        localStorage.removeItem('token');
+        authArea.innerHTML = `<a href="/signup.html">Sign Up</a> <a href="/login.html">Login</a>`;
+      }
+    }
+    updateAuthUI();
+  </script>
+
+  <!-- Burger menu script (keep existing) -->
+  <script>
+    const burgerIcon = document.querySelector(".burger-icon");
+    const rightNav = document.querySelector(".right-nav");
+    burgerIcon?.addEventListener("click", (e) => {
+      rightNav?.classList.toggle("active");
+      e.stopPropagation();
+    });
+    document.addEventListener("click", (e) => {
+      if (rightNav && !rightNav.contains(e.target) && !burgerIcon?.contains(e.target)) {
+        rightNav.classList.remove("active");
+      }
+    });
+  </script>
+</body>
+</html>
