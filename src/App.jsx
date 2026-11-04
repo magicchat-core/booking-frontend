@@ -10,6 +10,7 @@ import Inventory from './pages/Inventory';
 import PurchaseOrders from './pages/PurchaseOrders';
 import Orders from './pages/Orders';
 import Customers from './pages/Customers';
+import RunningTables from './pages/RunningTables';
 
 // ============================================================
 // Sageion — reference client integration.
@@ -105,13 +106,18 @@ export default function App() {
       <SageionBridge />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/"              element={<Shell><Dashboard /></Shell>} />
-        <Route path="/menu"          element={<Shell><Menu /></Shell>} />
-        <Route path="/inventory"     element={<Shell><Inventory /></Shell>} />
+
+        {/* Owner home — lands here after login and on unknown routes */}
+        <Route path="/owner"          element={<Shell><RunningTables /></Shell>} />
+
+        <Route path="/"                element={<Shell><Dashboard /></Shell>} />
+        <Route path="/menu"            element={<Shell><Menu /></Shell>} />
+        <Route path="/inventory"       element={<Shell><Inventory /></Shell>} />
         <Route path="/purchase-orders" element={<Shell><PurchaseOrders /></Shell>} />
-        <Route path="/orders"        element={<Shell><Orders /></Shell>} />
-        <Route path="/customers"     element={<Shell><Customers /></Shell>} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/orders"          element={<Shell><Orders /></Shell>} />
+        <Route path="/customers"       element={<Shell><Customers /></Shell>} />
+
+        <Route path="*" element={<Navigate to="/owner" replace />} />
       </Routes>
     </AuthProvider>
   );

@@ -17,7 +17,10 @@ export default function Login() {
     try {
       if (mode === 'login') await login(email, password);
       else                  await register(email, password);
-      navigate('/');
+   
+      navigate('/owner');
+
+
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {

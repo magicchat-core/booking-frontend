@@ -9,14 +9,15 @@ export default defineConfig({
     port: 5173,
     proxy: {
       // Proxy the CRM routes + auth + health to the Node backend
-      '/auth':             BACKEND,
-      '/menu':             BACKEND,
-      '/inventory':        BACKEND,
-      '/purchase-orders':  BACKEND,
-      '/customers':        BACKEND,
-      '/orders':           BACKEND,
-      '/support-notes':    BACKEND,
-      '/health':           BACKEND,
+      '/auth': BACKEND,
+      '/menu': BACKEND,
+      '/inventory': BACKEND,
+      '/purchase-orders': BACKEND,
+      '/customers': BACKEND,
+      '/orders': BACKEND,
+      '/tables': BACKEND,  // ← Add this line
+      '/support-notes': BACKEND,
+      '/health': BACKEND,
     },
   },
 });

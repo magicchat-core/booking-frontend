@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../api/AuthContext';
 
 const nav = [
+  { to: '/owner',       label: 'Running Tables' },   // ← owner's home
   { to: '/',             label: 'Dashboard' },
   { to: '/menu',         label: 'Menu' },
   { to: '/inventory',    label: 'Inventory' },
