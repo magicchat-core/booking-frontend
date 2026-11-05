@@ -1,11 +1,13 @@
+'use client';
+
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../api/AuthContext';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/api/AuthContext';
 
 export default function Login() {
   const { login, register } = useAuth();
-  const navigate = useNavigate();
-  const [mode, setMode] = useState('login');       // 'login' | 'register'
+  const router = useRouter();
+  const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('admin@crm.local');
   const [password, setPassword] = useState('secret123');
   const [error, setError] = useState('');
@@ -17,10 +19,7 @@ export default function Login() {
     try {
       if (mode === 'login') await login(email, password);
       else                  await register(email, password);
-   
-      navigate('/owner');
-
-
+      router.push('/demos');
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {

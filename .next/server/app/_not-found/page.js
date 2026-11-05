@@ -1,0 +1,371 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "app/_not-found/page";
+exports.ids = ["app/_not-found/page"];
+exports.modules = {
+
+/***/ "../../client/components/action-async-storage.external":
+/*!*******************************************************************************!*\
+  !*** external "next/dist/client/components/action-async-storage.external.js" ***!
+  \*******************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/client/components/action-async-storage.external.js");
+
+/***/ }),
+
+/***/ "../../client/components/request-async-storage.external":
+/*!********************************************************************************!*\
+  !*** external "next/dist/client/components/request-async-storage.external.js" ***!
+  \********************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/client/components/request-async-storage.external.js");
+
+/***/ }),
+
+/***/ "../../client/components/static-generation-async-storage.external":
+/*!******************************************************************************************!*\
+  !*** external "next/dist/client/components/static-generation-async-storage.external.js" ***!
+  \******************************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/client/components/static-generation-async-storage.external.js");
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/app-page.runtime.dev.js":
+/*!*************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/app-page.runtime.dev.js" ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js");
+
+/***/ }),
+
+/***/ "assert":
+/*!*************************!*\
+  !*** external "assert" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("assert");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "http2":
+/*!************************!*\
+  !*** external "http2" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http2");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "net":
+/*!**********************!*\
+  !*** external "net" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("net");
+
+/***/ }),
+
+/***/ "os":
+/*!*********************!*\
+  !*** external "os" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "tls":
+/*!**********************!*\
+  !*** external "tls" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tls");
+
+/***/ }),
+
+/***/ "tty":
+/*!**********************!*\
+  !*** external "tty" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tty");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("util");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
+/***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   GlobalError: () => (/* reexport default from dynamic */ next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default.a),\n/* harmony export */   __next_app__: () => (/* binding */ __next_app__),\n/* harmony export */   originalPathname: () => (/* binding */ originalPathname),\n/* harmony export */   pages: () => (/* binding */ pages),\n/* harmony export */   routeModule: () => (/* binding */ routeModule),\n/* harmony export */   tree: () => (/* binding */ tree)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/app-page/module.compiled */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/module.compiled.js?d969\");\n/* harmony import */ var next_dist_server_future_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(rsc)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/client/components/error-boundary */ \"(rsc)/./node_modules/next/dist/client/components/error-boundary.js\");\n/* harmony import */ var next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_client_components_error_boundary__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/dist/server/app-render/entry-base */ \"(rsc)/./node_modules/next/dist/server/app-render/entry-base.js\");\n/* harmony import */ var next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};\n/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__) if([\"default\",\"tree\",\"pages\",\"GlobalError\",\"originalPathname\",\"__next_app__\",\"routeModule\"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => next_dist_server_app_render_entry_base__WEBPACK_IMPORTED_MODULE_3__[__WEBPACK_IMPORT_KEY__]\n/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);\n\"TURBOPACK { transition: next-ssr }\";\n\n\n// We inject the tree and pages here so that we can use them in the route\n// module.\nconst tree = {\n        children: [\n        '',\n        {\n          children: [\"/_not-found\", {\n            children: ['__PAGE__', {}, {\n              page: [\n                () => Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! next/dist/client/components/not-found-error */ \"(rsc)/./node_modules/next/dist/client/components/not-found-error.js\", 23)),\n                \"next/dist/client/components/not-found-error\"\n              ]\n            }]\n          }, {}]\n        },\n        {\n        'layout': [() => Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./app/layout.jsx */ \"(rsc)/./app/layout.jsx\")), \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\"],\n'not-found': [() => Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! next/dist/client/components/not-found-error */ \"(rsc)/./node_modules/next/dist/client/components/not-found-error.js\", 23)), \"next/dist/client/components/not-found-error\"],\n        \n      }\n      ]\n      }.children;\nconst pages = [];\n\n\nconst __next_app_require__ = __webpack_require__\nconst __next_app_load_chunk__ = () => Promise.resolve()\nconst originalPathname = \"/_not-found/page\";\nconst __next_app__ = {\n    require: __next_app_require__,\n    loadChunk: __next_app_load_chunk__\n};\n\n// Create and export the route module that will be consumed.\nconst routeModule = new next_dist_server_future_route_modules_app_page_module_compiled__WEBPACK_IMPORTED_MODULE_0__.AppPageRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.APP_PAGE,\n        page: \"/_not-found/page\",\n        pathname: \"/_not-found\",\n        // The following aren't used in production.\n        bundlePath: \"\",\n        filename: \"\",\n        appPaths: []\n    },\n    userland: {\n        loaderTree: tree\n    }\n});\n\n//# sourceMappingURL=app-page.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWFwcC1sb2FkZXIuanM/bmFtZT1hcHAlMkZfbm90LWZvdW5kJTJGcGFnZSZwYWdlPSUyRl9ub3QtZm91bmQlMkZwYWdlJmFwcFBhdGhzPSZwYWdlUGF0aD1ub2RlX21vZHVsZXMlMkZuZXh0JTJGZGlzdCUyRmNsaWVudCUyRmNvbXBvbmVudHMlMkZub3QtZm91bmQtZXJyb3IuanMmYXBwRGlyPSUyRmhvbWUlMkZyZWV0dS1zaW5naCUyRkRlc2t0b3AlMkZ3b3JrJTJGY3JtJTJGYm9va2luZy1mcm9udGVuZCUyRmFwcCZwYWdlRXh0ZW5zaW9ucz10c3gmcGFnZUV4dGVuc2lvbnM9dHMmcGFnZUV4dGVuc2lvbnM9anN4JnBhZ2VFeHRlbnNpb25zPWpzJnJvb3REaXI9JTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJmlzRGV2PXRydWUmdHNjb25maWdQYXRoPXRzY29uZmlnLmpzb24mYmFzZVBhdGg9JmFzc2V0UHJlZml4PSZuZXh0Q29uZmlnT3V0cHV0PSZwcmVmZXJyZWRSZWdpb249Jm1pZGRsZXdhcmVDb25maWc9ZTMwJTNEISIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsYUFBYSxzQkFBc0I7QUFDaUU7QUFDckM7QUFDL0Q7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxxQ0FBcUM7QUFDckM7QUFDQSxzQkFBc0IsME5BQWdGO0FBQ3RHO0FBQ0E7QUFDQSxhQUFhO0FBQ2IsV0FBVyxJQUFJO0FBQ2YsU0FBUztBQUNUO0FBQ0EseUJBQXlCLDRJQUF1RztBQUNoSSxvQkFBb0IsME5BQWdGO0FBQ3BHO0FBQ0E7QUFDQTtBQUNBLE9BQU87QUFDUDtBQUN1QjtBQUM2RDtBQUNwRiw2QkFBNkIsbUJBQW1CO0FBQ2hEO0FBQ087QUFDQTtBQUNQO0FBQ0E7QUFDQTtBQUN1RDtBQUN2RDtBQUNPLHdCQUF3Qiw4R0FBa0I7QUFDakQ7QUFDQSxjQUFjLHlFQUFTO0FBQ3ZCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBO0FBQ0E7QUFDQSxDQUFDOztBQUVEIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY3JtLWJvb2tpbmctZnJvbnRlbmQvP2E1MTciXSwic291cmNlc0NvbnRlbnQiOlsiXCJUVVJCT1BBQ0sgeyB0cmFuc2l0aW9uOiBuZXh0LXNzciB9XCI7XG5pbXBvcnQgeyBBcHBQYWdlUm91dGVNb2R1bGUgfSBmcm9tIFwibmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUtbW9kdWxlcy9hcHAtcGFnZS9tb2R1bGUuY29tcGlsZWRcIjtcbmltcG9ydCB7IFJvdXRlS2luZCB9IGZyb20gXCJuZXh0L2Rpc3Qvc2VydmVyL2Z1dHVyZS9yb3V0ZS1raW5kXCI7XG4vLyBXZSBpbmplY3QgdGhlIHRyZWUgYW5kIHBhZ2VzIGhlcmUgc28gdGhhdCB3ZSBjYW4gdXNlIHRoZW0gaW4gdGhlIHJvdXRlXG4vLyBtb2R1bGUuXG5jb25zdCB0cmVlID0ge1xuICAgICAgICBjaGlsZHJlbjogW1xuICAgICAgICAnJyxcbiAgICAgICAge1xuICAgICAgICAgIGNoaWxkcmVuOiBbXCIvX25vdC1mb3VuZFwiLCB7XG4gICAgICAgICAgICBjaGlsZHJlbjogWydfX1BBR0VfXycsIHt9LCB7XG4gICAgICAgICAgICAgIHBhZ2U6IFtcbiAgICAgICAgICAgICAgICAoKSA9PiBpbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIm5leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy9ub3QtZm91bmQtZXJyb3JcIiksXG4gICAgICAgICAgICAgICAgXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvbm90LWZvdW5kLWVycm9yXCJcbiAgICAgICAgICAgICAgXVxuICAgICAgICAgICAgfV1cbiAgICAgICAgICB9LCB7fV1cbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAnbGF5b3V0JzogWygpID0+IGltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL2hvbWUvcmVldHUtc2luZ2gvRGVza3RvcC93b3JrL2NybS9ib29raW5nLWZyb250ZW5kL2FwcC9sYXlvdXQuanN4XCIpLCBcIi9ob21lL3JlZXR1LXNpbmdoL0Rlc2t0b3Avd29yay9jcm0vYm9va2luZy1mcm9udGVuZC9hcHAvbGF5b3V0LmpzeFwiXSxcbidub3QtZm91bmQnOiBbKCkgPT4gaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvbm90LWZvdW5kLWVycm9yXCIpLCBcIm5leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy9ub3QtZm91bmQtZXJyb3JcIl0sXG4gICAgICAgIFxuICAgICAgfVxuICAgICAgXVxuICAgICAgfS5jaGlsZHJlbjtcbmNvbnN0IHBhZ2VzID0gW107XG5leHBvcnQgeyB0cmVlLCBwYWdlcyB9O1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBHbG9iYWxFcnJvciB9IGZyb20gXCJuZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvZXJyb3ItYm91bmRhcnlcIjtcbmNvbnN0IF9fbmV4dF9hcHBfcmVxdWlyZV9fID0gX193ZWJwYWNrX3JlcXVpcmVfX1xuY29uc3QgX19uZXh0X2FwcF9sb2FkX2NodW5rX18gPSAoKSA9PiBQcm9taXNlLnJlc29sdmUoKVxuZXhwb3J0IGNvbnN0IG9yaWdpbmFsUGF0aG5hbWUgPSBcIi9fbm90LWZvdW5kL3BhZ2VcIjtcbmV4cG9ydCBjb25zdCBfX25leHRfYXBwX18gPSB7XG4gICAgcmVxdWlyZTogX19uZXh0X2FwcF9yZXF1aXJlX18sXG4gICAgbG9hZENodW5rOiBfX25leHRfYXBwX2xvYWRfY2h1bmtfX1xufTtcbmV4cG9ydCAqIGZyb20gXCJuZXh0L2Rpc3Qvc2VydmVyL2FwcC1yZW5kZXIvZW50cnktYmFzZVwiO1xuLy8gQ3JlYXRlIGFuZCBleHBvcnQgdGhlIHJvdXRlIG1vZHVsZSB0aGF0IHdpbGwgYmUgY29uc3VtZWQuXG5leHBvcnQgY29uc3Qgcm91dGVNb2R1bGUgPSBuZXcgQXBwUGFnZVJvdXRlTW9kdWxlKHtcbiAgICBkZWZpbml0aW9uOiB7XG4gICAgICAgIGtpbmQ6IFJvdXRlS2luZC5BUFBfUEFHRSxcbiAgICAgICAgcGFnZTogXCIvX25vdC1mb3VuZC9wYWdlXCIsXG4gICAgICAgIHBhdGhuYW1lOiBcIi9fbm90LWZvdW5kXCIsXG4gICAgICAgIC8vIFRoZSBmb2xsb3dpbmcgYXJlbid0IHVzZWQgaW4gcHJvZHVjdGlvbi5cbiAgICAgICAgYnVuZGxlUGF0aDogXCJcIixcbiAgICAgICAgZmlsZW5hbWU6IFwiXCIsXG4gICAgICAgIGFwcFBhdGhzOiBbXVxuICAgIH0sXG4gICAgdXNlcmxhbmQ6IHtcbiAgICAgICAgbG9hZGVyVHJlZTogdHJlZVxuICAgIH1cbn0pO1xuXG4vLyMgc291cmNlTWFwcGluZ1VSTD1hcHAtcGFnZS5qcy5tYXAiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fscript.js%22%2C%22ids%22%3A%5B%22*%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fapi%2FAuthContext.jsx%22%2C%22ids%22%3A%5B%22AuthProvider%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fcomponents%2FSageionBridge.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=true!":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fscript.js%22%2C%22ids%22%3A%5B%22*%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fapi%2FAuthContext.jsx%22%2C%22ids%22%3A%5B%22AuthProvider%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fcomponents%2FSageionBridge.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=true! ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/script.js */ \"(ssr)/./node_modules/next/dist/client/script.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/api/AuthContext.jsx */ \"(ssr)/./src/api/AuthContext.jsx\"));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/components/SageionBridge.jsx */ \"(ssr)/./src/components/SageionBridge.jsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRmhvbWUlMkZyZWV0dS1zaW5naCUyRkRlc2t0b3AlMkZ3b3JrJTJGY3JtJTJGYm9va2luZy1mcm9udGVuZCUyRmFwcCUyRmdsb2JhbHMuY3NzJTIyJTJDJTIyaWRzJTIyJTNBJTVCJTVEJTdEJm1vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRmhvbWUlMkZyZWV0dS1zaW5naCUyRkRlc2t0b3AlMkZ3b3JrJTJGY3JtJTJGYm9va2luZy1mcm9udGVuZCUyRm5vZGVfbW9kdWxlcyUyRm5leHQlMkZkaXN0JTJGY2xpZW50JTJGc2NyaXB0LmpzJTIyJTJDJTIyaWRzJTIyJTNBJTVCJTIyKiUyMiU1RCU3RCZtb2R1bGVzPSU3QiUyMnJlcXVlc3QlMjIlM0ElMjIlMkZob21lJTJGcmVldHUtc2luZ2glMkZEZXNrdG9wJTJGd29yayUyRmNybSUyRmJvb2tpbmctZnJvbnRlbmQlMkZzcmMlMkZhcGklMkZBdXRoQ29udGV4dC5qc3glMjIlMkMlMjJpZHMlMjIlM0ElNUIlMjJBdXRoUHJvdmlkZXIlMjIlNUQlN0QmbW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyJTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJTJGc3JjJTJGY29tcG9uZW50cyUyRlNhZ2Vpb25CcmlkZ2UuanN4JTIyJTJDJTIyaWRzJTIyJTNBJTVCJTIyZGVmYXVsdCUyMiU1RCU3RCZzZXJ2ZXI9dHJ1ZSEiLCJtYXBwaW5ncyI6IkFBQUEsb01BQWdJO0FBQ2hJO0FBQ0EsOEpBQWtKO0FBQ2xKO0FBQ0EsZ0xBQXNKIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY3JtLWJvb2tpbmctZnJvbnRlbmQvPzNiMWQiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvaG9tZS9yZWV0dS1zaW5naC9EZXNrdG9wL3dvcmsvY3JtL2Jvb2tpbmctZnJvbnRlbmQvbm9kZV9tb2R1bGVzL25leHQvZGlzdC9jbGllbnQvc2NyaXB0LmpzXCIpO1xuO1xuaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIsIHdlYnBhY2tFeHBvcnRzOiBbXCJBdXRoUHJvdmlkZXJcIl0gKi8gXCIvaG9tZS9yZWV0dS1zaW5naC9EZXNrdG9wL3dvcmsvY3JtL2Jvb2tpbmctZnJvbnRlbmQvc3JjL2FwaS9BdXRoQ29udGV4dC5qc3hcIik7XG47XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiwgd2VicGFja0V4cG9ydHM6IFtcImRlZmF1bHRcIl0gKi8gXCIvaG9tZS9yZWV0dS1zaW5naC9EZXNrdG9wL3dvcmsvY3JtL2Jvb2tpbmctZnJvbnRlbmQvc3JjL2NvbXBvbmVudHMvU2FnZWlvbkJyaWRnZS5qc3hcIik7XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp%2Fglobals.css%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fscript.js%22%2C%22ids%22%3A%5B%22*%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fapi%2FAuthContext.jsx%22%2C%22ids%22%3A%5B%22AuthProvider%22%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fsrc%2Fcomponents%2FSageionBridge.jsx%22%2C%22ids%22%3A%5B%22default%22%5D%7D&server=true!\n");
+
+/***/ }),
+
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fapp-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fclient-page.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Ferror-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Flayout-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Frender-from-template-context.js%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fapp-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fclient-page.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Ferror-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Flayout-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Frender-from-template-context.js%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/app-router.js */ \"(ssr)/./node_modules/next/dist/client/components/app-router.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/client-page.js */ \"(ssr)/./node_modules/next/dist/client/components/client-page.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/error-boundary.js */ \"(ssr)/./node_modules/next/dist/client/components/error-boundary.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/layout-router.js */ \"(ssr)/./node_modules/next/dist/client/components/layout-router.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/not-found-boundary.js */ \"(ssr)/./node_modules/next/dist/client/components/not-found-boundary.js\", 23));\n;\nPromise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__webpack_require__, /*! ./node_modules/next/dist/client/components/render-from-template-context.js */ \"(ssr)/./node_modules/next/dist/client/components/render-from-template-context.js\", 23));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRmhvbWUlMkZyZWV0dS1zaW5naCUyRkRlc2t0b3AlMkZ3b3JrJTJGY3JtJTJGYm9va2luZy1mcm9udGVuZCUyRm5vZGVfbW9kdWxlcyUyRm5leHQlMkZkaXN0JTJGY2xpZW50JTJGY29tcG9uZW50cyUyRmFwcC1yb3V0ZXIuanMlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0QmbW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyJTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJTJGbm9kZV9tb2R1bGVzJTJGbmV4dCUyRmRpc3QlMkZjbGllbnQlMkZjb21wb25lbnRzJTJGY2xpZW50LXBhZ2UuanMlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0QmbW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyJTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJTJGbm9kZV9tb2R1bGVzJTJGbmV4dCUyRmRpc3QlMkZjbGllbnQlMkZjb21wb25lbnRzJTJGZXJyb3ItYm91bmRhcnkuanMlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0QmbW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyJTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJTJGbm9kZV9tb2R1bGVzJTJGbmV4dCUyRmRpc3QlMkZjbGllbnQlMkZjb21wb25lbnRzJTJGbGF5b3V0LXJvdXRlci5qcyUyMiUyQyUyMmlkcyUyMiUzQSU1QiU1RCU3RCZtb2R1bGVzPSU3QiUyMnJlcXVlc3QlMjIlM0ElMjIlMkZob21lJTJGcmVldHUtc2luZ2glMkZEZXNrdG9wJTJGd29yayUyRmNybSUyRmJvb2tpbmctZnJvbnRlbmQlMkZub2RlX21vZHVsZXMlMkZuZXh0JTJGZGlzdCUyRmNsaWVudCUyRmNvbXBvbmVudHMlMkZub3QtZm91bmQtYm91bmRhcnkuanMlMjIlMkMlMjJpZHMlMjIlM0ElNUIlNUQlN0QmbW9kdWxlcz0lN0IlMjJyZXF1ZXN0JTIyJTNBJTIyJTJGaG9tZSUyRnJlZXR1LXNpbmdoJTJGRGVza3RvcCUyRndvcmslMkZjcm0lMkZib29raW5nLWZyb250ZW5kJTJGbm9kZV9tb2R1bGVzJTJGbmV4dCUyRmRpc3QlMkZjbGllbnQlMkZjb21wb25lbnRzJTJGcmVuZGVyLWZyb20tdGVtcGxhdGUtY29udGV4dC5qcyUyMiUyQyUyMmlkcyUyMiUzQSU1QiU1RCU3RCZzZXJ2ZXI9dHJ1ZSEiLCJtYXBwaW5ncyI6IkFBQUEsa09BQStJO0FBQy9JO0FBQ0Esb09BQWdKO0FBQ2hKO0FBQ0EsME9BQW1KO0FBQ25KO0FBQ0Esd09BQWtKO0FBQ2xKO0FBQ0Esa1BBQXVKO0FBQ3ZKO0FBQ0Esc1FBQWlLIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY3JtLWJvb2tpbmctZnJvbnRlbmQvPzVkNmIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvaG9tZS9yZWV0dS1zaW5naC9EZXNrdG9wL3dvcmsvY3JtL2Jvb2tpbmctZnJvbnRlbmQvbm9kZV9tb2R1bGVzL25leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy9hcHAtcm91dGVyLmpzXCIpO1xuO1xuaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvaG9tZS9yZWV0dS1zaW5naC9EZXNrdG9wL3dvcmsvY3JtL2Jvb2tpbmctZnJvbnRlbmQvbm9kZV9tb2R1bGVzL25leHQvZGlzdC9jbGllbnQvY29tcG9uZW50cy9jbGllbnQtcGFnZS5qc1wiKTtcbjtcbmltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL2hvbWUvcmVldHUtc2luZ2gvRGVza3RvcC93b3JrL2NybS9ib29raW5nLWZyb250ZW5kL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvZXJyb3ItYm91bmRhcnkuanNcIik7XG47XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIi9ob21lL3JlZXR1LXNpbmdoL0Rlc2t0b3Avd29yay9jcm0vYm9va2luZy1mcm9udGVuZC9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2NsaWVudC9jb21wb25lbnRzL2xheW91dC1yb3V0ZXIuanNcIik7XG47XG5pbXBvcnQoLyogd2VicGFja01vZGU6IFwiZWFnZXJcIiAqLyBcIi9ob21lL3JlZXR1LXNpbmdoL0Rlc2t0b3Avd29yay9jcm0vYm9va2luZy1mcm9udGVuZC9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2NsaWVudC9jb21wb25lbnRzL25vdC1mb3VuZC1ib3VuZGFyeS5qc1wiKTtcbjtcbmltcG9ydCgvKiB3ZWJwYWNrTW9kZTogXCJlYWdlclwiICovIFwiL2hvbWUvcmVldHUtc2luZ2gvRGVza3RvcC93b3JrL2NybS9ib29raW5nLWZyb250ZW5kL25vZGVfbW9kdWxlcy9uZXh0L2Rpc3QvY2xpZW50L2NvbXBvbmVudHMvcmVuZGVyLWZyb20tdGVtcGxhdGUtY29udGV4dC5qc1wiKTtcbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fapp-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fclient-page.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Ferror-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Flayout-router.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-boundary.js%22%2C%22ids%22%3A%5B%5D%7D&modules=%7B%22request%22%3A%22%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fnode_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Frender-from-template-context.js%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
+
+/***/ }),
+
+/***/ "(ssr)/./src/api/AuthContext.jsx":
+/*!*********************************!*\
+  !*** ./src/api/AuthContext.jsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   AuthProvider: () => (/* binding */ AuthProvider),\n/* harmony export */   useAuth: () => (/* binding */ useAuth)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./client */ \"(ssr)/./src/api/client.js\");\n/* __next_internal_client_entry_do_not_use__ AuthProvider,useAuth auto */ \n\n\n\nconst AuthContext = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(null);\nfunction AuthProvider({ children }) {\n    // Lazy init reads localStorage — must be client-only. Keep the\n    // same lazy-init pattern so SSR doesn't try to read localStorage.\n    const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);\n    // Hydrate from localStorage on mount (browser only)\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{\n        setUser((0,_client__WEBPACK_IMPORTED_MODULE_2__.currentUser)());\n    }, []);\n    async function login(email, password) {\n        const { data } = await _client__WEBPACK_IMPORTED_MODULE_2__[\"default\"].post(\"/auth/login\", {\n            email,\n            password\n        });\n        (0,_client__WEBPACK_IMPORTED_MODULE_2__.saveSession)(data);\n        setUser({\n            user_id: data.user_id,\n            email: data.email,\n            role: data.role\n        });\n        return data;\n    }\n    async function register(email, password, role = \"staff\") {\n        const { data } = await _client__WEBPACK_IMPORTED_MODULE_2__[\"default\"].post(\"/auth/register\", {\n            email,\n            password,\n            role\n        });\n        (0,_client__WEBPACK_IMPORTED_MODULE_2__.saveSession)(data);\n        setUser({\n            user_id: data.user_id,\n            email: data.email,\n            role: data.role\n        });\n        return data;\n    }\n    function logout() {\n        (0,_client__WEBPACK_IMPORTED_MODULE_2__.clearSession)();\n        setUser(null);\n    }\n    const value = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(()=>({\n            user,\n            login,\n            register,\n            logout\n        }), [\n        user\n    ]);\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(AuthContext.Provider, {\n        value: value,\n        children: children\n    }, void 0, false, {\n        fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/src/api/AuthContext.jsx\",\n        lineNumber: 39,\n        columnNumber: 10\n    }, this);\n}\nfunction useAuth() {\n    return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(AuthContext);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvYXBpL0F1dGhDb250ZXh0LmpzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztBQUVnRjtBQUNkO0FBQ3ZDO0FBRTNCLE1BQU1TLDRCQUFjVCxvREFBYUEsQ0FBQztBQUUzQixTQUFTVSxhQUFhLEVBQUVDLFFBQVEsRUFBRTtJQUN2QywrREFBK0Q7SUFDL0Qsa0VBQWtFO0lBQ2xFLE1BQU0sQ0FBQ0MsTUFBTUMsUUFBUSxHQUFHViwrQ0FBUUEsQ0FBQztJQUVqQyxvREFBb0Q7SUFDcERDLGdEQUFTQSxDQUFDO1FBQ1JTLFFBQVFSLG9EQUFXQTtJQUNyQixHQUFHLEVBQUU7SUFFTCxlQUFlUyxNQUFNQyxLQUFLLEVBQUVDLFFBQVE7UUFDbEMsTUFBTSxFQUFFQyxJQUFJLEVBQUUsR0FBRyxNQUFNVCwrQ0FBR0EsQ0FBQ1UsSUFBSSxDQUFDLGVBQWU7WUFBRUg7WUFBT0M7UUFBUztRQUNqRVYsb0RBQVdBLENBQUNXO1FBQ1pKLFFBQVE7WUFBRU0sU0FBU0YsS0FBS0UsT0FBTztZQUFFSixPQUFPRSxLQUFLRixLQUFLO1lBQUVLLE1BQU1ILEtBQUtHLElBQUk7UUFBQztRQUNwRSxPQUFPSDtJQUNUO0lBRUEsZUFBZUksU0FBU04sS0FBSyxFQUFFQyxRQUFRLEVBQUVJLE9BQU8sT0FBTztRQUNyRCxNQUFNLEVBQUVILElBQUksRUFBRSxHQUFHLE1BQU1ULCtDQUFHQSxDQUFDVSxJQUFJLENBQUMsa0JBQWtCO1lBQUVIO1lBQU9DO1lBQVVJO1FBQUs7UUFDMUVkLG9EQUFXQSxDQUFDVztRQUNaSixRQUFRO1lBQUVNLFNBQVNGLEtBQUtFLE9BQU87WUFBRUosT0FBT0UsS0FBS0YsS0FBSztZQUFFSyxNQUFNSCxLQUFLRyxJQUFJO1FBQUM7UUFDcEUsT0FBT0g7SUFDVDtJQUVBLFNBQVNLO1FBQ1BmLHFEQUFZQTtRQUNaTSxRQUFRO0lBQ1Y7SUFFQSxNQUFNVSxRQUFRckIsOENBQU9BLENBQUMsSUFBTztZQUFFVTtZQUFNRTtZQUFPTztZQUFVQztRQUFPLElBQUk7UUFBQ1Y7S0FBSztJQUN2RSxxQkFBTyw4REFBQ0gsWUFBWWUsUUFBUTtRQUFDRCxPQUFPQTtrQkFBUVo7Ozs7OztBQUM5QztBQUVPLFNBQVNjO0lBQ2QsT0FBT3hCLGlEQUFVQSxDQUFDUTtBQUNwQiIsInNvdXJjZXMiOlsid2VicGFjazovL2NybS1ib29raW5nLWZyb250ZW5kLy4vc3JjL2FwaS9BdXRoQ29udGV4dC5qc3g/MzdjYyJdLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIGNsaWVudCc7XG5cbmltcG9ydCB7IGNyZWF0ZUNvbnRleHQsIHVzZUNvbnRleHQsIHVzZU1lbW8sIHVzZVN0YXRlLCB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjdXJyZW50VXNlciwgc2F2ZVNlc3Npb24sIGNsZWFyU2Vzc2lvbiB9IGZyb20gJy4vY2xpZW50JztcbmltcG9ydCBhcGkgZnJvbSAnLi9jbGllbnQnO1xuXG5jb25zdCBBdXRoQ29udGV4dCA9IGNyZWF0ZUNvbnRleHQobnVsbCk7XG5cbmV4cG9ydCBmdW5jdGlvbiBBdXRoUHJvdmlkZXIoeyBjaGlsZHJlbiB9KSB7XG4gIC8vIExhenkgaW5pdCByZWFkcyBsb2NhbFN0b3JhZ2Ug4oCUIG11c3QgYmUgY2xpZW50LW9ubHkuIEtlZXAgdGhlXG4gIC8vIHNhbWUgbGF6eS1pbml0IHBhdHRlcm4gc28gU1NSIGRvZXNuJ3QgdHJ5IHRvIHJlYWQgbG9jYWxTdG9yYWdlLlxuICBjb25zdCBbdXNlciwgc2V0VXNlcl0gPSB1c2VTdGF0ZShudWxsKTtcblxuICAvLyBIeWRyYXRlIGZyb20gbG9jYWxTdG9yYWdlIG9uIG1vdW50IChicm93c2VyIG9ubHkpXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgc2V0VXNlcihjdXJyZW50VXNlcigpKTtcbiAgfSwgW10pO1xuXG4gIGFzeW5jIGZ1bmN0aW9uIGxvZ2luKGVtYWlsLCBwYXNzd29yZCkge1xuICAgIGNvbnN0IHsgZGF0YSB9ID0gYXdhaXQgYXBpLnBvc3QoJy9hdXRoL2xvZ2luJywgeyBlbWFpbCwgcGFzc3dvcmQgfSk7XG4gICAgc2F2ZVNlc3Npb24oZGF0YSk7XG4gICAgc2V0VXNlcih7IHVzZXJfaWQ6IGRhdGEudXNlcl9pZCwgZW1haWw6IGRhdGEuZW1haWwsIHJvbGU6IGRhdGEucm9sZSB9KTtcbiAgICByZXR1cm4gZGF0YTtcbiAgfVxuXG4gIGFzeW5jIGZ1bmN0aW9uIHJlZ2lzdGVyKGVtYWlsLCBwYXNzd29yZCwgcm9sZSA9ICdzdGFmZicpIHtcbiAgICBjb25zdCB7IGRhdGEgfSA9IGF3YWl0IGFwaS5wb3N0KCcvYXV0aC9yZWdpc3RlcicsIHsgZW1haWwsIHBhc3N3b3JkLCByb2xlIH0pO1xuICAgIHNhdmVTZXNzaW9uKGRhdGEpO1xuICAgIHNldFVzZXIoeyB1c2VyX2lkOiBkYXRhLnVzZXJfaWQsIGVtYWlsOiBkYXRhLmVtYWlsLCByb2xlOiBkYXRhLnJvbGUgfSk7XG4gICAgcmV0dXJuIGRhdGE7XG4gIH1cblxuICBmdW5jdGlvbiBsb2dvdXQoKSB7XG4gICAgY2xlYXJTZXNzaW9uKCk7XG4gICAgc2V0VXNlcihudWxsKTtcbiAgfVxuXG4gIGNvbnN0IHZhbHVlID0gdXNlTWVtbygoKSA9PiAoeyB1c2VyLCBsb2dpbiwgcmVnaXN0ZXIsIGxvZ291dCB9KSwgW3VzZXJdKTtcbiAgcmV0dXJuIDxBdXRoQ29udGV4dC5Qcm92aWRlciB2YWx1ZT17dmFsdWV9PntjaGlsZHJlbn08L0F1dGhDb250ZXh0LlByb3ZpZGVyPjtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUF1dGgoKSB7XG4gIHJldHVybiB1c2VDb250ZXh0KEF1dGhDb250ZXh0KTtcbn0iXSwibmFtZXMiOlsiY3JlYXRlQ29udGV4dCIsInVzZUNvbnRleHQiLCJ1c2VNZW1vIiwidXNlU3RhdGUiLCJ1c2VFZmZlY3QiLCJjdXJyZW50VXNlciIsInNhdmVTZXNzaW9uIiwiY2xlYXJTZXNzaW9uIiwiYXBpIiwiQXV0aENvbnRleHQiLCJBdXRoUHJvdmlkZXIiLCJjaGlsZHJlbiIsInVzZXIiLCJzZXRVc2VyIiwibG9naW4iLCJlbWFpbCIsInBhc3N3b3JkIiwiZGF0YSIsInBvc3QiLCJ1c2VyX2lkIiwicm9sZSIsInJlZ2lzdGVyIiwibG9nb3V0IiwidmFsdWUiLCJQcm92aWRlciIsInVzZUF1dGgiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./src/api/AuthContext.jsx\n");
+
+/***/ }),
+
+/***/ "(ssr)/./src/api/client.js":
+/*!***************************!*\
+  !*** ./src/api/client.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   TOKEN_KEY: () => (/* binding */ TOKEN_KEY),\n/* harmony export */   USER_KEY: () => (/* binding */ USER_KEY),\n/* harmony export */   clearSession: () => (/* binding */ clearSession),\n/* harmony export */   currentUser: () => (/* binding */ currentUser),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   saveSession: () => (/* binding */ saveSession)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"(ssr)/./node_modules/axios/lib/axios.js\");\n\nconst TOKEN_KEY = \"crm_token\";\nconst USER_KEY = \"crm_user\";\nfunction currentBaseUrl() {\n    if (false) {}\n    if (process.env.NEXT_PUBLIC_API_BASE_full_URL) {\n        return process.env.NEXT_PUBLIC_API_BASE_full_URL;\n    }\n    return \"\";\n}\nconst api = axios__WEBPACK_IMPORTED_MODULE_0__[\"default\"].create({\n    headers: {\n        \"Content-Type\": \"application/json\"\n    }\n});\napi.interceptors.request.use((config)=>{\n    if (false) {}\n    return config;\n});\napi.interceptors.response.use((r)=>r, (err)=>{\n    if (false) {}\n    return Promise.reject(err);\n});\nfunction saveSession({ token, user_id, email, role }) {\n    if (true) return;\n    localStorage.setItem(TOKEN_KEY, token);\n    localStorage.setItem(USER_KEY, JSON.stringify({\n        user_id,\n        email,\n        role\n    }));\n}\nfunction clearSession() {\n    if (true) return;\n    localStorage.removeItem(TOKEN_KEY);\n    localStorage.removeItem(USER_KEY);\n}\nfunction currentUser() {\n    if (true) return null;\n    try {\n        return JSON.parse(localStorage.getItem(USER_KEY) || \"null\");\n    } catch  {\n        return null;\n    }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (api);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvYXBpL2NsaWVudC5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQTBCO0FBRW5CLE1BQU1DLFlBQVksWUFBWTtBQUM5QixNQUFNQyxXQUFZLFdBQVc7QUFFcEMsU0FBU0M7SUFDUCxJQUFJLEtBQXlFRyxFQUFFLEVBRTlFO0lBQ0QsSUFBSUMsUUFBUUMsR0FBRyxDQUFDQyw2QkFBNkIsRUFBRTtRQUM3QyxPQUFPRixRQUFRQyxHQUFHLENBQUNDLDZCQUE2QjtJQUNsRDtJQUNBLE9BQU87QUFDVDtBQUVBLE1BQU1DLE1BQU1WLDZDQUFLQSxDQUFDVyxNQUFNLENBQUM7SUFDdkJDLFNBQVM7UUFBRSxnQkFBZ0I7SUFBbUI7QUFDaEQ7QUFFQUYsSUFBSUcsWUFBWSxDQUFDQyxPQUFPLENBQUNDLEdBQUcsQ0FBQyxDQUFDQztJQUM1QixJQUFJLEtBQWtCLEVBQWEsRUFJbEM7SUFDRCxPQUFPQTtBQUNUO0FBRUFOLElBQUlHLFlBQVksQ0FBQ1MsUUFBUSxDQUFDUCxHQUFHLENBQzNCLENBQUNRLElBQU1BLEdBQ1AsQ0FBQ0M7SUFDQyxJQUFJLEtBQTZELEVBQUUsRUFNbEU7SUFDRCxPQUFPTyxRQUFRQyxNQUFNLENBQUNSO0FBQ3hCO0FBR0ssU0FBU1MsWUFBWSxFQUFFZixLQUFLLEVBQUVnQixPQUFPLEVBQUVDLEtBQUssRUFBRUMsSUFBSSxFQUFFO0lBQ3pELElBQUksSUFBa0IsRUFBYTtJQUNuQ2pCLGFBQWFrQixPQUFPLENBQUNwQyxXQUFXaUI7SUFDaENDLGFBQWFrQixPQUFPLENBQUNuQyxVQUFVb0MsS0FBS0MsU0FBUyxDQUFDO1FBQUVMO1FBQVNDO1FBQU9DO0lBQUs7QUFDdkU7QUFFTyxTQUFTSTtJQUNkLElBQUksSUFBa0IsRUFBYTtJQUNuQ3JCLGFBQWFPLFVBQVUsQ0FBQ3pCO0lBQ3hCa0IsYUFBYU8sVUFBVSxDQUFDeEI7QUFDMUI7QUFFTyxTQUFTdUM7SUFDZCxJQUFJLElBQWtCLEVBQWEsT0FBTztJQUMxQyxJQUFJO1FBQUUsT0FBT0gsS0FBS0ksS0FBSyxDQUFDdkIsYUFBYUMsT0FBTyxDQUFDbEIsYUFBYTtJQUFTLEVBQ25FLE9BQU07UUFBRSxPQUFPO0lBQU07QUFDdkI7QUFFQSxpRUFBZVEsR0FBR0EsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL2NybS1ib29raW5nLWZyb250ZW5kLy4vc3JjL2FwaS9jbGllbnQuanM/ZGU2NiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgYXhpb3MgZnJvbSAnYXhpb3MnO1xuXG5leHBvcnQgY29uc3QgVE9LRU5fS0VZID0gJ2NybV90b2tlbic7XG5leHBvcnQgY29uc3QgVVNFUl9LRVkgID0gJ2NybV91c2VyJztcblxuZnVuY3Rpb24gY3VycmVudEJhc2VVcmwoKSB7XG4gIGlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJyAmJiB3aW5kb3cuX19BUFBfQ09ORklHX18/LkFQSV9CQVNFX2Z1bGxfVVJMKSB7XG4gICAgcmV0dXJuIHdpbmRvdy5fX0FQUF9DT05GSUdfXy5BUElfQkFTRV9mdWxsX1VSTDtcbiAgfVxuICBpZiAocHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQVBJX0JBU0VfZnVsbF9VUkwpIHtcbiAgICByZXR1cm4gcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQVBJX0JBU0VfZnVsbF9VUkw7XG4gIH1cbiAgcmV0dXJuICcnO1xufVxuXG5jb25zdCBhcGkgPSBheGlvcy5jcmVhdGUoe1xuICBoZWFkZXJzOiB7ICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicgfSxcbn0pO1xuXG5hcGkuaW50ZXJjZXB0b3JzLnJlcXVlc3QudXNlKChjb25maWcpID0+IHtcbiAgaWYgKHR5cGVvZiB3aW5kb3cgIT09ICd1bmRlZmluZWQnKSB7XG4gICAgY29uZmlnLmJhc2VVUkwgPSBjdXJyZW50QmFzZVVybCgpO1xuICAgIGNvbnN0IHRva2VuID0gbG9jYWxTdG9yYWdlLmdldEl0ZW0oVE9LRU5fS0VZKTtcbiAgICBpZiAodG9rZW4pIGNvbmZpZy5oZWFkZXJzLkF1dGhvcml6YXRpb24gPSBgQmVhcmVyICR7dG9rZW59YDtcbiAgfVxuICByZXR1cm4gY29uZmlnO1xufSk7XG5cbmFwaS5pbnRlcmNlcHRvcnMucmVzcG9uc2UudXNlKFxuICAocikgPT4gcixcbiAgKGVycikgPT4ge1xuICAgIGlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJyAmJiBlcnIucmVzcG9uc2U/LnN0YXR1cyA9PT0gNDAxKSB7XG4gICAgICBsb2NhbFN0b3JhZ2UucmVtb3ZlSXRlbShUT0tFTl9LRVkpO1xuICAgICAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oVVNFUl9LRVkpO1xuICAgICAgaWYgKCF3aW5kb3cubG9jYXRpb24ucGF0aG5hbWUuc3RhcnRzV2l0aCgnL2xvZ2luJykpIHtcbiAgICAgICAgd2luZG93LmxvY2F0aW9uLmhyZWYgPSAnL2xvZ2luJztcbiAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIFByb21pc2UucmVqZWN0KGVycik7XG4gIH1cbik7XG5cbmV4cG9ydCBmdW5jdGlvbiBzYXZlU2Vzc2lvbih7IHRva2VuLCB1c2VyX2lkLCBlbWFpbCwgcm9sZSB9KSB7XG4gIGlmICh0eXBlb2Ygd2luZG93ID09PSAndW5kZWZpbmVkJykgcmV0dXJuO1xuICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbShUT0tFTl9LRVksIHRva2VuKTtcbiAgbG9jYWxTdG9yYWdlLnNldEl0ZW0oVVNFUl9LRVksIEpTT04uc3RyaW5naWZ5KHsgdXNlcl9pZCwgZW1haWwsIHJvbGUgfSkpO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gY2xlYXJTZXNzaW9uKCkge1xuICBpZiAodHlwZW9mIHdpbmRvdyA9PT0gJ3VuZGVmaW5lZCcpIHJldHVybjtcbiAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oVE9LRU5fS0VZKTtcbiAgbG9jYWxTdG9yYWdlLnJlbW92ZUl0ZW0oVVNFUl9LRVkpO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gY3VycmVudFVzZXIoKSB7XG4gIGlmICh0eXBlb2Ygd2luZG93ID09PSAndW5kZWZpbmVkJykgcmV0dXJuIG51bGw7XG4gIHRyeSB7IHJldHVybiBKU09OLnBhcnNlKGxvY2FsU3RvcmFnZS5nZXRJdGVtKFVTRVJfS0VZKSB8fCAnbnVsbCcpOyB9XG4gIGNhdGNoIHsgcmV0dXJuIG51bGw7IH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgYXBpO1xuIl0sIm5hbWVzIjpbImF4aW9zIiwiVE9LRU5fS0VZIiwiVVNFUl9LRVkiLCJjdXJyZW50QmFzZVVybCIsIndpbmRvdyIsIl9fQVBQX0NPTkZJR19fIiwiQVBJX0JBU0VfZnVsbF9VUkwiLCJwcm9jZXNzIiwiZW52IiwiTkVYVF9QVUJMSUNfQVBJX0JBU0VfZnVsbF9VUkwiLCJhcGkiLCJjcmVhdGUiLCJoZWFkZXJzIiwiaW50ZXJjZXB0b3JzIiwicmVxdWVzdCIsInVzZSIsImNvbmZpZyIsImJhc2VVUkwiLCJ0b2tlbiIsImxvY2FsU3RvcmFnZSIsImdldEl0ZW0iLCJBdXRob3JpemF0aW9uIiwicmVzcG9uc2UiLCJyIiwiZXJyIiwic3RhdHVzIiwicmVtb3ZlSXRlbSIsImxvY2F0aW9uIiwicGF0aG5hbWUiLCJzdGFydHNXaXRoIiwiaHJlZiIsIlByb21pc2UiLCJyZWplY3QiLCJzYXZlU2Vzc2lvbiIsInVzZXJfaWQiLCJlbWFpbCIsInJvbGUiLCJzZXRJdGVtIiwiSlNPTiIsInN0cmluZ2lmeSIsImNsZWFyU2Vzc2lvbiIsImN1cnJlbnRVc2VyIiwicGFyc2UiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./src/api/client.js\n");
+
+/***/ }),
+
+/***/ "(ssr)/./src/components/SageionBridge.jsx":
+/*!******************************************!*\
+  !*** ./src/components/SageionBridge.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ SageionBridge)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _api_AuthContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api/AuthContext */ \"(ssr)/./src/api/AuthContext.jsx\");\n/* __next_internal_client_entry_do_not_use__ default auto */ \n\nfunction useSageionSetUp() {\n    const [ready, setReady] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);\n    const ran = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{\n        if (ran.current) return;\n        ran.current = true;\n        (async ()=>{\n            try {\n                await window.sageion_os.setUp(window.__APP_CONFIG__.SAGEION_APP_ID, window.__APP_CONFIG__.SAGEION_API_KEY, window.__APP_CONFIG__.SAGEION_REGION, window.__APP_CONFIG__.ROOT_SAGEION_ID);\n                setReady(true);\n            } catch (err) {\n                console.error(\"[Sageion] setUp failed:\", err);\n            }\n        })();\n    }, []);\n    return ready;\n}\nfunction useSageionInitialize(setUpReady) {\n    const { user } = (0,_api_AuthContext__WEBPACK_IMPORTED_MODULE_1__.useAuth)();\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{\n        if (!setUpReady) return;\n        // NOTE: with the lazy useEffect-driven user hydration,\n        // there is an initial `user === null` tick. That's equivalent\n        // to your original `loading === false && user === null` case.\n        // The SDK's initialize({}) is idempotent.\n        window.sageion_os.initialize(user ? {\n            uid: String(user.user_id)\n        } : {}).catch((err)=>console.error(\"[Sageion] initialize failed:\", err));\n    }, [\n        setUpReady,\n        user\n    ]);\n}\nfunction SageionBridge() {\n    const setUpReady = useSageionSetUp();\n    useSageionInitialize(setUpReady);\n    return null;\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvY29tcG9uZW50cy9TYWdlaW9uQnJpZGdlLmpzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7OzZEQUVvRDtBQUNQO0FBRTdDLFNBQVNJO0lBQ1AsTUFBTSxDQUFDQyxPQUFPQyxTQUFTLEdBQUdKLCtDQUFRQSxDQUFDO0lBQ25DLE1BQU1LLE1BQU1OLDZDQUFNQSxDQUFDO0lBRW5CRCxnREFBU0EsQ0FBQztRQUNSLElBQUlPLElBQUlDLE9BQU8sRUFBRTtRQUNqQkQsSUFBSUMsT0FBTyxHQUFHO1FBRWI7WUFDQyxJQUFJO2dCQUNGLE1BQU1DLE9BQU9DLFVBQVUsQ0FBQ0MsS0FBSyxDQUMzQkYsT0FBT0csY0FBYyxDQUFDQyxjQUFjLEVBQ3BDSixPQUFPRyxjQUFjLENBQUNFLGVBQWUsRUFDckNMLE9BQU9HLGNBQWMsQ0FBQ0csY0FBYyxFQUNwQ04sT0FBT0csY0FBYyxDQUFDSSxlQUFlO2dCQUV2Q1YsU0FBUztZQUNYLEVBQUUsT0FBT1csS0FBSztnQkFDWkMsUUFBUUMsS0FBSyxDQUFDLDJCQUEyQkY7WUFDM0M7UUFDRjtJQUNGLEdBQUcsRUFBRTtJQUVMLE9BQU9aO0FBQ1Q7QUFFQSxTQUFTZSxxQkFBcUJDLFVBQVU7SUFDdEMsTUFBTSxFQUFFQyxJQUFJLEVBQUUsR0FBR25CLHlEQUFPQTtJQUV4QkgsZ0RBQVNBLENBQUM7UUFDUixJQUFJLENBQUNxQixZQUFZO1FBQ2pCLHVEQUF1RDtRQUN2RCw4REFBOEQ7UUFDOUQsOERBQThEO1FBQzlELDBDQUEwQztRQUMxQ1osT0FBT0MsVUFBVSxDQUNkYSxVQUFVLENBQUNELE9BQU87WUFBRUUsS0FBS0MsT0FBT0gsS0FBS0ksT0FBTztRQUFFLElBQUksQ0FBQyxHQUNuREMsS0FBSyxDQUFDLENBQUNWLE1BQVFDLFFBQVFDLEtBQUssQ0FBQyxnQ0FBZ0NGO0lBQ2xFLEdBQUc7UUFBQ0k7UUFBWUM7S0FBSztBQUN2QjtBQUVlLFNBQVNNO0lBQ3RCLE1BQU1QLGFBQWFqQjtJQUNuQmdCLHFCQUFxQkM7SUFDckIsT0FBTztBQUNUIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY3JtLWJvb2tpbmctZnJvbnRlbmQvLi9zcmMvY29tcG9uZW50cy9TYWdlaW9uQnJpZGdlLmpzeD82MzgyIl0sInNvdXJjZXNDb250ZW50IjpbIid1c2UgY2xpZW50JztcblxuaW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VSZWYsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgdXNlQXV0aCB9IGZyb20gJy4uL2FwaS9BdXRoQ29udGV4dCc7XG5cbmZ1bmN0aW9uIHVzZVNhZ2Vpb25TZXRVcCgpIHtcbiAgY29uc3QgW3JlYWR5LCBzZXRSZWFkeV0gPSB1c2VTdGF0ZShmYWxzZSk7XG4gIGNvbnN0IHJhbiA9IHVzZVJlZihmYWxzZSk7XG5cbiAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICBpZiAocmFuLmN1cnJlbnQpIHJldHVybjtcbiAgICByYW4uY3VycmVudCA9IHRydWU7XG5cbiAgICAoYXN5bmMgKCkgPT4ge1xuICAgICAgdHJ5IHtcbiAgICAgICAgYXdhaXQgd2luZG93LnNhZ2Vpb25fb3Muc2V0VXAoXG4gICAgICAgICAgd2luZG93Ll9fQVBQX0NPTkZJR19fLlNBR0VJT05fQVBQX0lELFxuICAgICAgICAgIHdpbmRvdy5fX0FQUF9DT05GSUdfXy5TQUdFSU9OX0FQSV9LRVksXG4gICAgICAgICAgd2luZG93Ll9fQVBQX0NPTkZJR19fLlNBR0VJT05fUkVHSU9OLFxuICAgICAgICAgIHdpbmRvdy5fX0FQUF9DT05GSUdfXy5ST09UX1NBR0VJT05fSUQsXG4gICAgICAgICk7XG4gICAgICAgIHNldFJlYWR5KHRydWUpO1xuICAgICAgfSBjYXRjaCAoZXJyKSB7XG4gICAgICAgIGNvbnNvbGUuZXJyb3IoJ1tTYWdlaW9uXSBzZXRVcCBmYWlsZWQ6JywgZXJyKTtcbiAgICAgIH1cbiAgICB9KSgpO1xuICB9LCBbXSk7XG5cbiAgcmV0dXJuIHJlYWR5O1xufVxuXG5mdW5jdGlvbiB1c2VTYWdlaW9uSW5pdGlhbGl6ZShzZXRVcFJlYWR5KSB7XG4gIGNvbnN0IHsgdXNlciB9ID0gdXNlQXV0aCgpO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgaWYgKCFzZXRVcFJlYWR5KSByZXR1cm47XG4gICAgLy8gTk9URTogd2l0aCB0aGUgbGF6eSB1c2VFZmZlY3QtZHJpdmVuIHVzZXIgaHlkcmF0aW9uLFxuICAgIC8vIHRoZXJlIGlzIGFuIGluaXRpYWwgYHVzZXIgPT09IG51bGxgIHRpY2suIFRoYXQncyBlcXVpdmFsZW50XG4gICAgLy8gdG8geW91ciBvcmlnaW5hbCBgbG9hZGluZyA9PT0gZmFsc2UgJiYgdXNlciA9PT0gbnVsbGAgY2FzZS5cbiAgICAvLyBUaGUgU0RLJ3MgaW5pdGlhbGl6ZSh7fSkgaXMgaWRlbXBvdGVudC5cbiAgICB3aW5kb3cuc2FnZWlvbl9vc1xuICAgICAgLmluaXRpYWxpemUodXNlciA/IHsgdWlkOiBTdHJpbmcodXNlci51c2VyX2lkKSB9IDoge30pXG4gICAgICAuY2F0Y2goKGVycikgPT4gY29uc29sZS5lcnJvcignW1NhZ2Vpb25dIGluaXRpYWxpemUgZmFpbGVkOicsIGVycikpO1xuICB9LCBbc2V0VXBSZWFkeSwgdXNlcl0pO1xufVxuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBTYWdlaW9uQnJpZGdlKCkge1xuICBjb25zdCBzZXRVcFJlYWR5ID0gdXNlU2FnZWlvblNldFVwKCk7XG4gIHVzZVNhZ2Vpb25Jbml0aWFsaXplKHNldFVwUmVhZHkpO1xuICByZXR1cm4gbnVsbDtcbn0iXSwibmFtZXMiOlsidXNlRWZmZWN0IiwidXNlUmVmIiwidXNlU3RhdGUiLCJ1c2VBdXRoIiwidXNlU2FnZWlvblNldFVwIiwicmVhZHkiLCJzZXRSZWFkeSIsInJhbiIsImN1cnJlbnQiLCJ3aW5kb3ciLCJzYWdlaW9uX29zIiwic2V0VXAiLCJfX0FQUF9DT05GSUdfXyIsIlNBR0VJT05fQVBQX0lEIiwiU0FHRUlPTl9BUElfS0VZIiwiU0FHRUlPTl9SRUdJT04iLCJST09UX1NBR0VJT05fSUQiLCJlcnIiLCJjb25zb2xlIiwiZXJyb3IiLCJ1c2VTYWdlaW9uSW5pdGlhbGl6ZSIsInNldFVwUmVhZHkiLCJ1c2VyIiwiaW5pdGlhbGl6ZSIsInVpZCIsIlN0cmluZyIsInVzZXJfaWQiLCJjYXRjaCIsIlNhZ2Vpb25CcmlkZ2UiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./src/components/SageionBridge.jsx\n");
+
+/***/ }),
+
+/***/ "(rsc)/./app/globals.css":
+/*!*************************!*\
+  !*** ./app/globals.css ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"56ed4d8beb32\");\nif (false) {}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvZ2xvYmFscy5jc3MiLCJtYXBwaW5ncyI6Ijs7OztBQUFBLGlFQUFlLGNBQWM7QUFDN0IsSUFBSSxLQUFVLEVBQUUsRUFBdUIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jcm0tYm9va2luZy1mcm9udGVuZC8uL2FwcC9nbG9iYWxzLmNzcz83NDRlIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IFwiNTZlZDRkOGJlYjMyXCJcbmlmIChtb2R1bGUuaG90KSB7IG1vZHVsZS5ob3QuYWNjZXB0KCkgfVxuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./app/globals.css\n");
+
+/***/ }),
+
+/***/ "(rsc)/./app/layout.jsx":
+/*!************************!*\
+  !*** ./app/layout.jsx ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ RootLayout),\n/* harmony export */   metadata: () => (/* binding */ metadata)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./globals.css */ \"(rsc)/./app/globals.css\");\n/* harmony import */ var next_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/script */ \"(rsc)/./node_modules/next/dist/api/script.js\");\n/* harmony import */ var _api_AuthContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/api/AuthContext */ \"(rsc)/./src/api/AuthContext.jsx\");\n/* harmony import */ var _components_SageionBridge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/SageionBridge */ \"(rsc)/./src/components/SageionBridge.jsx\");\n\n\n\n\n\nconst metadata = {\n    title: \"Ref CRM\"\n};\nfunction RootLayout({ children }) {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"html\", {\n        lang: \"en\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"head\", {\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"link\", {\n                    rel: \"icon\",\n                    href: \"/favicon.svg\"\n                }, void 0, false, {\n                    fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                    lineNumber: 12,\n                    columnNumber: 9\n                }, this)\n            }, void 0, false, {\n                fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                lineNumber: 11,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"body\", {\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(next_script__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n                        src: \"/config.js\",\n                        strategy: \"beforeInteractive\"\n                    }, void 0, false, {\n                        fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                        lineNumber: 15,\n                        columnNumber: 9\n                    }, this),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_api_AuthContext__WEBPACK_IMPORTED_MODULE_3__.AuthProvider, {\n                        children: [\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_SageionBridge__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {}, void 0, false, {\n                                fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                                lineNumber: 17,\n                                columnNumber: 11\n                            }, this),\n                            children\n                        ]\n                    }, void 0, true, {\n                        fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                        lineNumber: 16,\n                        columnNumber: 9\n                    }, this)\n                ]\n            }, void 0, true, {\n                fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n                lineNumber: 14,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"/home/reetu-singh/Desktop/work/crm/booking-frontend/app/layout.jsx\",\n        lineNumber: 10,\n        columnNumber: 5\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvbGF5b3V0LmpzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7QUFBdUI7QUFDVTtBQUNnQjtBQUNNO0FBRWhELE1BQU1HLFdBQVc7SUFBRUMsT0FBTztBQUFVLEVBQUU7QUFFOUIsU0FBU0MsV0FBVyxFQUFFQyxRQUFRLEVBQUU7SUFDN0MscUJBQ0UsOERBQUNDO1FBQUtDLE1BQUs7OzBCQUNULDhEQUFDQzswQkFDQyw0RUFBQ0M7b0JBQUtDLEtBQUk7b0JBQU9DLE1BQUs7Ozs7Ozs7Ozs7OzBCQUV4Qiw4REFBQ0M7O2tDQUNDLDhEQUFDYixtREFBTUE7d0JBQUNjLEtBQUk7d0JBQWFDLFVBQVM7Ozs7OztrQ0FDbEMsOERBQUNkLDBEQUFZQTs7MENBQ1gsOERBQUNDLGlFQUFhQTs7Ozs7NEJBQ2JJOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBS1giLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jcm0tYm9va2luZy1mcm9udGVuZC8uL2FwcC9sYXlvdXQuanN4PzBjODEiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0ICcuL2dsb2JhbHMuY3NzJztcbmltcG9ydCBTY3JpcHQgZnJvbSAnbmV4dC9zY3JpcHQnO1xuaW1wb3J0IHsgQXV0aFByb3ZpZGVyIH0gZnJvbSAnQC9hcGkvQXV0aENvbnRleHQnO1xuaW1wb3J0IFNhZ2Vpb25CcmlkZ2UgZnJvbSAnQC9jb21wb25lbnRzL1NhZ2Vpb25CcmlkZ2UnO1xuXG5leHBvcnQgY29uc3QgbWV0YWRhdGEgPSB7IHRpdGxlOiAnUmVmIENSTScgfTtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUm9vdExheW91dCh7IGNoaWxkcmVuIH0pIHtcbiAgcmV0dXJuIChcbiAgICA8aHRtbCBsYW5nPVwiZW5cIj5cbiAgICAgIDxoZWFkPlxuICAgICAgICA8bGluayByZWw9XCJpY29uXCIgaHJlZj1cIi9mYXZpY29uLnN2Z1wiIC8+XG4gICAgICA8L2hlYWQ+XG4gICAgICA8Ym9keT5cbiAgICAgICAgPFNjcmlwdCBzcmM9XCIvY29uZmlnLmpzXCIgc3RyYXRlZ3k9XCJiZWZvcmVJbnRlcmFjdGl2ZVwiIC8+XG4gICAgICAgIDxBdXRoUHJvdmlkZXI+XG4gICAgICAgICAgPFNhZ2Vpb25CcmlkZ2UgLz5cbiAgICAgICAgICB7Y2hpbGRyZW59XG4gICAgICAgIDwvQXV0aFByb3ZpZGVyPlxuICAgICAgPC9ib2R5PlxuICAgIDwvaHRtbD5cbiAgKTtcbn0iXSwibmFtZXMiOlsiU2NyaXB0IiwiQXV0aFByb3ZpZGVyIiwiU2FnZWlvbkJyaWRnZSIsIm1ldGFkYXRhIiwidGl0bGUiLCJSb290TGF5b3V0IiwiY2hpbGRyZW4iLCJodG1sIiwibGFuZyIsImhlYWQiLCJsaW5rIiwicmVsIiwiaHJlZiIsImJvZHkiLCJzcmMiLCJzdHJhdGVneSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./app/layout.jsx\n");
+
+/***/ }),
+
+/***/ "(rsc)/./src/api/AuthContext.jsx":
+/*!*********************************!*\
+  !*** ./src/api/AuthContext.jsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AuthProvider: () => (/* binding */ e0),
+/* harmony export */   useAuth: () => (/* binding */ e1)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+
+
+const e0 = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/home/reetu-singh/Desktop/work/crm/booking-frontend/src/api/AuthContext.jsx#AuthProvider`);
+
+const e1 = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/home/reetu-singh/Desktop/work/crm/booking-frontend/src/api/AuthContext.jsx#useAuth`);
+
+
+/***/ }),
+
+/***/ "(rsc)/./src/components/SageionBridge.jsx":
+/*!******************************************!*\
+  !*** ./src/components/SageionBridge.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/home/reetu-singh/Desktop/work/crm/booking-frontend/src/components/SageionBridge.jsx#default`));
+
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/axios","vendor-chunks/mime-db","vendor-chunks/follow-redirects","vendor-chunks/debug","vendor-chunks/form-data","vendor-chunks/get-intrinsic","vendor-chunks/https-proxy-agent","vendor-chunks/agent-base","vendor-chunks/asynckit","vendor-chunks/combined-stream","vendor-chunks/mime-types","vendor-chunks/proxy-from-env","vendor-chunks/ms","vendor-chunks/supports-color","vendor-chunks/has-symbols","vendor-chunks/delayed-stream","vendor-chunks/@swc","vendor-chunks/function-bind","vendor-chunks/es-set-tostringtag","vendor-chunks/get-proto","vendor-chunks/call-bind-apply-helpers","vendor-chunks/dunder-proto","vendor-chunks/math-intrinsics","vendor-chunks/es-errors","vendor-chunks/has-flag","vendor-chunks/gopd","vendor-chunks/es-define-property","vendor-chunks/hasown","vendor-chunks/has-tostringtag","vendor-chunks/es-object-atoms"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2F_not-found%2Fpage&page=%2F_not-found%2Fpage&appPaths=&pagePath=node_modules%2Fnext%2Fdist%2Fclient%2Fcomponents%2Fnot-found-error.js&appDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2Fhome%2Freetu-singh%2FDesktop%2Fwork%2Fcrm%2Fbooking-frontend&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+module.exports = __webpack_exports__;
+
+})();

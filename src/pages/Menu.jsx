@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import api from '../api/client';
 
@@ -8,16 +9,34 @@ export default function Menu() {
   async function load() {
     try {
       const { data } = await api.get('/menu');
-      setItems(data);
-    } catch (err) { setError(err.response?.data?.error || err.message); }
+      // Guard: if backend returns {items:[…]}, {data:[…]}, or a non-array,
+      // extract the array instead of feeding the raw payload into .map.
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.items)
+          ? data.items
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
+      setItems(list);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+      setItems([]);  // never leave a non-array in state
+    }
   }
   useEffect(() => { load(); }, []);
 
   async function toggle(item) {
     try {
       await api.patch(`/menu/${item.item_id}/availability`, { in_stock: !item.in_stock });
-      setItems((prev) => prev.map((i) => i.item_id === item.item_id ? { ...i, in_stock: !i.in_stock } : i));
-    } catch (err) { alert(err.response?.data?.error || err.message); }
+      setItems((prev) =>
+        (Array.isArray(prev) ? prev : []).map((i) =>
+          i.item_id === item.item_id ? { ...i, in_stock: !i.in_stock } : i
+        )
+      );
+    } catch (err) {
+      alert(err.response?.data?.error || err.message);
+    }
   }
 
   return (
@@ -36,7 +55,7 @@ export default function Menu() {
             <tr key={i.item_id}>
               <td><strong>{i.name}</strong><br/><span className="mono muted">{i.item_id}</span></td>
               <td>{i.category}</td>
-              <td>₹{i.price.toFixed(2)}</td>
+              <td>₹{Number(i.price).toFixed(2)}</td>
               <td className="mono small">
                 {(i.recipe || []).map((r) => `${r.material_id}×${r.qty}`).join(', ') || '—'}
               </td>
@@ -52,6 +71,9 @@ export default function Menu() {
               </td>
             </tr>
           ))}
+          {items.length === 0 && !error && (
+            <tr><td colSpan="6" className="muted">No menu items loaded.</td></tr>
+          )}
         </tbody>
       </table>
     </div>
