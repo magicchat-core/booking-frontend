@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/(app)/inventory/page": [
+    "/(app)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(app)/inventory/page.js"
+      "static/chunks/app/(app)/page.js"
     ],
     "/(app)/layout": [
       "static/chunks/webpack.js",
@@ -26,15 +26,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(app)/owner/page.js"
     ],
-    "/(app)/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(app)/page.js"
-    ],
     "/(app)/menu/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(app)/menu/page.js"
+    ],
+    "/(app)/inventory/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(app)/inventory/page.js"
     ],
     "/(app)/purchase-orders/page": [
       "static/chunks/webpack.js",
@@ -45,6 +45,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(app)/orders/page.js"
+    ],
+    "/(app)/customers/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(app)/customers/page.js"
     ]
   }
 }

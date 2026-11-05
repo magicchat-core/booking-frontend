@@ -3,8 +3,6 @@ import axios from 'axios';
 export const TOKEN_KEY = 'crm_token';
 export const USER_KEY  = 'crm_user';
 
-// Resolve baseURL on every request (not once at module load).
-// This survives config.js loading after the client bundle.
 function currentBaseUrl() {
   if (typeof window !== 'undefined' && window.__APP_CONFIG__?.API_BASE_full_URL) {
     return window.__APP_CONFIG__.API_BASE_full_URL;
@@ -12,7 +10,7 @@ function currentBaseUrl() {
   if (process.env.NEXT_PUBLIC_API_BASE_full_URL) {
     return process.env.NEXT_PUBLIC_API_BASE_full_URL;
   }
-  return '';  // empty = relative URL = Next rewrite handles it
+  return '';
 }
 
 const api = axios.create({
@@ -56,9 +54,8 @@ export function clearSession() {
 
 export function currentUser() {
   if (typeof window === 'undefined') return null;
-  try {
-    return JSON.parse(localStorage.getItem(USER_KEY) || 'null');
-  } catch { return null; }
+  try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); }
+  catch { return null; }
 }
 
 export default api;

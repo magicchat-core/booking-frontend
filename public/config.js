@@ -4,5 +4,5 @@ window.__APP_CONFIG__ = {
   SAGEION_API_KEY: "Y2hhdG1hZ2ljOF9fU0VQUkFUT1JfX2Jhc2VfZGVtb192NA==",
   SAGEION_REGION: "US",
   API_BASE_URL: "http://122.160.157.99:3001/api",
-  // API_BASE_full_URL: "http://122.160.157.99:3001",
+  API_BASE_full_URL: "http://122.160.157.99:3001",
 };
