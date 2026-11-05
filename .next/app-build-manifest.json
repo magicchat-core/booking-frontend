@@ -1,14 +1,14 @@
 {
   "pages": {
-    "/(app)/page": [
+    "/demos/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(app)/page.js"
+      "static/chunks/app/demos/page.js"
     ],
-    "/(app)/layout": [
+    "/demos/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(app)/layout.js"
+      "static/chunks/app/demos/layout.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -21,15 +21,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/login/page.js"
     ],
-    "/demos/page": [
+    "/demos/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/demos/page.js"
+      "static/chunks/app/demos/[id]/page.js"
     ],
-    "/demos/layout": [
+    "/(app)/owner/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/demos/layout.js"
+      "static/chunks/app/(app)/owner/page.js"
+    ],
+    "/(app)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(app)/layout.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
