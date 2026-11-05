@@ -1,17 +1,14 @@
-import DemoDetail from '@/pages/DemoDetail';
+import dynamic from 'next/dynamic';
 
-// This is required for static export (GitHub Pages)
+// 1. Dynamically import with ssr: false so it only runs in the browser
+const DemoDetail = dynamic(() => import('@/pages/DemoDetail'), { ssr: false });
+
+// 2. Tell Next.js which IDs to generate
 export function generateStaticParams() {
-  // Return an array of IDs to pre-render.
-  // For example, if you want to generate /demos/1, /demos/2, /demos/3:
-  return [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-  ];
-  
-  // Alternatively, if you just want a single placeholder for now to get the build passing:
-  // return [{ id: 'placeholder' }]; 
+  return [{ id: '1' }, { id: '2' }, { id: '3' }];
 }
 
-export default function Page() { return <DemoDetail />; }
+// 3. Pass the Next.js params as props
+export default function Page({ params }) {
+  return <DemoDetail id={params.id} />;
+}

@@ -4,13 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // This prevents Next.js from treating files in src/pages as routes
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'], 
-  webpack: (config) => {
-    // This is a hacky way to tell Next.js to ignore src/pages for routing
-    config.resolve.alias['@/pages'] = require('path').resolve(__dirname, 'src/pages');
-    return config;
-  }
+  // Add trailing slash so GitHub pages handles routes properly
+  trailingSlash: true, 
 };
 
 export default nextConfig;
