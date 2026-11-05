@@ -1,11 +1,20 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+'use client';
+
+import { createContext, useContext, useMemo, useState, useEffect } from 'react';
 import { currentUser, saveSession, clearSession } from './client';
 import api from './client';
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(currentUser());
+  // Lazy init reads localStorage — must be client-only. Keep the
+  // same lazy-init pattern so SSR doesn't try to read localStorage.
+  const [user, setUser] = useState(null);
+
+  // Hydrate from localStorage on mount (browser only)
+  useEffect(() => {
+    setUser(currentUser());
+  }, []);
 
   async function login(email, password) {
     const { data } = await api.post('/auth/login', { email, password });

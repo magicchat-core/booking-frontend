@@ -1,23 +1,27 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../api/AuthContext';
+'use client';
+
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from '@/api/AuthContext';
 
 const nav = [
-  { to: '/owner',       label: 'Running Tables' },   // ← owner's home
-  { to: '/',             label: 'Dashboard' },
-  { to: '/menu',         label: 'Menu' },
-  { to: '/inventory',    label: 'Inventory' },
+  { to: '/owner',           label: 'Running Tables' },
+  { to: '/',                label: 'Dashboard' },
+  { to: '/menu',            label: 'Menu' },
+  { to: '/inventory',       label: 'Inventory' },
   { to: '/purchase-orders', label: 'Purchase Orders' },
-  { to: '/orders',       label: 'Orders' },
-  { to: '/customers',    label: 'Customers' },
+  { to: '/orders',          label: 'Orders' },
+  { to: '/customers',       label: 'Customers' },
 ];
 
 export default function Layout({ children }) {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
+  const pathname = usePathname();
 
   function handleLogout() {
     logout();
-    navigate('/login');
+    router.push('/login');
   }
 
   return (
@@ -25,16 +29,14 @@ export default function Layout({ children }) {
       <aside className="sidebar">
         <div className="brand">🍛 Ref&nbsp;CRM</div>
         <nav>
-          {nav.map((n) => (
-            <NavLink
-              key={n.to}
-              to={n.to}
-              end={n.to === '/'}
-              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-            >
-              {n.label}
-            </NavLink>
-          ))}
+          {nav.map((n) => {
+            const active = n.to === '/' ? pathname === '/' : pathname.startsWith(n.to);
+            return (
+              <Link key={n.to} href={n.to} className={active ? 'nav-link active' : 'nav-link'}>
+                {n.label}
+              </Link>
+            );
+          })}
         </nav>
       </aside>
       <div className="main">

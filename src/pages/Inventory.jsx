@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import api from '../api/client';
 
@@ -8,8 +10,18 @@ export default function Inventory() {
   async function load() {
     try {
       const { data } = await api.get('/inventory');
-      setItems(data);
-    } catch (err) { setError(err.response?.data?.error || err.message); }
+      const list = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.items)
+          ? data.items
+          : Array.isArray(data?.data)
+            ? data.data
+            : [];
+      setItems(list);
+    } catch (err) {
+      setError(err.response?.data?.error || err.message);
+      setItems([]);
+    }
   }
   useEffect(() => { load(); }, []);
 
@@ -22,9 +34,16 @@ export default function Inventory() {
       const { data } = await api.patch(`/inventory/${item.material_id}`, {
         adjust_qty: n, reason: 'manual adjust from UI',
       });
-      setItems((prev) => prev.map((i) => i.material_id === item.material_id
-        ? { ...i, current_qty: data.new_qty } : i));
-    } catch (err) { alert(err.response?.data?.error || err.message); }
+      setItems((prev) =>
+        (Array.isArray(prev) ? prev : []).map((i) =>
+          i.material_id === item.material_id
+            ? { ...i, current_qty: data.new_qty }
+            : i
+        )
+      );
+    } catch (err) {
+      alert(err.response?.data?.error || err.message);
+    }
   }
 
   return (
@@ -49,6 +68,9 @@ export default function Inventory() {
               </tr>
             );
           })}
+          {items.length === 0 && !error && (
+            <tr><td colSpan="5" className="muted">No inventory loaded.</td></tr>
+          )}
         </tbody>
       </table>
     </div>
