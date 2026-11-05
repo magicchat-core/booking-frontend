@@ -19,7 +19,7 @@ export default function Login() {
     try {
       if (mode === 'login') await login(email, password);
       else                  await register(email, password);
-      router.push('/owner');
+      router.push('/demos');
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {

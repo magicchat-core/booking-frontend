@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/api/AuthContext';
 
 const nav = [
+  { to: '/demos', label: 'Demos' },
   { to: '/owner',           label: 'Running Tables' },
   { to: '/',                label: 'Dashboard' },
   { to: '/menu',            label: 'Menu' },
