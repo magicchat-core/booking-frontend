@@ -3,8 +3,17 @@ import axios from 'axios';
 export const TOKEN_KEY = 'crm_token';
 export const USER_KEY  = 'crm_user';
 
+// Priority:
+//   1. Runtime config injected via public/config.js  (works without rebuild)
+//   2. Build-time env var VITE_API_BASE_full_URL          (baked in at build)
+//   3. '/' (same origin — relies on dev proxy / prod reverse proxy)
+const BASE_URL =
+  window.__APP_CONFIG__?.API_BASE_full_URL ||
+  import.meta.env.VITE_API_BASE_full_URL ||
+  '/';
+
 const api = axios.create({
-  baseURL: '/',              // proxy forwards to backend
+  baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
