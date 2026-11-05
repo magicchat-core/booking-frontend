@@ -1,2 +1,2 @@
-import Inventory from '@/pages/Inventory';
+import Inventory from '@/views/Inventory';
 export default function Page() { return <Inventory />; }

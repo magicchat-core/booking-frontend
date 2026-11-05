@@ -1,2 +1,2 @@
-import PurchaseOrders from '@/pages/PurchaseOrders';
+import PurchaseOrders from '@/views/PurchaseOrders';
 export default function Page() { return <PurchaseOrders />; }

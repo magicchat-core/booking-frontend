@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const DEMOS = {
@@ -80,8 +80,7 @@ const DEMOS = {
 // ============================================================
 // Demo Detail Wrapper
 // ============================================================
-export default function DemoDetail() {
-  const { id } = useParams();
+export default function DemoDetail({ id }) {
   const router = useRouter();
   const demo = DEMOS[id];
 
@@ -109,7 +108,7 @@ export default function DemoDetail() {
     <div style={{ padding: "clamp(24px, 4vw, 64px)" }}>
       <div style={{ maxWidth: 1040, margin: "0 auto" }}>
         {/* ---------------- HEADER ---------------- */}
-        <div style={{ textAlign: "centerF" }}>
+        <div style={{ textAlign: "center" }}>
           <h1 style={{ margin: 0, fontSize: 28 }}>{demo.name}</h1>
           <p className="muted" style={{ marginTop: 6 }}>
             {demo.description}

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 
 // 1. Dynamically import with ssr: false so it only runs in the browser
-const DemoDetail = dynamic(() => import('@/pages/DemoDetail'), { ssr: false });
+const DemoDetail = dynamic(() => import('@/views/DemoDetail'), { ssr: false });
 
 // 2. Tell Next.js which IDs to generate
 export function generateStaticParams() {
