@@ -362,20 +362,30 @@ export default function DemoDetail({ id }) {
             </div>
           )}
           <div
-            style={{
-              gridColumn: "1 / -1",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <button
-              style={{ minWidth: 140 }}
-              className="btn btn-primary"
-              onClick={() => router.push("/owner")}
-            >
-              Try me
-            </button>
-          </div>
+  style={{
+    gridColumn: "1 / -1",
+    display: "flex",
+    justifyContent: "flex-end",
+  }}
+>
+  <button
+    style={{ minWidth: 140 }}
+    className="btn btn-primary"
+    onClick={() => {
+      // ⭐ Persist which demo the user picked. (app)/layout.jsx reads
+      // this on mount and passes the matching appConfig to
+      // SageionScripts.
+      localStorage.setItem("active_demo", id);
+
+      // ⭐ Hard navigation — forces a full page reload so the
+      // Sageion singleton can bootstrap the NEW demo's app.
+      // router.push() would soft-nav and hit the hot-swap guard.
+      window.location.assign("/");
+    }}
+  >
+    Try me
+  </button>
+</div>
         </div>
       </div>
 

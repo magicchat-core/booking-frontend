@@ -1,14 +1,4 @@
-'use client';
-
-import SageionScripts from '@/components/SageionScripts';
-import SageionBridge from '@/components/SageionBridge';
-
+// app/(app)/owner/layout.jsx
 export default function OwnerLayout({ children }) {
-  return (
-    <>
-      <SageionScripts />
-      <SageionBridge />
-      {children}
-    </>
-  );
+  return children;
 }

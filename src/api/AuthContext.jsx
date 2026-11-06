@@ -7,13 +7,16 @@ import api from './client';
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  // Lazy init reads localStorage — must be client-only. Keep the
-  // same lazy-init pattern so SSR doesn't try to read localStorage.
   const [user, setUser] = useState(null);
+  // ⭐ Distinguishes "no user" (logged out) from "not hydrated yet".
+  // Without this, ProtectedRoute fires router.replace('/login') on the
+  // very first render, before the hydrate effect below runs, and the
+  // user sees a spurious redirect on every page reload.
+  const [loaded, setLoaded] = useState(false);
 
-  // Hydrate from localStorage on mount (browser only)
   useEffect(() => {
     setUser(currentUser());
+    setLoaded(true); // ← hydration complete
   }, []);
 
   async function login(email, password) {
@@ -35,7 +38,11 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
-  const value = useMemo(() => ({ user, login, register, logout }), [user]);
+  const value = useMemo(
+    () => ({ user, loaded, login, register, logout }),
+    [user, loaded],
+  );
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 

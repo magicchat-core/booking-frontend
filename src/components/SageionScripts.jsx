@@ -1,57 +1,108 @@
+// src/components/SageionScripts.jsx
 'use client';
 
 import { useEffect } from 'react';
 
-export default function SageionScripts() {
-  const isDev = process.env.NODE_ENV === 'development';
-  const sageionScriptSrc = isDev 
-    ? '/local-bundle/bundle.js' 
-    : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+// Module-scope set of appIds we've bootstrapped on this page load.
+// Prevents duplicate <script> tags and duplicate setUp() calls if
+// the component remounts for the same app.
+//
+// Reloading the page clears this set, which is the intended way to
+// switch to a different app. The SDK is a singleton — it cannot
+// hot-swap.
+const BOOTSTRAPPED_APP_IDS = new Set();
 
+export default function SageionScripts({ appConfig }) {
   useEffect(() => {
-    // 1. Load Socket.IO
+    const appId = appConfig?.SAGEION_APP_ID || appConfig?.appId;
+    const apiKey = appConfig?.SAGEION_API_KEY || appConfig?.apiKey;
+    const region = appConfig?.SAGEION_REGION || appConfig?.region || 'US';
+    const rootId = appConfig?.ROOT_SAGEION_ID || appConfig?.rootId || '';
+
+    if (!appId || !apiKey) {
+      console.error(
+        '[SageionScripts] missing SAGEION_APP_ID or SAGEION_API_KEY in appConfig',
+        appConfig,
+      );
+      return;
+    }
+
+    // Idempotency guards.
+    if (BOOTSTRAPPED_APP_IDS.has(appId)) {
+      console.log('[SageionScripts] already bootstrapped for', appId);
+      return;
+    }
+    if (BOOTSTRAPPED_APP_IDS.size > 0) {
+      console.error(
+        '[SageionScripts] a different Sageion app is already bootstrapped',
+        Array.from(BOOTSTRAPPED_APP_IDS),
+        '— refusing to hot-swap to',
+        appId,
+        '. A full page reload is required to switch apps.',
+      );
+      return;
+    }
+    BOOTSTRAPPED_APP_IDS.add(appId);
+
+    const isDev = process.env.NODE_ENV === 'development';
+    const bundleSrc = isDev
+      ? '/local-bundle/bundle.js'
+      : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+
+    // 1. socket.io
     const socketScript = document.createElement('script');
     socketScript.src = 'https://cdn.socket.io/4.1.2/socket.io.min.js';
     socketScript.async = false;
     document.body.appendChild(socketScript);
 
-    // 2. Load Config
-    const configScript = document.createElement('script');
-    configScript.src = '/config.js';
-    configScript.async = false;
-    document.body.appendChild(configScript);
-
-    // 3. Load Sageion Bundle
+    // 2. bundle
     const bundleScript = document.createElement('script');
-    bundleScript.src = sageionScriptSrc;
+    bundleScript.src = bundleSrc;
     bundleScript.async = false;
 
-    // 4. Run setUp when the bundle loads
-    bundleScript.onload = () => {
-      console.log('FIXING _LOAD: Bundle loaded! Running setUp...');
-      if (window.sageion_os && window.__APP_CONFIG__) {
-        window.sageion_os.setUp(
-          window.__APP_CONFIG__.SAGEION_APP_ID,
-          window.__APP_CONFIG__.SAGEION_API_KEY,
-          window.__APP_CONFIG__.SAGEION_REGION,
-          window.__APP_CONFIG__.ROOT_SAGEION_ID
-        )
-        .then(() => {
-          console.log('FIXING _LOAD: setUp successful!');
-          // Dispatch event for SageionBridge to start initialize
-          window.dispatchEvent(new Event('sageion_setup_complete'));
-        })
-        .catch((err) => console.error('FIXING _LOAD: setUp failed', err));
+    bundleScript.onload = async () => {
+      console.log('[SageionScripts] bundle loaded for', appId);
+
+      if (!window.sageion_os) {
+        console.error('[SageionScripts] window.sageion_os not present after bundle load');
+        return;
+      }
+
+      try {
+        await window.sageion_os.setUp(appId, apiKey, region, rootId);
+        console.log('[SageionScripts] setUp complete for', appId);
+
+        window.dispatchEvent(
+          new CustomEvent('sageion_setup_complete', {
+            detail: { appId },
+          }),
+        );
+      } catch (err) {
+        console.error('[SageionScripts] setUp failed for', appId, err);
       }
     };
 
     document.body.appendChild(bundleScript);
 
-    // Cleanup function (if user navigates away)
+    // ⭐ Cleanup: hide the floating bubble when this component unmounts.
+    // This runs when (app)/layout unmounts — i.e., on logout, or on any
+    // navigation out of the authed tree. The SDK singleton and its socket
+    // survive (they can't be destroyed), but the bubble is hidden so the
+    // user doesn't see a stale chat widget on /login or /demos.
+    //
+    // SageionBridge re-shows the bubble after initialize() when we
+    // re-enter an authed route.
     return () => {
-      // Optional: Remove scripts if you want, but usually it's fine to leave them
+      try {
+        const bubble = document.querySelector('[id^="chat_modal_opener__"]');
+        if (bubble) bubble.style.display = 'none';
+        const modal = document.querySelector('[class^="chat_modal__"]');
+        if (modal) modal.style.display = 'none';
+      } catch (_) {
+        /* no-op */
+      }
     };
-  }, [sageionScriptSrc]);
+  }, [appConfig]);
 
-  return null; // This component doesn't render any visible UI
+  return null;
 }

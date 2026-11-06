@@ -1,41 +1,59 @@
+// src/components/SageionBridge.jsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '../api/AuthContext';
 
-export default function SageionBridge() {
-  const { user } = useAuth();
+export default function SageionBridge({ appConfig }) {
+  const { user, loaded } = useAuth();
   const [isReady, setIsReady] = useState(false);
 
+  const appId = appConfig?.SAGEION_APP_ID || appConfig?.appId;
+
   useEffect(() => {
-    // Listen for the custom event dispatched by SageionScripts
-    const handleSetupComplete = () => {
-      console.log('FIXING _LOAD: Received setup_complete event. Ready to initialize.');
-      setIsReady(true);
+    const handleSetupComplete = (e) => {
+      // ⭐ Filter to OUR app id, in case two bridges ever coexist.
+      if (!e.detail || !appId || e.detail.appId === appId) {
+        console.log(
+          '[SageionBridge] received sageion_setup_complete for',
+          e.detail?.appId,
+        );
+        setIsReady(true);
+      }
     };
 
     window.addEventListener('sageion_setup_complete', handleSetupComplete);
 
-    // Fallback: In case the event fired before this component mounted
+    // Fallback: event may have fired before we mounted.
     if (window.sageion_os && window.sageion_os._isSetupComplete) {
-        setIsReady(true);
+      setIsReady(true);
     }
 
     return () => {
       window.removeEventListener('sageion_setup_complete', handleSetupComplete);
     };
-  }, []);
+  }, [appId]);
 
-  // Run initialize ONLY after setUp has finished
+  // ⭐ Only depend on user_id, not the whole user object.
+  // AuthContext creates a fresh object on every login, so depending
+  // on `user` would re-run initialize() even for the same user.
+  const userId = user?.user_id;
+
   useEffect(() => {
     if (!isReady) return;
-    
-    console.log("FIXING _LOAD: Running initialize with user:", user);
+    if (!loaded) return; // ← don't boot in anonymous mode mid-hydration
+
     window.sageion_os
-      .initialize(user ? { uid: String(user.user_id) } : {})
+      .initialize(userId ? { uid: String(userId) } : {})
+      .then(() => {
+        // ⭐ Restore bubble visibility after initialize. SageionScripts
+        // hides it on unmount; this flips it back when we re-enter the
+        // authed tree.
+        const bubble = document.querySelector('[id^="chat_modal_opener__"]');
+        if (bubble) bubble.style.display = '';
+      })
       .catch((err) => console.error('[Sageion] initialize failed:', err));
-      
-  }, [isReady, user]);
+  }, [isReady, loaded, userId]);
 
   return null;
 }
