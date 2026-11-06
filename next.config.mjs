@@ -4,8 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Add trailing slash so GitHub pages handles routes properly
-  trailingSlash: true, 
+  // trailingSlash: true,  <-- REMOVE OR COMMENT THIS OUT
 };
 
 export default nextConfig;

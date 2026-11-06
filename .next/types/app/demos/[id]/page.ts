@@ -1,4 +1,4 @@
-// File: /home/reetu-singh/Desktop/work/crm/booking-frontend/app/demos/[id]/page.jsx
+// File: /home/djangoboy/Desktop/workspace/t__workspace/internal_system_hotel/booking-frontend/app/demos/[id]/page.jsx
 import * as entry from '../../../../../app/demos/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
