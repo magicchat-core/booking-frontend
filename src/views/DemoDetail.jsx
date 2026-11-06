@@ -93,9 +93,15 @@ export default function DemoDetail({ id }) {
         <p className="muted">
           No demo with id <code>{id}</code>.
         </p>
-        <Link href="/demos" className="btn btn-ghost">
-          ← Back to demos
-        </Link>
+       
+       <Link
+  href="/demos"
+  className="btn btn-ghost"
+  style={{ marginBottom: 24, display: "inline-block" }}
+>
+  ← Back
+</Link>
+
       </div>
     );
   }
@@ -368,23 +374,17 @@ export default function DemoDetail({ id }) {
     justifyContent: "flex-end",
   }}
 >
-  <button
-    style={{ minWidth: 140 }}
-    className="btn btn-primary"
-    onClick={() => {
-      // ⭐ Persist which demo the user picked. (app)/layout.jsx reads
-      // this on mount and passes the matching appConfig to
-      // SageionScripts.
-      localStorage.setItem("active_demo", id);
+ 
+ <button
+  className="btn btn-primary"
+  onClick={() => {
+    localStorage.setItem('active_demo', id);
+    window.location.assign('/owner');
+  }}
+>
+  Try me
+</button>
 
-      // ⭐ Hard navigation — forces a full page reload so the
-      // Sageion singleton can bootstrap the NEW demo's app.
-      // router.push() would soft-nav and hit the hot-swap guard.
-      window.location.assign("/");
-    }}
-  >
-    Try me
-  </button>
 </div>
         </div>
       </div>

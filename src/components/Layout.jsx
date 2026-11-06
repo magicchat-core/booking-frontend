@@ -5,14 +5,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/api/AuthContext';
 
 const nav = [
-  { to: '/demos', label: 'Demos' },
-  { to: '/owner',           label: 'Running Tables' },
-  { to: '/',                label: 'Dashboard' },
-  { to: '/menu',            label: 'Menu' },
-  { to: '/inventory',       label: 'Inventory' },
-  { to: '/purchase-orders', label: 'Purchase Orders' },
-  { to: '/orders',          label: 'Orders' },
-  { to: '/customers',       label: 'Customers' },
+  { to: '/',                     label: 'Demos' },
+  { to: '/owner',                label: 'Running Tables' },
+  { to: '/owner/menu',           label: 'Menu' },
+  { to: '/owner/inventory',      label: 'Inventory' },
+  { to: '/owner/purchase-orders', label: 'Purchase Orders' },
+  { to: '/owner/orders',         label: 'Orders' },
+  { to: '/owner/customers',      label: 'Customers' },
 ];
 
 export default function Layout({ children }) {
