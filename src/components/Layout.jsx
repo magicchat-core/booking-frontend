@@ -28,7 +28,9 @@ export default function Layout({ children }) {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <div className="brand">🍛 Ref&nbsp;CRM</div>
+        <Link href="/" className="brand" style={{ textDecoration: 'none', color: 'inherit' }}>
+  🍛 Ref&nbsp;CRM
+</Link>
         <nav>
           {nav.map((n) => {
             const active = n.to === '/' ? pathname === '/' : pathname.startsWith(n.to);
