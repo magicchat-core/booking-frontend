@@ -1,8 +1,8 @@
-// File: /home/djangoboy/Desktop/workspace/p__workspace/vscr/fe/app/(app)/page.jsx
-import * as entry from '../../../../app/(app)/page.js'
+// File: /home/djangoboy/Desktop/workspace/p__workspace/vscr/fe/app/demos/[id]/page.jsx
+import * as entry from '../../../../../app/demos/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/(app)/page.js')
+type TEntry = typeof import('../../../../../app/demos/[id]/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
