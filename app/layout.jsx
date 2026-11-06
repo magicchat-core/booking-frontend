@@ -1,7 +1,7 @@
 import './globals.css';
-import Script from 'next/script';
 import { AuthProvider } from '@/api/AuthContext';
-import SageionBridge from '@/components/SageionBridge';
+import SageionScripts from './SageionScripts'; // <-- Import the new component
+import SageionBridge from '@/components/SageionBridge'; // <-- Keep this for initialize()
 
 export const metadata = { title: 'Ref CRM' };
 
@@ -10,28 +10,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" />
-        
-        {/* 1. Socket.IO */}
-        <Script 
-          src="https://cdn.socket.io/4.1.2/socket.io.min.js" 
-          strategy="beforeInteractive" 
-        />
-        
-        {/* 2. Sageion bundle */}
-        <Script 
-          src="https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js" 
-          strategy="beforeInteractive" 
-        />
-
-        {/* 3. Local config */}
-        <Script 
-          src="/config.js" 
-          strategy="beforeInteractive" 
-        />
+        {/* Render the scripts here */}
+        <SageionScripts />
       </head>
       <body>
         <AuthProvider>
-          <SageionBridge />
+          {/* Keep the bridge for the user-specific initialize() call */}
+          <SageionBridge /> 
           {children}
         </AuthProvider>
       </body>

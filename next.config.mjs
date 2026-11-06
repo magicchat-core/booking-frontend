@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // trailingSlash: true,  <-- REMOVE OR COMMENT THIS OUT
 };
 
 export default nextConfig;
