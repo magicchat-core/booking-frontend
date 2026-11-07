@@ -1,8 +1,8 @@
-// File: /home/djangoboy/Desktop/workspace/p__workspace/vscr/fe/app/demos/[id]/layout.jsx
-import * as entry from '../../../../../app/demos/[id]/layout.js'
+// File: /home/djangoboy/Desktop/workspace/p__workspace/vscr/fe/app/(app)/owner/purchase-orders/page.jsx
+import * as entry from '../../../../../../app/(app)/owner/purchase-orders/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../../app/demos/[id]/layout.js')
+type TEntry = typeof import('../../../../../../app/(app)/owner/purchase-orders/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
@@ -25,17 +25,17 @@ checkFields<Diff<{
 }, TEntry, ''>>()
 
 // Check the prop type of the entry function
-checkFields<Diff<LayoutProps, FirstArg<TEntry['default']>, 'default'>>()
+checkFields<Diff<PageProps, FirstArg<TEntry['default']>, 'default'>>()
 
 // Check the arguments and return type of the generateMetadata function
 if ('generateMetadata' in entry) {
-  checkFields<Diff<LayoutProps, FirstArg<MaybeField<TEntry, 'generateMetadata'>>, 'generateMetadata'>>()
+  checkFields<Diff<PageProps, FirstArg<MaybeField<TEntry, 'generateMetadata'>>, 'generateMetadata'>>()
   checkFields<Diff<ResolvingMetadata, SecondArg<MaybeField<TEntry, 'generateMetadata'>>, 'generateMetadata'>>()
 }
 
 // Check the arguments and return type of the generateViewport function
 if ('generateViewport' in entry) {
-  checkFields<Diff<LayoutProps, FirstArg<MaybeField<TEntry, 'generateViewport'>>, 'generateViewport'>>()
+  checkFields<Diff<PageProps, FirstArg<MaybeField<TEntry, 'generateViewport'>>, 'generateViewport'>>()
   checkFields<Diff<ResolvingViewport, SecondArg<MaybeField<TEntry, 'generateViewport'>>, 'generateViewport'>>()
 }
 
