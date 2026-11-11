@@ -7,310 +7,190 @@ import { useState } from "react";
 const DEMOS = {
   demo1: {
     id: "demo1",
-    name: "Autonomous Inventory Agent",
-    tagline: "Built in 12 minutes by chaining 3 REST APIs.",
+    name: "Demo 1 — Inventory & Purchase Orders",
     description:
-      "No fine-tuning. No custom code. Just three existing APIs — inventory, purchasing, approval — chained together with an AI intent. The agent picks the right sequence, passes data between them, and loops in a human only when needed.",
+      "How three reference-CRM API endpoints become a working AI agent — configured in under 10 minutes, zero code.",
     status: "active",
 
-    // ⭐ THE NARRATIVE: what a YC partner cares about
-    pitch: {
-      problem:
-        "Restaurant inventory runs on tribal knowledge: the chef walks the fridge, guesses what's low, calls the supplier, forgets to update the spreadsheet, and re-orders the same thing twice.",
-      solution:
-        "We chain 3 APIs that already exist in the customer's stack — inventory lookup, PO creation, and approval — into one conversational agent. The customer types 'Check stock of rice' and the AI does the rest, pausing for a single human approval before money moves.",
-      why_it_matters:
-        "This agent was built by a non-engineer in 12 minutes. Zero new backend. Zero ML. The barrier to shipping agents is no longer engineering capacity — it's knowing what to chain.",
+    // ⭐ THE MOAT — the single biggest selling point.
+    //    Shown at the very top of the page, right after the header.
+    //    Framing is YC-first: structural advantage, distribution, one
+    //    artifact. CRM-vendor detail is nested inside as the "how".
+    moat: {
+      eyebrow: "The structural advantage",
+      headline:
+        "Ship one agent. Every restaurant on your platform inherits it.",
+      subhead:
+        "One base configuration. Thousands of downstream tenants. Per-tenant overrides for the chains that want them — without forking the agent, without per-customer integration work, without an AI team.",
+
+      // ⭐ Concrete scale illustration — the number a YC partner or a
+      //    CRM VP of Product actually remembers.
+      scaleDiagram: {
+        base: "1 base agent",
+        inherited: { count: "4,200", label: "restaurants inherit it automatically" },
+        overrides: { count: "87", label: "chains pin custom overrides" },
+        pushes: { count: "1", label: "push updates all 4,113 downstream apps" },
+      },
+
+      // ⭐ Three pillars — the "how". Each is one sentence of the
+      //    moat, in plain structural language.
+      pillars: [
+        {
+          step: "01",
+          title: "Build once",
+          body:
+            "You build the agent against your CRM's APIs — chain editor, no code, ~7 minutes. One artifact to maintain forever.",
+        },
+        {
+          step: "02",
+          title: "Fan out",
+          body:
+            "Every downstream restaurant, franchise location, and chain that signs up on your platform inherits the agent pre-scoped to their own tenant data. Day-one AI, zero per-customer setup.",
+        },
+        {
+          step: "03",
+          title: "Override per tenant",
+          body:
+            "Chains that want their own supplier list, thresholds, or auth get tenant-scoped config overrides — data, not code. The base agent stays single; the variations stay isolated.",
+        },
+      ],
     },
 
-    // ⭐ THE ENGINE: the actual 3 APIs
-    chain: [
+    // ⭐ Headline pitch — YC / CRM-vendor framing
+    pitch: {
+      oneLiner:
+        "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into a distribution layer for AI.",
+      whyNow:
+        "Every vertical SaaS — Petpuja, Posist, Rista, and hundreds of others — is being asked by their customers to ship an AI layer on top of their existing product. Building that layer in-house means months of platform engineering and a new AI team. Sageion gives them that layer as a product: their APIs go in, an agent comes out — and every one of their customers inherits it on day one.",
+    },
+
+    // ⭐ Single consolidated build walkthrough (video + facts + APIs)
+    buildWalkthrough: {
+      title: "See how this agent was built — live, no code",
+      subtitle:
+        "A raw walkthrough of the exact steps: 3 API endpoints selected, 2 branch mappings wired, 1 chain published. Time to first agent: ~7 minutes. No editor, no CLI, no YAML.",
+      videoUrl: null, // ← future: attach YouTube URL here
+      videoPlaceholder:
+        "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
+      facts: [
+        { label: "APIs used", value: "3 reference-CRM endpoints" },
+        { label: "Chain steps", value: "3 nodes · 2 branches" },
+        { label: "Build time", value: "~7 minutes" },
+        { label: "Code written", value: "0 lines" },
+      ],
+      apis: [
+        {
+          name: "GET /inventory/:material_id",
+          purpose: "Read live stock for the requested ingredient.",
+        },
+        {
+          name: "POST /purchase-orders",
+          purpose: "Create a pending PO against the chosen supplier.",
+        },
+        {
+          name: "PATCH /purchase-orders/:po_id/approve",
+          purpose: "Approve the PO and update inventory in one shot.",
+        },
+      ],
+    },
+
+    purpose: {
+      whatWeDo:
+        "Sageion turns the APIs a vertical SaaS already exposes into a production-grade AI agent. Select your endpoints, wire the branches, publish. No SDK, no prompt engineering, no new infrastructure.",
+      whyItMatters:
+        "For a vertical SaaS vendor, that means every one of their customers gets an AI assistant on day one — powered by the vendor's own data and APIs, governed by the vendor's own auth and scope rules. For the end restaurant, it means the CRM they already pay for suddenly talks back.",
+    },
+
+    workflows: [
       {
-        step: 1,
-        label: "Checking Inventory",
-        method: "GET",
-        endpoint: "/inventory/rice",
-        description:
-          "Look up real-time stock levels for the requested material.",
-        outcome: "current_qty = 0, threshold = 4",
-        badge: "auto",
+        title: "View stock / low-stock alerts",
+        content:
+          "The agent calls the inventory endpoint with the ingredient the user names. The response includes current quantity and the low-stock threshold, so the agent can flag a shortage in plain language before the kitchen runs dry.",
+        // video: "/videos/inventory-stock.mp4",
       },
       {
-        step: 2,
-        label: "Purchase Order Created",
-        method: "POST",
-        endpoint: "/purchase-orders",
-        description:
-          "Auto-draft a PO with the correct supplier, material, quantity, and unit — all inferred from the inventory response.",
-        outcome: "PO-C9AE52 drafted, approval link sent",
-        badge: "human_pause",
+        title: "Raise a purchase order",
+        content:
+          "If stock is low, the agent maps the response into a PO payload — supplier, material, quantity, unit — and calls the purchase-orders endpoint. A real PO is created in the CRM, not a mock, not a shadow copy.",
+        // video: "/videos/raise-po.mp4",
       },
       {
-        step: 3,
-        label: "Purchase Order Approved",
-        method: "PATCH",
-        endpoint: "/purchase-orders/{{ po_id }}/approve",
-        description:
-          "Once the chef approves, mark the PO approved and atomically update live inventory.",
-        outcome: "PO-7A49CC approved, inventory_updated: true",
-        badge: "auto",
+        title: "Approve order & update inventory",
+        content:
+          "Once the supplier confirms, the agent calls the approve endpoint. The CRM marks the PO approved and increments stock in the same transaction. The user just says 'yes' — three APIs, one conversation.",
+        // video: "/videos/approve-po.mp4",
       },
     ],
 
-    // ⭐ THE TRANSCRIPT: proof it actually works
-    transcript: [
-      {
-        role: "user",
-        text: "Check the current stock level of rice",
-      },
-      {
-        role: "agent",
-        text: '🔍 Checking inventory: "Basmati Rice" is currently at 0 kg (threshold: 4 kg).',
-        meta: "Step 1 · GET /inventory/rice",
-      },
-      {
-        role: "agent",
-        text: '⚠️ Stock is below threshold. Drafted a purchase order for 4 kg from "FreshMeat". Awaiting your approval.',
-        meta: "Step 2 · POST /purchase-orders",
-        actions: ["✅ Approve", "❌ Decline"],
-      },
-      {
-        role: "user",
-        text: "Approved",
-      },
-      {
-        role: "agent",
-        text: '✅ Order PO-7A49CC approved. Inventory updated: rice is now at 4 kg. Next restock will trigger automatically when it drops below 4 kg again.',
-        meta: "Step 3 · PATCH /purchase-orders/{{ po_id }}/approve",
-      },
-    ],
+    // ⭐ Secondary capability detail — the "operate at scale" support
+    //    story, below the moat banner.
+    capabilityAtScale: {
+      heading: "The operational consequences of the fan-out model",
+      intro:
+        "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
+      points: [
+        {
+          title: "Tenant isolation at the API boundary",
+          body:
+            "Every agent run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant data leakage is not a policy the model has to respect — it's a boundary the runtime enforces before any request goes out.",
+        },
+        {
+          title: "Your auth, your scopes, your governance",
+          body:
+            "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture — Sageion does not introduce a parallel one.",
+        },
+        {
+          title: "Rollout with zero coordination cost",
+          body:
+            "Publishing a new version of the agent is a single click. It propagates to every downstream tenant that has not pinned an override. Chains that have customized their agent keep their customization; everyone else moves forward automatically.",
+        },
+        {
+          title: "Operate one agent, not thousands of integrations",
+          body:
+            "You don't provision one AI stack per customer. You provision one Sageion agent per workflow, and the platform fans it out. Support, observability, and upgrades are centralized — the same way your existing product is centralized today.",
+        },
+      ],
+    },
 
-    // ⭐ THE VALUE: why the customer buys
-    value: [
-      {
-        metric: "12 min",
-        label: "Build time",
-        detail: "No code, no ML training, no new backend",
-      },
-      {
-        metric: "3 APIs",
-        label: "Chained together",
-        detail: "Existing REST endpoints from the customer's stack",
-      },
-      {
-        metric: "1 tap",
-        label: "Human involvement",
-        detail: "Approval gate where money moves — the rest is autonomous",
-      },
-      {
-        metric: "0%",
-        label: "New engineering",
-        detail: "The customer's existing APIs became an agent",
-      },
-    ],
+    // ⭐ "Why this matters for CRMs" — the pitch to Petpuja/Posist/Rista
+    crmAngle: {
+      heading: "Built for vertical SaaS CRMs, not for one restaurant",
+      intro:
+        "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs in this space don't sell software to one restaurant — they sell infrastructure to thousands of them. Sageion is priced and architected for that reality.",
+      points: [
+        {
+          title: "Your APIs, unmodified",
+          body:
+            "Sageion consumes your existing REST endpoints — auth headers, path params, query strings, body payloads. Nothing is mocked, wrapped, or refactored.",
+        },
+        {
+          title: "Your customers, individually",
+          body:
+            "Every app on your platform gets its own tenant-scoped agent. The same three APIs can power a thousand distinct assistants without a thousand integration sprints.",
+        },
+        {
+          title: "Your governance, preserved",
+          body:
+            "Per-app API keys, tenant-scoped auth configs, and OAuth connections flow through unchanged. Sageion never gets credentials it shouldn't.",
+        },
+        {
+          title: "Your team, freed up",
+          body:
+            "No AI platform to build, no prompt engineering to maintain, no agent runtime to operate. The vertical SaaS ships the feature; Sageion runs the underlying AI layer.",
+        },
+      ],
+    },
 
-    // ⭐ THE VIDEO
-    video: "/videos/inventory-chain.mp4",
+    // ⭐ "Reference CRM" framing — how this generalizes beyond restaurants
+    referenceCrm: {
+      heading: "A reference CRM, not a one-off demo",
+      body:
+        "This demo uses Petpuja-shaped endpoints because they exemplify the vertical SaaS CRM pattern: read a record, create a downstream record, approve it, update the source. That is the same shape every vertical SaaS exposes — inventory in retail, patient records in clinics, work orders in field services, tickets in any B2B SaaS. The agent you see here mirrors that pattern in the open. The same three-endpoint chain works, verbatim, against any vertical SaaS that exposes a similar REST surface.",
+      callout:
+        "We built this against a reference CRM so the pipeline is legible. If your CRM exposes the same shape — read, mutate, approve — the agent you see here is the agent you ship.",
+    },
   },
 };
-
-// ============================================================
-// Components
-// ============================================================
-
-function MethodPill({ method }) {
-  const colors = {
-    GET: { bg: "#dcfce7", fg: "#166534" },
-    POST: { bg: "#dbeafe", fg: "#1e40af" },
-    PATCH: { bg: "#fef3c7", fg: "#92400e" },
-    PUT: { bg: "#fef3c7", fg: "#92400e" },
-    DELETE: { bg: "#fee2e2", fg: "#991b1b" },
-  };
-  const c = colors[method] || colors.GET;
-  return (
-    <span
-      style={{
-        display: "inline-block",
-        padding: "2px 8px",
-        borderRadius: 4,
-        background: c.bg,
-        color: c.fg,
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: "0.03em",
-        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-      }}
-    >
-      {method}
-    </span>
-  );
-}
-
-function ChainStep({ step, isLast }) {
-  const isHumanPause = step.badge === "human_pause";
-  return (
-    <div style={{ display: "flex", gap: 16, position: "relative" }}>
-      {/* Vertical connector line */}
-      {!isLast && (
-        <div
-          style={{
-            position: "absolute",
-            left: 19,
-            top: 40,
-            bottom: -16,
-            width: 2,
-            background: "var(--border)",
-            zIndex: 0,
-          }}
-        />
-      )}
-
-      {/* Step circle */}
-      <div
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          background: isHumanPause ? "#fef3c7" : "var(--primary-soft, #ede9fe)",
-          color: isHumanPause ? "#92400e" : "#6d28d9",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 700,
-          fontSize: 14,
-          flexShrink: 0,
-          zIndex: 1,
-          border: isHumanPause
-            ? "2px dashed #f59e0b"
-            : "2px solid var(--border)",
-        }}
-      >
-        {isHumanPause ? "👤" : step.step}
-      </div>
-
-      {/* Step content */}
-      <div style={{ flex: 1, paddingBottom: 24 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            marginBottom: 4,
-            flexWrap: "wrap",
-          }}
-        >
-          <strong style={{ fontSize: 14 }}>{step.label}</strong>
-          <MethodPill method={step.method} />
-          <code
-            style={{
-              fontSize: 11,
-              color: "var(--text-muted)",
-              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-              background: "var(--surface-2)",
-              padding: "2px 6px",
-              borderRadius: 4,
-            }}
-          >
-            {step.endpoint}
-          </code>
-        </div>
-        <p
-          style={{
-            margin: 0,
-            fontSize: 13,
-            color: "var(--text-muted)",
-            lineHeight: 1.5,
-          }}
-        >
-          {step.description}
-        </p>
-        <div
-          style={{
-            marginTop: 8,
-            padding: "6px 10px",
-            background: "var(--surface-2)",
-            borderRadius: 6,
-            fontSize: 12,
-            color: "var(--text-muted)",
-            fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-          }}
-        >
-          → {step.outcome}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TranscriptMessage({ msg }) {
-  const isUser = msg.role === "user";
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: isUser ? "flex-end" : "flex-start",
-        marginBottom: 10,
-      }}
-    >
-      <div style={{ maxWidth: "85%" }}>
-        {msg.meta && (
-          <div
-            style={{
-              fontSize: 10,
-              color: "var(--text-muted)",
-              fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
-              marginBottom: 3,
-              textAlign: isUser ? "right" : "left",
-            }}
-          >
-            {msg.meta}
-          </div>
-        )}
-        <div
-          style={{
-            padding: "8px 12px",
-            borderRadius: isUser
-              ? "14px 14px 4px 14px"
-              : "14px 14px 14px 4px",
-            background: isUser ? "#4A7FEB" : "var(--surface-2)",
-            color: isUser ? "#ffffff" : "var(--text)",
-            fontSize: 13,
-            lineHeight: 1.5,
-            whiteSpace: "pre-wrap",
-          }}
-        >
-          {msg.text}
-        </div>
-        {msg.actions && (
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              marginTop: 6,
-              flexWrap: "wrap",
-            }}
-          >
-            {msg.actions.map((a) => (
-              <span
-                key={a}
-                style={{
-                  padding: "4px 10px",
-                  background: "var(--surface)",
-                  border: "1px solid var(--border)",
-                  borderRadius: 6,
-                  fontSize: 12,
-                  fontWeight: 500,
-                }}
-              >
-                {a}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ============================================================
 // Demo Detail Wrapper
@@ -339,421 +219,833 @@ export default function DemoDetail({ id }) {
     );
   }
 
+  const currentWorkflow =
+    demo.workflows?.[openAccordion] || demo.workflows?.[0];
+  const currentVideo = currentWorkflow?.video;
+
   return (
     <div style={{ padding: "clamp(24px, 4vw, 64px)" }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        {/* ---------------- HERO ---------------- */}
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <div
-            style={{
-              display: "inline-block",
-              padding: "4px 12px",
-              background: "var(--primary-soft, #ede9fe)",
-              color: "#6d28d9",
-              borderRadius: 20,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 12,
-            }}
-          >
-            Live agent · 3 REST APIs
-          </div>
-          <h1 style={{ margin: 0, fontSize: 34 }}>{demo.name}</h1>
-          <p
-            className="muted"
-            style={{
-              marginTop: 8,
-              fontSize: 16,
-              maxWidth: 680,
-              marginInline: "auto",
-              lineHeight: 1.5,
-            }}
-          >
-            {demo.tagline}
-          </p>
-          <p
-            className="muted"
-            style={{
-              marginTop: 12,
-              fontSize: 14,
-              maxWidth: 720,
-              marginInline: "auto",
-              lineHeight: 1.6,
-            }}
-          >
+      <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+        {/* ---------------- HEADER ---------------- */}
+        <div style={{ textAlign: "center" }}>
+          <h1 style={{ margin: 0, fontSize: 28 }}>{demo.name}</h1>
+          <p className="muted" style={{ marginTop: 6 }}>
             {demo.description}
           </p>
         </div>
 
-        <Link
-          href="/demos"
-          className="btn btn-ghost"
-          style={{ marginBottom: 24, display: "inline-block" }}
-        >
-          ← Back
-        </Link>
-
-        {/* ---------------- THE PITCH (Why it matters) ---------------- */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-            padding: 28,
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius)",
-            boxShadow: "var(--shadow)",
-            marginBottom: 32,
-          }}
-          className="two-col-grid"
-        >
-          <div>
-            <h4
-              style={{
-                margin: "0 0 8px 0",
-                fontSize: 12,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "#dc2626",
-              }}
-            >
-              The problem
-            </h4>
-            <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>
-              {demo.pitch.problem}
-            </p>
-          </div>
-          <div>
-            <h4
-              style={{
-                margin: "0 0 8px 0",
-                fontSize: 12,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "#16a34a",
-              }}
-            >
-              The solution
-            </h4>
-            <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>
-              {demo.pitch.solution}
-            </p>
-          </div>
-          <div style={{ gridColumn: "1 / -1" }}>
-            <h4
-              style={{
-                margin: "0 0 8px 0",
-                fontSize: 12,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                color: "#6d28d9",
-              }}
-            >
-              Why it matters
-            </h4>
-            <p className="muted small" style={{ margin: 0, lineHeight: 1.6 }}>
-              {demo.pitch.why_it_matters}
-            </p>
-          </div>
-        </div>
-
-        {/* ---------------- VALUE GRID ---------------- */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 16,
-            marginBottom: 32,
-          }}
-          className="value-grid"
-        >
-          {demo.value.map((v) => (
-            <div
-              key={v.label}
-              style={{
-                padding: 20,
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-                borderRadius: "var(--radius-sm)",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 26,
-                  fontWeight: 700,
-                  color: "#6d28d9",
-                  marginBottom: 4,
-                }}
-              >
-                {v.metric}
-              </div>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>
-                {v.label}
-              </div>
-              <div
-                className="muted"
-                style={{ fontSize: 11, lineHeight: 1.4 }}
-              >
-                {v.detail}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ---------------- THE CHAIN ---------------- */}
-        <div
-          style={{
-            padding: 28,
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius)",
-            boxShadow: "var(--shadow)",
-            marginBottom: 32,
-          }}
-        >
-          <div style={{ marginBottom: 24 }}>
-            <h2 style={{ margin: 0, fontSize: 22 }}>
-              The chain: 3 APIs, 1 agent
-            </h2>
-            <p
-              className="muted"
-              style={{ marginTop: 6, fontSize: 14, lineHeight: 1.5 }}
-            >
-              Every step is a REST API the customer already owns. The AI
-              infers the sequence, pipes data between steps, and pauses for
-              a human when money moves.
-            </p>
-          </div>
-
-          <div>
-            {demo.chain.map((step, i) => (
-              <ChainStep
-                key={step.step}
-                step={step}
-                isLast={i === demo.chain.length - 1}
-              />
-            ))}
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              marginTop: 8,
-              flexWrap: "wrap",
-              alignItems: "center",
-              fontSize: 12,
-              color: "var(--text-muted)",
-            }}
-          >
-            <span>Legend:</span>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "2px 8px",
-                background: "#ede9fe",
-                color: "#6d28d9",
-                borderRadius: 12,
-                fontWeight: 600,
-              }}
-            >
-              ● Auto
-            </span>
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "2px 8px",
-                background: "#fef3c7",
-                color: "#92400e",
-                borderRadius: 12,
-                fontWeight: 600,
-              }}
-            >
-              👤 Human approval
-            </span>
-          </div>
-        </div>
-
-        {/* ---------------- TRANSCRIPT + VIDEO ---------------- */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-            marginBottom: 32,
-          }}
-          className="two-col-grid"
-        >
-          {/* Transcript */}
-          <div
-            style={{
-              padding: 24,
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius)",
-              boxShadow: "var(--shadow)",
-            }}
-          >
-            <h3
-              style={{
-                margin: "0 0 4px 0",
-                fontSize: 16,
-                fontWeight: 600,
-              }}
-            >
-              Live transcript
-            </h3>
-            <p
-              className="muted"
-              style={{ margin: "0 0 16px 0", fontSize: 12 }}
-            >
-              What a customer actually sees in the chat widget.
-            </p>
-            <div>
-              {demo.transcript.map((msg, i) => (
-                <TranscriptMessage key={i} msg={msg} />
-              ))}
-            </div>
-          </div>
-
-          {/* Video */}
-          <div
-            style={{
-              padding: 24,
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius)",
-              boxShadow: "var(--shadow)",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <h3
-              style={{
-                margin: "0 0 4px 0",
-                fontSize: 16,
-                fontWeight: 600,
-              }}
-            >
-              End-to-end walkthrough
-            </h3>
-            <p
-              className="muted"
-              style={{ margin: "0 0 16px 0", fontSize: 12 }}
-            >
-              Recorded in the live widget — real chain execution.
-            </p>
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: "16 / 9",
-                background: "var(--surface-2)",
-                border: "2px dashed var(--border)",
-                borderRadius: "var(--radius-sm)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "var(--text-muted)",
-                overflow: "hidden",
-                flex: 1,
-              }}
-            >
-              {demo.video ? (
-                <video
-                  src={demo.video}
-                  controls
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    background: "#000",
-                  }}
-                />
-              ) : (
-                <>
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: "50%",
-                      background: "var(--surface)",
-                      border: "2px solid var(--border)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="var(--text-muted)"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <span
-                    style={{
-                      position: "absolute",
-                      bottom: 10,
-                      left: 14,
-                      fontSize: 12,
-                      fontWeight: 500,
-                    }}
-                  >
-                    Demo video — coming soon
-                  </span>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* ---------------- CTA ---------------- */}
+        {/* ---------------- TOP BAR: Back + Try me ---------------- */}
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
-            padding: "32px 0",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            marginTop: 20,
+            marginBottom: 24,
+            flexWrap: "wrap",
           }}
         >
+          <Link href="/demos" className="btn btn-ghost">
+            ← Back
+          </Link>
           <button
             className="btn btn-primary"
-            style={{
-              padding: "14px 36px",
-              fontSize: 15,
-              fontWeight: 600,
-            }}
             onClick={() => {
               localStorage.setItem("active_demo", id);
               window.location.assign("/owner");
             }}
+            style={{
+              padding: "12px 24px",
+              fontSize: 15,
+              fontWeight: 600,
+            }}
           >
-            Try it live →
+            Try me →
           </button>
+        </div>
+
+        {/* ---------------- MOAT BANNER (the #1 selling point) ---------------- */}
+        {demo.moat && (
+          <div
+            style={{
+              marginBottom: 24,
+              padding: "28px 32px",
+              background: "linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)",
+              border: "1px solid #c7d2fe",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "#4338ca",
+                marginBottom: 10,
+              }}
+            >
+              {demo.moat.eyebrow}
+            </div>
+            <h2
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: 24,
+                lineHeight: 1.25,
+                color: "#1e1b4b",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.moat.headline}
+            </h2>
+            <p
+              style={{
+                margin: "0 0 24px 0",
+                fontSize: 15,
+                lineHeight: 1.6,
+                color: "#3730a3",
+              }}
+            >
+              {demo.moat.subhead}
+            </p>
+
+            {/* Scale diagram */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                gap: 12,
+                marginBottom: 24,
+              }}
+              className="moat-scale-grid"
+            >
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #c7d2fe",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#4338ca" }}>
+                  {demo.moat.scaleDiagram.base}
+                </div>
+                <div style={{ fontSize: 12, color: "#6366f1", marginTop: 4 }}>
+                  what you maintain
+                </div>
+              </div>
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #c7d2fe",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                <div
+                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
+                >
+                  {demo.moat.scaleDiagram.inherited.count}
+                </div>
+                <div
+                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
+                >
+                  {demo.moat.scaleDiagram.inherited.label}
+                </div>
+              </div>
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #c7d2fe",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                <div
+                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
+                >
+                  {demo.moat.scaleDiagram.overrides.count}
+                </div>
+                <div
+                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
+                >
+                  {demo.moat.scaleDiagram.overrides.label}
+                </div>
+              </div>
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #c7d2fe",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                <div
+                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
+                >
+                  {demo.moat.scaleDiagram.pushes.count} push
+                </div>
+                <div
+                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
+                >
+                  {demo.moat.scaleDiagram.pushes.label}
+                </div>
+              </div>
+            </div>
+
+            {/* Three pillars */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: 14,
+              }}
+              className="moat-pillars-grid"
+            >
+              {demo.moat.pillars.map((p) => (
+                <div
+                  key={p.step}
+                  style={{
+                    padding: "16px 18px",
+                    background: "#ffffff",
+                    border: "1px solid #c7d2fe",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      color: "#6366f1",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {p.step}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 600,
+                      color: "#1e1b4b",
+                      marginBottom: 6,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12.5,
+                      lineHeight: 1.55,
+                      color: "#3730a3",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ---------------- PITCH BANNER ---------------- */}
+        {demo.pitch && (
+          <div
+            style={{
+              marginBottom: 24,
+              padding: "20px 24px",
+              background: "var(--surface-2)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: 15,
+                fontWeight: 600,
+                color: "var(--text)",
+              }}
+            >
+              {demo.pitch.oneLiner}
+            </p>
+            <p
+              className="muted small"
+              style={{ margin: "8px 0 0 0", lineHeight: 1.6 }}
+            >
+              {demo.pitch.whyNow}
+            </p>
+          </div>
+        )}
+
+        {/* ---------------- HERO CARD ---------------- */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 32,
+            padding: 32,
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius)",
+            boxShadow: "var(--shadow)",
+            marginBottom: 32,
+          }}
+          className="demo-hero"
+        >
+          {/* ⭐ LEFT: Workflows Accordion */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  color: "var(--text-muted)",
+                  marginBottom: 10,
+                }}
+              >
+                Inventory Workflows Covered
+              </h3>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-sm)",
+                  overflow: "hidden",
+                }}
+              >
+                {(demo.workflows || []).map((w, i) => {
+                  const isOpen = openAccordion === i;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        borderBottom:
+                          i < demo.workflows.length - 1
+                            ? "1px solid var(--border)"
+                            : "none",
+                      }}
+                    >
+                      <button
+                        onClick={() => setOpenAccordion(isOpen ? null : i)}
+                        style={{
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "14px 16px",
+                          background: isOpen
+                            ? "var(--surface-2)"
+                            : "var(--surface)",
+                          border: "none",
+                          cursor: "pointer",
+                          fontSize: 14,
+                          fontWeight: 500,
+                          textAlign: "left",
+                          color: "var(--text)",
+                          transition: "background 0.15s",
+                        }}
+                      >
+                        <span style={{ display: "flex", gap: 8 }}>
+                          <span style={{ color: "var(--text-muted)" }}></span>
+                          {w.title}
+                        </span>
+                        <span
+                          style={{
+                            color: "var(--text-muted)",
+                            transition: "transform 0.2s",
+                            transform: isOpen
+                              ? "rotate(180deg)"
+                              : "rotate(0deg)",
+                          }}
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="m6 9 6 6 6-6" />
+                          </svg>
+                        </span>
+                      </button>
+
+                      {isOpen && (
+                        <div
+                          style={{
+                            padding: "0 16px 16px 16px",
+                            fontSize: 14,
+                            color: "var(--text-muted)",
+                            lineHeight: 1.6,
+                          }}
+                        >
+                          {w.content}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* ⭐ RIGHT: Build walkthrough (video + facts + APIs) */}
+          {demo.buildWalkthrough && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: 13,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  color: "var(--text-muted)",
+                  marginBottom: 10,
+                }}
+              >
+                {demo.buildWalkthrough.title}
+              </h3>
+
+              <p
+                className="muted small"
+                style={{
+                  margin: "0 0 14px 0",
+                  lineHeight: 1.55,
+                  fontSize: 13,
+                }}
+              >
+                {demo.buildWalkthrough.subtitle}
+              </p>
+
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "16 / 9",
+                  background: "#0f172a",
+                  borderRadius: "var(--radius-sm)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 12,
+                  color: "#cbd5e1",
+                  textAlign: "center",
+                  padding: 24,
+                  marginBottom: 16,
+                }}
+              >
+                {demo.buildWalkthrough.videoUrl ? (
+                  <iframe
+                    src={demo.buildWalkthrough.videoUrl}
+                    title="Build walkthrough"
+                    style={{ width: "100%", height: "100%", border: "none" }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <>
+                    <svg
+                      width="52"
+                      height="52"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#94a3b8"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+                      <path d="M10 9l5 3-5 3V9z" fill="#94a3b8" />
+                    </svg>
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 500,
+                        maxWidth: 420,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {demo.buildWalkthrough.videoPlaceholder}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gap: 8,
+                  marginBottom: 14,
+                }}
+                className="build-facts-grid"
+              >
+                {demo.buildWalkthrough.facts.map((f) => (
+                  <div
+                    key={f.label}
+                    style={{
+                      padding: "8px 10px",
+                      background: "var(--surface-2)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 10,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                        color: "var(--text-muted)",
+                        marginBottom: 2,
+                      }}
+                    >
+                      {f.label}
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 600 }}>
+                      {f.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
+                }}
+              >
+                APIs wired in the agent
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 6,
+                }}
+              >
+                {demo.buildWalkthrough.apis.map((api) => (
+                  <div
+                    key={api.name}
+                    style={{
+                      padding: "8px 10px",
+                      background: "var(--surface-2)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
+                  >
+                    <code
+                      style={{
+                        fontSize: 11.5,
+                        fontWeight: 600,
+                        color: "#1e293b",
+                        display: "block",
+                        marginBottom: 2,
+                      }}
+                    >
+                      {api.name}
+                    </code>
+                    <div
+                      className="muted small"
+                      style={{ fontSize: 11.5, lineHeight: 1.45 }}
+                    >
+                      {api.purpose}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* FULL WIDTH: Purpose Text Block */}
+          {demo.purpose && (
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                marginTop: 8,
+                padding: "16px",
+                background: "var(--surface-2)",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 14,
+                  color: "var(--text)",
+                }}
+              >
+                What we do
+              </h4>
+              <p
+                className="muted small"
+                style={{ margin: "0 0 16px 0", lineHeight: 1.5 }}
+              >
+                {demo.purpose.whatWeDo}
+              </p>
+
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 14,
+                  color: "var(--text)",
+                }}
+              >
+                Why it matters
+              </h4>
+              <p
+                className="muted small"
+                style={{ margin: 0, lineHeight: 1.5 }}
+              >
+                {demo.purpose.whyItMatters}
+              </p>
+            </div>
+          )}
+
+          {/* Capability at scale — the operational consequences */}
+          {demo.capabilityAtScale && (
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                marginTop: 8,
+                padding: "20px 24px",
+                background: "var(--surface-2)",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 16,
+                  color: "var(--text)",
+                }}
+              >
+                {demo.capabilityAtScale.heading}
+              </h4>
+              <p
+                className="muted small"
+                style={{ margin: "0 0 16px 0", lineHeight: 1.6 }}
+              >
+                {demo.capabilityAtScale.intro}
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gap: 12,
+                }}
+                className="capability-grid"
+              >
+                {demo.capabilityAtScale.points.map((p) => (
+                  <div
+                    key={p.title}
+                    style={{
+                      padding: "12px 14px",
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: "var(--text)",
+                        marginBottom: 4,
+                      }}
+                    >
+                      {p.title}
+                    </div>
+                    <div
+                      className="muted small"
+                      style={{ fontSize: 12.5, lineHeight: 1.55 }}
+                    >
+                      {p.body}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CRM angle — the pitch to vertical SaaS vendors */}
+          {demo.crmAngle && (
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                marginTop: 8,
+                padding: "20px 24px",
+                background: "var(--surface-2)",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 16,
+                  color: "var(--text)",
+                }}
+              >
+                {demo.crmAngle.heading}
+              </h4>
+              {demo.crmAngle.intro && (
+                <p
+                  className="muted small"
+                  style={{ margin: "0 0 16px 0", lineHeight: 1.6 }}
+                >
+                  {demo.crmAngle.intro}
+                </p>
+              )}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gap: 12,
+                }}
+                className="crm-angle-grid"
+              >
+                {demo.crmAngle.points.map((p) => (
+                  <div
+                    key={p.title}
+                    style={{
+                      padding: "12px 14px",
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: "var(--text)",
+                        marginBottom: 4,
+                      }}
+                    >
+                      {p.title}
+                    </div>
+                    <div
+                      className="muted small"
+                      style={{ fontSize: 12.5, lineHeight: 1.55 }}
+                    >
+                      {p.body}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Reference CRM framing — the only amber-tinted callout,
+              reserved so it visually pops as "important caveat". */}
+          {demo.referenceCrm && (
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                marginTop: 8,
+                padding: "20px 24px",
+                background: "#fef3c7",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid #fde68a",
+              }}
+            >
+              <h4
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 16,
+                  color: "#78350f",
+                }}
+              >
+                {demo.referenceCrm.heading}
+              </h4>
+              <p
+                className="muted small"
+                style={{
+                  margin: "0 0 12px 0",
+                  lineHeight: 1.6,
+                  color: "#78350f",
+                }}
+              >
+                {demo.referenceCrm.body}
+              </p>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 13,
+                  fontWeight: 500,
+                  lineHeight: 1.6,
+                  color: "#92400e",
+                  fontStyle: "italic",
+                }}
+              >
+                {demo.referenceCrm.callout}
+              </p>
+            </div>
+          )}
+
+          {/* CTA row — bottom */}
+          <div
+            style={{
+              gridColumn: "1 / -1",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                localStorage.setItem("active_demo", id);
+                window.location.assign("/owner");
+              }}
+            >
+              Try me →
+            </button>
+          </div>
         </div>
       </div>
 
+      {/* Responsive tweak */}
       <style jsx>{`
         @media (max-width: 800px) {
-          .two-col-grid {
+          .demo-hero {
             grid-template-columns: 1fr !important;
           }
-          .value-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
+          .moat-scale-grid {
+            grid-template-columns: 1fr 1fr !important;
           }
-        }
-        @media (max-width: 480px) {
-          .value-grid {
+          .moat-pillars-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .build-facts-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+          .crm-angle-grid {
             grid-template-columns: 1fr !important;
           }
         }
