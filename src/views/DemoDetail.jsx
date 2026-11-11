@@ -12,28 +12,68 @@ const DEMOS = {
       "How three reference-CRM API endpoints become a working AI agent — configured in under 10 minutes, zero code.",
     status: "active",
 
-    // ⭐ THE MOAT — the single biggest selling point.
-    //    Shown at the very top of the page, right after the header.
-    //    Framing is YC-first: structural advantage, distribution, one
-    //    artifact. CRM-vendor detail is nested inside as the "how".
+    buildWalkthrough: {
+      title: "See how this agent was built",
+      subtitle:
+        "3 API endpoints selected, 2 branch mappings wired, 1 chain published. No editor, no CLI, no YAML.",
+      videoUrl: null,
+      videoPlaceholder:
+        "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
+      facts: [
+        { label: "APIs used", value: "3 reference-CRM endpoints" },
+        { label: "Chain steps", value: "3 nodes · 2 branches" },
+        { label: "Build time", value: "~7 minutes" },
+        { label: "Code written", value: "0 lines" },
+      ],
+      apis: [
+        {
+          method: "GET",
+          path: "/inventory/:material_id",
+          purpose: "Read live stock",
+        },
+        {
+          method: "POST",
+          path: "/purchase-orders",
+          purpose: "Create pending PO",
+        },
+        {
+          method: "PATCH",
+          path: "/purchase-orders/:po_id/approve",
+          purpose: "Approve & update stock",
+        },
+      ],
+    },
+
+    workflows: [
+      {
+        title: "View stock / low-stock alerts",
+        content:
+          "The agent calls the inventory endpoint with the ingredient the user names. Current quantity and the low-stock threshold come back, so the agent can flag a shortage in plain language before the kitchen runs dry.",
+      },
+      {
+        title: "Raise a purchase order",
+        content:
+          "If stock is low, the agent maps the response into a PO payload — supplier, material, quantity, unit — and calls the purchase-orders endpoint. A real PO is created in the CRM, not a mock.",
+      },
+      {
+        title: "Approve order & update inventory",
+        content:
+          "Once the supplier confirms, the agent calls the approve endpoint. The CRM marks the PO approved and increments stock in the same transaction. Three APIs, one conversation.",
+      },
+    ],
+
     moat: {
       eyebrow: "The structural advantage",
       headline:
         "Ship one agent. Every restaurant on your platform inherits it.",
       subhead:
         "One base configuration. Thousands of downstream tenants. Per-tenant overrides for the chains that want them — without forking the agent, without per-customer integration work, without an AI team.",
-
-      // ⭐ Concrete scale illustration — the number a YC partner or a
-      //    CRM VP of Product actually remembers.
       scaleDiagram: {
-        base: "1 base agent",
+        base: { count: "1", label: "base agent you maintain" },
         inherited: { count: "4,200", label: "restaurants inherit it automatically" },
         overrides: { count: "87", label: "chains pin custom overrides" },
-        pushes: { count: "1", label: "push updates all 4,113 downstream apps" },
+        pushes: { count: "1 push", label: "updates all 4,113 downstream apps" },
       },
-
-      // ⭐ Three pillars — the "how". Each is one sentence of the
-      //    moat, in plain structural language.
       pillars: [
         {
           step: "01",
@@ -45,18 +85,17 @@ const DEMOS = {
           step: "02",
           title: "Fan out",
           body:
-            "Every downstream restaurant, franchise location, and chain that signs up on your platform inherits the agent pre-scoped to their own tenant data. Day-one AI, zero per-customer setup.",
+            "Every restaurant, franchise location, and chain on your platform inherits the agent pre-scoped to their own tenant data. Day-one AI, zero per-customer setup.",
         },
         {
           step: "03",
           title: "Override per tenant",
           body:
-            "Chains that want their own supplier list, thresholds, or auth get tenant-scoped config overrides — data, not code. The base agent stays single; the variations stay isolated.",
+            "Chains that want their own supplier list, thresholds, or auth get tenant-scoped config overrides — data, not code. The base agent stays single; variations stay isolated.",
         },
       ],
     },
 
-    // ⭐ Headline pitch — YC / CRM-vendor framing
     pitch: {
       oneLiner:
         "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into a distribution layer for AI.",
@@ -64,99 +103,45 @@ const DEMOS = {
         "Every vertical SaaS — Petpuja, Posist, Rista, and hundreds of others — is being asked by their customers to ship an AI layer on top of their existing product. Building that layer in-house means months of platform engineering and a new AI team. Sageion gives them that layer as a product: their APIs go in, an agent comes out — and every one of their customers inherits it on day one.",
     },
 
-    // ⭐ Single consolidated build walkthrough (video + facts + APIs)
-    buildWalkthrough: {
-      title: "See how this agent was built — live, no code",
-      subtitle:
-        "A raw walkthrough of the exact steps: 3 API endpoints selected, 2 branch mappings wired, 1 chain published. Time to first agent: ~7 minutes. No editor, no CLI, no YAML.",
-      videoUrl: null, // ← future: attach YouTube URL here
-      videoPlaceholder:
-        "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
-      facts: [
-        { label: "APIs used", value: "3 reference-CRM endpoints" },
-        { label: "Chain steps", value: "3 nodes · 2 branches" },
-        { label: "Build time", value: "~7 minutes" },
-        { label: "Code written", value: "0 lines" },
-      ],
-      apis: [
-        {
-          name: "GET /inventory/:material_id",
-          purpose: "Read live stock for the requested ingredient.",
-        },
-        {
-          name: "POST /purchase-orders",
-          purpose: "Create a pending PO against the chosen supplier.",
-        },
-        {
-          name: "PATCH /purchase-orders/:po_id/approve",
-          purpose: "Approve the PO and update inventory in one shot.",
-        },
-      ],
-    },
-
     purpose: {
       whatWeDo:
         "Sageion turns the APIs a vertical SaaS already exposes into a production-grade AI agent. Select your endpoints, wire the branches, publish. No SDK, no prompt engineering, no new infrastructure.",
       whyItMatters:
-        "For a vertical SaaS vendor, that means every one of their customers gets an AI assistant on day one — powered by the vendor's own data and APIs, governed by the vendor's own auth and scope rules. For the end restaurant, it means the CRM they already pay for suddenly talks back.",
+        "For a vertical SaaS vendor, every customer gets an AI assistant on day one — powered by the vendor's own data and APIs, governed by the vendor's own auth and scope rules. For the end restaurant, the CRM they already pay for suddenly talks back.",
     },
 
-    workflows: [
-      {
-        title: "View stock / low-stock alerts",
-        content:
-          "The agent calls the inventory endpoint with the ingredient the user names. The response includes current quantity and the low-stock threshold, so the agent can flag a shortage in plain language before the kitchen runs dry.",
-        // video: "/videos/inventory-stock.mp4",
-      },
-      {
-        title: "Raise a purchase order",
-        content:
-          "If stock is low, the agent maps the response into a PO payload — supplier, material, quantity, unit — and calls the purchase-orders endpoint. A real PO is created in the CRM, not a mock, not a shadow copy.",
-        // video: "/videos/raise-po.mp4",
-      },
-      {
-        title: "Approve order & update inventory",
-        content:
-          "Once the supplier confirms, the agent calls the approve endpoint. The CRM marks the PO approved and increments stock in the same transaction. The user just says 'yes' — three APIs, one conversation.",
-        // video: "/videos/approve-po.mp4",
-      },
-    ],
-
-    // ⭐ Secondary capability detail — the "operate at scale" support
-    //    story, below the moat banner.
     capabilityAtScale: {
-      heading: "The operational consequences of the fan-out model",
+      heading: "What happens when the agent inherits 4,200 tenants",
       intro:
         "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
       points: [
         {
           title: "Tenant isolation at the API boundary",
           body:
-            "Every agent run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant data leakage is not a policy the model has to respect — it's a boundary the runtime enforces before any request goes out.",
+            "Every run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant leakage isn't a policy the model has to respect — it's a boundary the runtime enforces before any request goes out.",
         },
         {
           title: "Your auth, your scopes, your governance",
           body:
-            "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture — Sageion does not introduce a parallel one.",
+            "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture.",
         },
         {
           title: "Rollout with zero coordination cost",
           body:
-            "Publishing a new version of the agent is a single click. It propagates to every downstream tenant that has not pinned an override. Chains that have customized their agent keep their customization; everyone else moves forward automatically.",
+            "Publishing a new version is one click. It propagates to every downstream tenant that hasn't pinned an override. Customized agents keep their customization; everyone else moves forward automatically.",
         },
         {
-          title: "Operate one agent, not thousands of integrations",
+          title: "Operate one agent, not thousands",
           body:
-            "You don't provision one AI stack per customer. You provision one Sageion agent per workflow, and the platform fans it out. Support, observability, and upgrades are centralized — the same way your existing product is centralized today.",
+            "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. Support, observability, and upgrades stay centralized — same as your existing product.",
         },
       ],
     },
 
-    // ⭐ "Why this matters for CRMs" — the pitch to Petpuja/Posist/Rista
     crmAngle: {
       heading: "Built for vertical SaaS CRMs, not for one restaurant",
       intro:
-        "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs in this space don't sell software to one restaurant — they sell infrastructure to thousands of them. Sageion is priced and architected for that reality.",
+        "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant — they sell infrastructure to thousands. Sageion is architected for that reality.",
       points: [
         {
           title: "Your APIs, unmodified",
@@ -166,7 +151,7 @@ const DEMOS = {
         {
           title: "Your customers, individually",
           body:
-            "Every app on your platform gets its own tenant-scoped agent. The same three APIs can power a thousand distinct assistants without a thousand integration sprints.",
+            "Every app on your platform gets its own tenant-scoped agent. The same three APIs power a thousand distinct assistants without a thousand integration sprints.",
         },
         {
           title: "Your governance, preserved",
@@ -176,21 +161,56 @@ const DEMOS = {
         {
           title: "Your team, freed up",
           body:
-            "No AI platform to build, no prompt engineering to maintain, no agent runtime to operate. The vertical SaaS ships the feature; Sageion runs the underlying AI layer.",
+            "No AI platform to build, no prompt engineering to maintain, no runtime to operate. The SaaS ships the feature; Sageion runs the underlying layer.",
         },
       ],
     },
 
-    // ⭐ "Reference CRM" framing — how this generalizes beyond restaurants
     referenceCrm: {
       heading: "A reference CRM, not a one-off demo",
       body:
-        "This demo uses Petpuja-shaped endpoints because they exemplify the vertical SaaS CRM pattern: read a record, create a downstream record, approve it, update the source. That is the same shape every vertical SaaS exposes — inventory in retail, patient records in clinics, work orders in field services, tickets in any B2B SaaS. The agent you see here mirrors that pattern in the open. The same three-endpoint chain works, verbatim, against any vertical SaaS that exposes a similar REST surface.",
+        "This demo uses Petpuja-shaped endpoints because they exemplify the vertical SaaS CRM pattern: read a record, create a downstream record, approve it, update the source. That's the same shape every vertical SaaS exposes — inventory in retail, patient records in clinics, work orders in field services, tickets in any B2B SaaS.",
       callout:
-        "We built this against a reference CRM so the pipeline is legible. If your CRM exposes the same shape — read, mutate, approve — the agent you see here is the agent you ship.",
+        "If your CRM exposes the same shape — read, mutate, approve — the agent you see here is the agent you ship.",
     },
   },
 };
+
+// ============================================================
+// Small helpers — kept inline so the file stays single-file
+// ============================================================
+const METHOD_COLOR = {
+  GET: { bg: "#dcfce7", fg: "#166534", border: "#bbf7d0" },
+  POST: { bg: "#dbeafe", fg: "#1e40af", border: "#bfdbfe" },
+  PATCH: { bg: "#fef3c7", fg: "#92400e", border: "#fde68a" },
+  PUT: { bg: "#fef3c7", fg: "#92400e", border: "#fde68a" },
+  DELETE: { bg: "#fee2e2", fg: "#991b1b", border: "#fecaca" },
+};
+
+function MethodPill({ method }) {
+  const c = METHOD_COLOR[method] || METHOD_COLOR.GET;
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        padding: "2px 8px",
+        fontSize: 10,
+        fontWeight: 700,
+        letterSpacing: "0.04em",
+        borderRadius: 4,
+        background: c.bg,
+        color: c.fg,
+        border: `1px solid ${c.border}`,
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace",
+        flexShrink: 0,
+        minWidth: 52,
+        textAlign: "center",
+      }}
+    >
+      {method}
+    </span>
+  );
+}
 
 // ============================================================
 // Demo Detail Wrapper
@@ -219,423 +239,139 @@ export default function DemoDetail({ id }) {
     );
   }
 
-  const currentWorkflow =
-    demo.workflows?.[openAccordion] || demo.workflows?.[0];
-  const currentVideo = currentWorkflow?.video;
+  const tryMe = () => {
+    localStorage.setItem("active_demo", id);
+    window.location.assign("/owner");
+  };
 
   return (
     <div style={{ padding: "clamp(24px, 4vw, 64px)" }}>
-      <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-        {/* ---------------- HEADER ---------------- */}
-        <div style={{ textAlign: "center" }}>
-          <h1 style={{ margin: 0, fontSize: 28 }}>{demo.name}</h1>
-          <p className="muted" style={{ marginTop: 6 }}>
-            {demo.description}
-          </p>
-        </div>
-
-        {/* ---------------- TOP BAR: Back + Try me ---------------- */}
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        {/* ============================================
+            A. HEADER — title, tagline, top CTA
+            ============================================ */}
         <div
           style={{
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-start",
             justifyContent: "space-between",
-            gap: 12,
-            marginTop: 20,
-            marginBottom: 24,
+            gap: 16,
+            marginBottom: 28,
             flexWrap: "wrap",
           }}
         >
-          <Link href="/demos" className="btn btn-ghost">
-            ← Back
-          </Link>
+          <div>
+            <Link
+              href="/demos"
+              className="btn btn-ghost"
+              style={{
+                fontSize: 13,
+                padding: "6px 0",
+                marginBottom: 8,
+                display: "inline-block",
+              }}
+            >
+              ← All demos
+            </Link>
+            <h1
+              style={{
+                margin: 0,
+                fontSize: "clamp(22px, 3vw, 30px)",
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.name}
+            </h1>
+            <p
+              className="muted"
+              style={{
+                margin: "8px 0 0 0",
+                fontSize: 15,
+                lineHeight: 1.5,
+                maxWidth: 720,
+              }}
+            >
+              {demo.description}
+            </p>
+          </div>
           <button
             className="btn btn-primary"
-            onClick={() => {
-              localStorage.setItem("active_demo", id);
-              window.location.assign("/owner");
-            }}
+            onClick={tryMe}
             style={{
               padding: "12px 24px",
               fontSize: 15,
               fontWeight: 600,
+              flexShrink: 0,
             }}
           >
             Try me →
           </button>
         </div>
 
-        {/* ---------------- MOAT BANNER (the #1 selling point) ---------------- */}
-        {demo.moat && (
-          <div
-            style={{
-              marginBottom: 24,
-              padding: "28px 32px",
-              background: "linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)",
-              border: "1px solid #c7d2fe",
-              borderRadius: "var(--radius)",
-              boxShadow: "var(--shadow)",
-            }}
-          >
-            <div
-              style={{
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                fontWeight: 700,
-                color: "#4338ca",
-                marginBottom: 10,
-              }}
-            >
-              {demo.moat.eyebrow}
-            </div>
-            <h2
-              style={{
-                margin: "0 0 10px 0",
-                fontSize: 24,
-                lineHeight: 1.25,
-                color: "#1e1b4b",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {demo.moat.headline}
-            </h2>
-            <p
-              style={{
-                margin: "0 0 24px 0",
-                fontSize: 15,
-                lineHeight: 1.6,
-                color: "#3730a3",
-              }}
-            >
-              {demo.moat.subhead}
-            </p>
-
-            {/* Scale diagram */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-                gap: 12,
-                marginBottom: 24,
-              }}
-              className="moat-scale-grid"
-            >
-              <div
-                style={{
-                  padding: "14px 16px",
-                  background: "#ffffff",
-                  border: "1px solid #c7d2fe",
-                  borderRadius: "var(--radius-sm)",
-                }}
-              >
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#4338ca" }}>
-                  {demo.moat.scaleDiagram.base}
-                </div>
-                <div style={{ fontSize: 12, color: "#6366f1", marginTop: 4 }}>
-                  what you maintain
-                </div>
-              </div>
-              <div
-                style={{
-                  padding: "14px 16px",
-                  background: "#ffffff",
-                  border: "1px solid #c7d2fe",
-                  borderRadius: "var(--radius-sm)",
-                }}
-              >
-                <div
-                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
-                >
-                  {demo.moat.scaleDiagram.inherited.count}
-                </div>
-                <div
-                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
-                >
-                  {demo.moat.scaleDiagram.inherited.label}
-                </div>
-              </div>
-              <div
-                style={{
-                  padding: "14px 16px",
-                  background: "#ffffff",
-                  border: "1px solid #c7d2fe",
-                  borderRadius: "var(--radius-sm)",
-                }}
-              >
-                <div
-                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
-                >
-                  {demo.moat.scaleDiagram.overrides.count}
-                </div>
-                <div
-                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
-                >
-                  {demo.moat.scaleDiagram.overrides.label}
-                </div>
-              </div>
-              <div
-                style={{
-                  padding: "14px 16px",
-                  background: "#ffffff",
-                  border: "1px solid #c7d2fe",
-                  borderRadius: "var(--radius-sm)",
-                }}
-              >
-                <div
-                  style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b" }}
-                >
-                  {demo.moat.scaleDiagram.pushes.count} push
-                </div>
-                <div
-                  style={{ fontSize: 12, color: "#4f46e5", marginTop: 2, lineHeight: 1.4 }}
-                >
-                  {demo.moat.scaleDiagram.pushes.label}
-                </div>
-              </div>
-            </div>
-
-            {/* Three pillars */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-                gap: 14,
-              }}
-              className="moat-pillars-grid"
-            >
-              {demo.moat.pillars.map((p) => (
-                <div
-                  key={p.step}
-                  style={{
-                    padding: "16px 18px",
-                    background: "#ffffff",
-                    border: "1px solid #c7d2fe",
-                    borderRadius: "var(--radius-sm)",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: "0.06em",
-                      color: "#6366f1",
-                      marginBottom: 6,
-                    }}
-                  >
-                    {p.step}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 600,
-                      color: "#1e1b4b",
-                      marginBottom: 6,
-                    }}
-                  >
-                    {p.title}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 12.5,
-                      lineHeight: 1.55,
-                      color: "#3730a3",
-                    }}
-                  >
-                    {p.body}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ---------------- PITCH BANNER ---------------- */}
-        {demo.pitch && (
-          <div
-            style={{
-              marginBottom: 24,
-              padding: "20px 24px",
-              background: "var(--surface-2)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius)",
-              boxShadow: "var(--shadow)",
-            }}
-          >
-            <p
-              style={{
-                margin: 0,
-                fontSize: 15,
-                fontWeight: 600,
-                color: "var(--text)",
-              }}
-            >
-              {demo.pitch.oneLiner}
-            </p>
-            <p
-              className="muted small"
-              style={{ margin: "8px 0 0 0", lineHeight: 1.6 }}
-            >
-              {demo.pitch.whyNow}
-            </p>
-          </div>
-        )}
-
-        {/* ---------------- HERO CARD ---------------- */}
+        {/* ============================================
+            B. HERO — Video (left) + Workflows (right)
+            This is the primary evidence. Everything
+            below is interpretation.
+            ============================================ */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 32,
-            padding: 32,
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius)",
-            boxShadow: "var(--shadow)",
+            gridTemplateColumns: "minmax(0, 1.25fr) minmax(0, 1fr)",
+            gap: 24,
             marginBottom: 32,
           }}
-          className="demo-hero"
+          className="hero-grid"
         >
-          {/* ⭐ LEFT: Workflows Accordion */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 16,
-            }}
-          >
-            <div>
-              <h3
-                style={{
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  color: "var(--text-muted)",
-                  marginBottom: 10,
-                }}
-              >
-                Inventory Workflows Covered
-              </h3>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  border: "1px solid var(--border)",
-                  borderRadius: "var(--radius-sm)",
-                  overflow: "hidden",
-                }}
-              >
-                {(demo.workflows || []).map((w, i) => {
-                  const isOpen = openAccordion === i;
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        borderBottom:
-                          i < demo.workflows.length - 1
-                            ? "1px solid var(--border)"
-                            : "none",
-                      }}
-                    >
-                      <button
-                        onClick={() => setOpenAccordion(isOpen ? null : i)}
-                        style={{
-                          width: "100%",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          padding: "14px 16px",
-                          background: isOpen
-                            ? "var(--surface-2)"
-                            : "var(--surface)",
-                          border: "none",
-                          cursor: "pointer",
-                          fontSize: 14,
-                          fontWeight: 500,
-                          textAlign: "left",
-                          color: "var(--text)",
-                          transition: "background 0.15s",
-                        }}
-                      >
-                        <span style={{ display: "flex", gap: 8 }}>
-                          <span style={{ color: "var(--text-muted)" }}></span>
-                          {w.title}
-                        </span>
-                        <span
-                          style={{
-                            color: "var(--text-muted)",
-                            transition: "transform 0.2s",
-                            transform: isOpen
-                              ? "rotate(180deg)"
-                              : "rotate(0deg)",
-                          }}
-                        >
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="m6 9 6 6 6-6" />
-                          </svg>
-                        </span>
-                      </button>
-
-                      {isOpen && (
-                        <div
-                          style={{
-                            padding: "0 16px 16px 16px",
-                            fontSize: 14,
-                            color: "var(--text-muted)",
-                            lineHeight: 1.6,
-                          }}
-                        >
-                          {w.content}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* ⭐ RIGHT: Build walkthrough (video + facts + APIs) */}
+          {/* B1 — VIDEO COLUMN */}
           {demo.buildWalkthrough && (
             <div
               style={{
+                padding: "20px",
+                background: "var(--surface)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius)",
+                boxShadow: "var(--shadow)",
                 display: "flex",
                 flexDirection: "column",
               }}
             >
-              <h3
-                style={{
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  color: "var(--text-muted)",
-                  marginBottom: 10,
-                }}
-              >
-                {demo.buildWalkthrough.title}
-              </h3>
+              <div style={{ marginBottom: 14 }}>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 4,
+                  }}
+                >
+                  Build walkthrough
+                </div>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: 18,
+                    lineHeight: 1.3,
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {demo.buildWalkthrough.title}
+                </h2>
+                <p
+                  className="muted"
+                  style={{
+                    margin: "6px 0 0 0",
+                    fontSize: 13,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {demo.buildWalkthrough.subtitle}
+                </p>
+              </div>
 
-              <p
-                className="muted small"
-                style={{
-                  margin: "0 0 14px 0",
-                  lineHeight: 1.55,
-                  fontSize: 13,
-                }}
-              >
-                {demo.buildWalkthrough.subtitle}
-              </p>
-
+              {/* Video placeholder */}
               <div
                 style={{
                   position: "relative",
@@ -648,10 +384,10 @@ export default function DemoDetail({ id }) {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: 12,
+                  gap: 10,
                   color: "#cbd5e1",
                   textAlign: "center",
-                  padding: 24,
+                  padding: 20,
                   marginBottom: 16,
                 }}
               >
@@ -666,8 +402,8 @@ export default function DemoDetail({ id }) {
                 ) : (
                   <>
                     <svg
-                      width="52"
-                      height="52"
+                      width="48"
+                      height="48"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="#94a3b8"
@@ -680,10 +416,11 @@ export default function DemoDetail({ id }) {
                     </svg>
                     <div
                       style={{
-                        fontSize: 13,
+                        fontSize: 12.5,
                         fontWeight: 500,
-                        maxWidth: 420,
+                        maxWidth: 380,
                         lineHeight: 1.5,
+                        color: "#94a3b8",
                       }}
                     >
                       {demo.buildWalkthrough.videoPlaceholder}
@@ -692,14 +429,15 @@ export default function DemoDetail({ id }) {
                 )}
               </div>
 
+              {/* Facts as pills */}
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
                   gap: 8,
-                  marginBottom: 14,
+                  marginBottom: 16,
                 }}
-                className="build-facts-grid"
+                className="facts-grid"
               >
                 {demo.buildWalkthrough.facts.map((f) => (
                   <div
@@ -707,345 +445,863 @@ export default function DemoDetail({ id }) {
                     style={{
                       padding: "8px 10px",
                       background: "var(--surface-2)",
-                      border: "1px solid var(--border)",
                       borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--border)",
+                      textAlign: "center",
                     }}
                   >
                     <div
                       style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "var(--text)",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {f.value.split(" ")[0]}
+                    </div>
+                    <div
+                      style={{
                         fontSize: 10,
                         textTransform: "uppercase",
-                        letterSpacing: "0.05em",
+                        letterSpacing: "0.04em",
                         color: "var(--text-muted)",
-                        marginBottom: 2,
+                        marginTop: 3,
                       }}
                     >
                       {f.label}
-                    </div>
-                    <div style={{ fontSize: 13, fontWeight: 600 }}>
-                      {f.value}
                     </div>
                   </div>
                 ))}
               </div>
 
+              {/* API list */}
               <div
                 style={{
                   fontSize: 11,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
+                  fontWeight: 700,
                   color: "var(--text-muted)",
-                  marginBottom: 6,
+                  marginBottom: 8,
                 }}
               >
                 APIs wired in the agent
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                }}
-              >
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {demo.buildWalkthrough.apis.map((api) => (
                   <div
-                    key={api.name}
+                    key={api.path}
                     style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
                       padding: "8px 10px",
                       background: "var(--surface-2)",
-                      border: "1px solid var(--border)",
                       borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--border)",
                     }}
                   >
+                    <MethodPill method={api.method} />
                     <code
                       style={{
                         fontSize: 11.5,
-                        fontWeight: 600,
-                        color: "#1e293b",
-                        display: "block",
-                        marginBottom: 2,
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                        color: "var(--text)",
+                        flex: 1,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
                       }}
                     >
-                      {api.name}
+                      {api.path}
                     </code>
-                    <div
-                      className="muted small"
-                      style={{ fontSize: 11.5, lineHeight: 1.45 }}
+                    <span
+                      className="muted"
+                      style={{
+                        fontSize: 11,
+                        flexShrink: 0,
+                        whiteSpace: "nowrap",
+                      }}
                     >
                       {api.purpose}
-                    </div>
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* FULL WIDTH: Purpose Text Block */}
-          {demo.purpose && (
+          {/* B2 — WORKFLOWS COLUMN */}
+          <div
+            style={{
+              padding: "20px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <div style={{ marginBottom: 14 }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 4,
+                }}
+              >
+                What the agent does
+              </div>
+              <h2
+                style={{
+                  margin: 0,
+                  fontSize: 18,
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Inventory workflows covered
+              </h2>
+              <p
+                className="muted"
+                style={{
+                  margin: "6px 0 0 0",
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                }}
+              >
+                Three REST calls, one conversation. Click any step.
+              </p>
+            </div>
+
             <div
               style={{
-                gridColumn: "1 / -1",
-                marginTop: 8,
-                padding: "16px",
-                background: "var(--surface-2)",
-                borderRadius: "var(--radius-sm)",
+                display: "flex",
+                flexDirection: "column",
                 border: "1px solid var(--border)",
+                borderRadius: "var(--radius-sm)",
+                overflow: "hidden",
               }}
             >
-              <h4
+              {(demo.workflows || []).map((w, i) => {
+                const isOpen = openAccordion === i;
+                return (
+                  <div
+                    key={i}
+                    style={{
+                      borderBottom:
+                        i < demo.workflows.length - 1
+                          ? "1px solid var(--border)"
+                          : "none",
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenAccordion(isOpen ? null : i)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "12px 14px",
+                        background: isOpen
+                          ? "var(--surface-2)"
+                          : "var(--surface)",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: 13.5,
+                        fontWeight: 500,
+                        textAlign: "left",
+                        color: "var(--text)",
+                        transition: "background 0.15s",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                        }}
+                      >
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: 20,
+                            height: 20,
+                            borderRadius: "50%",
+                            background: isOpen
+                              ? "var(--text)"
+                              : "var(--surface-2)",
+                            color: isOpen
+                              ? "var(--surface)"
+                              : "var(--text-muted)",
+                            fontSize: 10.5,
+                            fontWeight: 700,
+                            flexShrink: 0,
+                          }}
+                        >
+                          {i + 1}
+                        </span>
+                        {w.title}
+                      </span>
+                      <span
+                        style={{
+                          color: "var(--text-muted)",
+                          transition: "transform 0.2s",
+                          transform: isOpen
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div
+                        style={{
+                          padding: "0 14px 14px 44px",
+                          fontSize: 13,
+                          color: "var(--text-muted)",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {w.content}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* ============================================
+            C. PURPOSE — two-column "What we do / Why it matters"
+            Neutral surface, no color coding — supporting copy.
+            ============================================ */}
+        {demo.purpose && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: 20,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              marginBottom: 32,
+            }}
+            className="purpose-grid"
+          >
+            <div>
+              <div
                 style={{
-                  margin: "0 0 8px 0",
-                  fontSize: 14,
-                  color: "var(--text)",
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
                 }}
               >
                 What we do
-              </h4>
+              </div>
               <p
-                className="muted small"
-                style={{ margin: "0 0 16px 0", lineHeight: 1.5 }}
-              >
-                {demo.purpose.whatWeDo}
-              </p>
-
-              <h4
                 style={{
-                  margin: "0 0 8px 0",
+                  margin: 0,
                   fontSize: 14,
+                  lineHeight: 1.6,
                   color: "var(--text)",
                 }}
               >
+                {demo.purpose.whatWeDo}
+              </p>
+            </div>
+            <div
+              className="purpose-divider"
+              style={{ borderLeft: "1px solid var(--border)", paddingLeft: 20 }}
+            >
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "var(--text-muted)",
+                  marginBottom: 6,
+                }}
+              >
                 Why it matters
-              </h4>
+              </div>
               <p
-                className="muted small"
-                style={{ margin: 0, lineHeight: 1.5 }}
+                style={{
+                  margin: 0,
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "var(--text)",
+                }}
               >
                 {demo.purpose.whyItMatters}
               </p>
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Capability at scale — the operational consequences */}
-          {demo.capabilityAtScale && (
-            <div
-              style={{
-                gridColumn: "1 / -1",
-                marginTop: 8,
-                padding: "20px 24px",
-                background: "var(--surface-2)",
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              <h4
-                style={{
-                  margin: "0 0 8px 0",
-                  fontSize: 16,
-                  color: "var(--text)",
-                }}
-              >
-                {demo.capabilityAtScale.heading}
-              </h4>
-              <p
-                className="muted small"
-                style={{ margin: "0 0 16px 0", lineHeight: 1.6 }}
-              >
-                {demo.capabilityAtScale.intro}
-              </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: 12,
-                }}
-                className="capability-grid"
-              >
-                {demo.capabilityAtScale.points.map((p) => (
-                  <div
-                    key={p.title}
-                    style={{
-                      padding: "12px 14px",
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "var(--radius-sm)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "var(--text)",
-                        marginBottom: 4,
-                      }}
-                    >
-                      {p.title}
-                    </div>
-                    <div
-                      className="muted small"
-                      style={{ fontSize: 12.5, lineHeight: 1.55 }}
-                    >
-                      {p.body}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* CRM angle — the pitch to vertical SaaS vendors */}
-          {demo.crmAngle && (
-            <div
-              style={{
-                gridColumn: "1 / -1",
-                marginTop: 8,
-                padding: "20px 24px",
-                background: "var(--surface-2)",
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              <h4
-                style={{
-                  margin: "0 0 8px 0",
-                  fontSize: 16,
-                  color: "var(--text)",
-                }}
-              >
-                {demo.crmAngle.heading}
-              </h4>
-              {demo.crmAngle.intro && (
-                <p
-                  className="muted small"
-                  style={{ margin: "0 0 16px 0", lineHeight: 1.6 }}
-                >
-                  {demo.crmAngle.intro}
-                </p>
-              )}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-                  gap: 12,
-                }}
-                className="crm-angle-grid"
-              >
-                {demo.crmAngle.points.map((p) => (
-                  <div
-                    key={p.title}
-                    style={{
-                      padding: "12px 14px",
-                      background: "var(--surface)",
-                      border: "1px solid var(--border)",
-                      borderRadius: "var(--radius-sm)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "var(--text)",
-                        marginBottom: 4,
-                      }}
-                    >
-                      {p.title}
-                    </div>
-                    <div
-                      className="muted small"
-                      style={{ fontSize: 12.5, lineHeight: 1.55 }}
-                    >
-                      {p.body}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Reference CRM framing — the only amber-tinted callout,
-              reserved so it visually pops as "important caveat". */}
-          {demo.referenceCrm && (
-            <div
-              style={{
-                gridColumn: "1 / -1",
-                marginTop: 8,
-                padding: "20px 24px",
-                background: "#fef3c7",
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid #fde68a",
-              }}
-            >
-              <h4
-                style={{
-                  margin: "0 0 8px 0",
-                  fontSize: 16,
-                  color: "#78350f",
-                }}
-              >
-                {demo.referenceCrm.heading}
-              </h4>
-              <p
-                className="muted small"
-                style={{
-                  margin: "0 0 12px 0",
-                  lineHeight: 1.6,
-                  color: "#78350f",
-                }}
-              >
-                {demo.referenceCrm.body}
-              </p>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 13,
-                  fontWeight: 500,
-                  lineHeight: 1.6,
-                  color: "#92400e",
-                  fontStyle: "italic",
-                }}
-              >
-                {demo.referenceCrm.callout}
-              </p>
-            </div>
-          )}
-
-          {/* CTA row — bottom */}
+        {/* ============================================
+            D. MOAT BANNER — the "so what"
+            Indigo. Strategic claim + funnel + pillars.
+            ============================================ */}
+        {demo.moat && (
           <div
             style={{
-              gridColumn: "1 / -1",
-              display: "flex",
-              justifyContent: "flex-end",
+              marginBottom: 32,
+              padding: "28px 32px",
+              background: "linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%)",
+              border: "1px solid #c7d2fe",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
             }}
           >
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                localStorage.setItem("active_demo", id);
-                window.location.assign("/owner");
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "#4338ca",
+                marginBottom: 8,
               }}
             >
-              Try me →
-            </button>
+              {demo.moat.eyebrow}
+            </div>
+            <h2
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: "clamp(20px, 2.5vw, 26px)",
+                lineHeight: 1.25,
+                color: "#1e1b4b",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.moat.headline}
+            </h2>
+            <p
+              style={{
+                margin: "0 0 24px 0",
+                fontSize: 14.5,
+                lineHeight: 1.6,
+                color: "#3730a3",
+                maxWidth: 800,
+              }}
+            >
+              {demo.moat.subhead}
+            </p>
+
+            {/* Funnel: 1 → 4200 → 87 → 1 push */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 24,
+              }}
+              className="funnel-grid"
+            >
+              {(() => {
+                const d = demo.moat.scaleDiagram;
+                const items = [d.base, d.inherited, d.overrides, d.pushes];
+                const arrows = ["→", "→", "→"];
+                const nodes = [];
+                items.forEach((item, i) => {
+                  nodes.push(
+                    <div
+                      key={`n-${i}`}
+                      style={{
+                        padding: "12px 14px",
+                        background: "#ffffff",
+                        border: "1px solid #c7d2fe",
+                        borderRadius: "var(--radius-sm)",
+                        textAlign: "center",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 22,
+                          fontWeight: 700,
+                          color: "#1e1b4b",
+                          lineHeight: 1.1,
+                        }}
+                      >
+                        {item.count}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 11,
+                          color: "#4f46e5",
+                          marginTop: 4,
+                          lineHeight: 1.35,
+                        }}
+                      >
+                        {item.label}
+                      </div>
+                    </div>,
+                  );
+                  if (i < arrows.length) {
+                    nodes.push(
+                      <div
+                        key={`a-${i}`}
+                        style={{
+                          fontSize: 18,
+                          color: "#6366f1",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {arrows[i]}
+                      </div>,
+                    );
+                  }
+                });
+                return nodes;
+              })()}
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: 14,
+              }}
+              className="pillars-grid"
+            >
+              {demo.moat.pillars.map((p) => (
+                <div
+                  key={p.step}
+                  style={{
+                    padding: "14px 16px",
+                    background: "#ffffff",
+                    border: "1px solid #c7d2fe",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      color: "#6366f1",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.step}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "#1e1b4b",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12,
+                      lineHeight: 1.55,
+                      color: "#3730a3",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+        )}
+
+        {/* ============================================
+            E. PITCH — YC one-liner, neutral surface
+            ============================================ */}
+        {demo.pitch && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderLeft: "3px solid #4a7feb",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <p
+              style={{
+                margin: 0,
+                fontSize: 16,
+                fontWeight: 600,
+                color: "var(--text)",
+                lineHeight: 1.4,
+              }}
+            >
+              “{demo.pitch.oneLiner}”
+            </p>
+            <p
+              className="muted"
+              style={{
+                margin: "10px 0 0 0",
+                fontSize: 13.5,
+                lineHeight: 1.6,
+                color: "var(--text-muted)",
+              }}
+            >
+              {demo.pitch.whyNow}
+            </p>
+          </div>
+        )}
+
+        {/* ============================================
+            F. CAPABILITY AT SCALE — neutral, dense list
+            ============================================ */}
+        {demo.capabilityAtScale && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "20px 24px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                marginBottom: 6,
+              }}
+            >
+              Operate at scale
+            </div>
+            <h3
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: 18,
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.capabilityAtScale.heading}
+            </h3>
+            <p
+              className="muted"
+              style={{
+                margin: "0 0 16px 0",
+                fontSize: 13.5,
+                lineHeight: 1.6,
+              }}
+            >
+              {demo.capabilityAtScale.intro}
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 14,
+              }}
+              className="cap-grid"
+            >
+              {demo.capabilityAtScale.points.map((p) => (
+                <div key={p.title}>
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "var(--text)",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    className="muted"
+                    style={{
+                      fontSize: 13,
+                      lineHeight: 1.6,
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            G. CRM ANGLE — slate banner
+            The vendor-targeted pitch. Visually distinct.
+            ============================================ */}
+        {demo.crmAngle && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "24px 28px",
+              background: "#0f172a",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+              color: "#e2e8f0",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "#94a3b8",
+                marginBottom: 8,
+              }}
+            >
+              For CRM vendors
+            </div>
+            <h3
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: 20,
+                lineHeight: 1.3,
+                color: "#f1f5f9",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {demo.crmAngle.heading}
+            </h3>
+            {demo.crmAngle.intro && (
+              <p
+                style={{
+                  margin: "0 0 20px 0",
+                  fontSize: 13.5,
+                  lineHeight: 1.6,
+                  color: "#94a3b8",
+                  maxWidth: 820,
+                }}
+              >
+                {demo.crmAngle.intro}
+              </p>
+            )}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 16,
+              }}
+              className="crm-grid"
+            >
+              {demo.crmAngle.points.map((p) => (
+                <div
+                  key={p.title}
+                  style={{
+                    padding: "14px 16px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 13.5,
+                      fontWeight: 600,
+                      color: "#f1f5f9",
+                      marginBottom: 4,
+                    }}
+                  >
+                    {p.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12.5,
+                      lineHeight: 1.6,
+                      color: "#94a3b8",
+                    }}
+                  >
+                    {p.body}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            H. REFERENCE CRM — amber caveat box
+            The only amber section. Signals "read me".
+            ============================================ */}
+        {demo.referenceCrm && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "20px 24px",
+              background: "#fffbeb",
+              borderRadius: "var(--radius)",
+              border: "1px solid #fde68a",
+              borderLeft: "3px solid #f59e0b",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+                fontWeight: 700,
+                color: "#92400e",
+                marginBottom: 6,
+              }}
+            >
+              Note on the reference implementation
+            </div>
+            <h3
+              style={{
+                margin: "0 0 8px 0",
+                fontSize: 17,
+                lineHeight: 1.3,
+                color: "#78350f",
+              }}
+            >
+              {demo.referenceCrm.heading}
+            </h3>
+            <p
+              style={{
+                margin: "0 0 12px 0",
+                fontSize: 13.5,
+                lineHeight: 1.6,
+                color: "#78350f",
+              }}
+            >
+              {demo.referenceCrm.body}
+            </p>
+            <p
+              style={{
+                margin: 0,
+                fontSize: 13,
+                fontWeight: 500,
+                lineHeight: 1.6,
+                color: "#92400e",
+                fontStyle: "italic",
+              }}
+            >
+              {demo.referenceCrm.callout}
+            </p>
+          </div>
+        )}
+
+        {/* ============================================
+            I. FINAL CTA — bottom anchor
+            ============================================ */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 12,
+            padding: "32px 24px",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius)",
+            boxShadow: "var(--shadow)",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 16,
+              fontWeight: 600,
+              color: "var(--text)",
+            }}
+          >
+            See it running live
+          </div>
+          <p
+            className="muted"
+            style={{
+              margin: 0,
+              fontSize: 13.5,
+              lineHeight: 1.5,
+              maxWidth: 460,
+            }}
+          >
+            Open the interactive demo and talk to the agent that these three
+            APIs power.
+          </p>
+          <button
+            className="btn btn-primary"
+            onClick={tryMe}
+            style={{
+              padding: "14px 32px",
+              fontSize: 15,
+              fontWeight: 600,
+              marginTop: 4,
+            }}
+          >
+            Try me →
+          </button>
         </div>
       </div>
 
       {/* Responsive tweak */}
       <style jsx>{`
-        @media (max-width: 800px) {
-          .demo-hero {
+        @media (max-width: 900px) {
+          .hero-grid {
             grid-template-columns: 1fr !important;
           }
-          .moat-scale-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          .moat-pillars-grid {
+          .purpose-grid {
             grid-template-columns: 1fr !important;
           }
-          .build-facts-grid {
-            grid-template-columns: 1fr 1fr !important;
+          .purpose-divider {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid var(--border) !important;
+            padding-top: 20px !important;
           }
-          .crm-angle-grid {
+          .cap-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .crm-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 700px) {
+          .facts-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+          .funnel-grid {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+          }
+          .pillars-grid {
             grid-template-columns: 1fr !important;
           }
         }
