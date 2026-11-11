@@ -12,20 +12,20 @@ const DEMOS = [
     tables: 12,
     status: "active",
   },
-  {
-    id: "demo2",
-    name: "Demo 2 — Cloud Kitchen",
-    description: "Delivery-only kitchen with order dispatch.",
-    tables: 0,
-    status: "active",
-  },
-  {
-    id: "demo3",
-    name: "Demo 3 — Café",
-    description: "Quick-serve café with menu availability.",
-    tables: 6,
-    status: "paused",
-  },
+  // {
+  //   id: "demo2",
+  //   name: "Demo 2 — Cloud Kitchen",
+  //   description: "Delivery-only kitchen with order dispatch.",
+  //   tables: 0,
+  //   status: "active",
+  // },
+  // {
+  //   id: "demo3",
+  //   name: "Demo 3 — Café",
+  //   description: "Quick-serve café with menu availability.",
+  //   tables: 6,
+  //   status: "paused",
+  // },
 ];
 
 export default function Demos() {
