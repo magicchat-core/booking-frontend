@@ -96,6 +96,59 @@ const DEMOS = {
       ],
     },
 
+    // ⭐ NEW SECTION — connectors, positioned as extension story
+    connectorsSection: {
+      eyebrow: "When the workflow needs more than your APIs",
+      headline: "The same runtime reaches the third-party services your customers already use.",
+      subhead:
+        "Your CRM's APIs handle the business core. But restaurant owners live in Google Sheets, order through WhatsApp, schedule shifts in Google Calendar, and dump inventory counts into spreadsheets. Sageion ships a connector framework so those services are first-class nodes in the same chain — not a separate automation tool bolted on later.",
+      lead:
+        "Connectors are opt-in. Attach one to a specific chain node, only where it makes sense. Two restaurants on your platform might use the exact same base agent — one fires a Slack notification on low stock, the other writes to their own Google Sheet. Same agent, different connector attachments, both managed from the same admin panel.",
+      categories: [
+        {
+          icon: "📊",
+          name: "Sheets & Docs",
+          examples: "Google Sheets, Google Docs, Notion, Airtable",
+          detail:
+            "Sync inventory counts, write PO logs, or dump daily sales into a spreadsheet the owner already maintains.",
+        },
+        {
+          icon: "📨",
+          name: "Messaging",
+          examples: "Slack, WhatsApp, Telegram, email",
+          detail:
+            "Notify a manager when an order is approved, or ping a supplier that stock is low — from inside the same chain that created the PO.",
+        },
+        {
+          icon: "📅",
+          name: "Calendar & Scheduling",
+          examples: "Google Calendar, Outlook Calendar, Calendly",
+          detail:
+            "Book shifts, schedule supplier deliveries, or drop consultation slots for the manager — as a parallel action on an existing node.",
+        },
+        {
+          icon: "🔗",
+          name: "Custom Webhooks",
+          examples: "Any HTTPS endpoint",
+          detail:
+            "Your CRM's own downstream services, or your customer's custom integrations. Same auth model, same scope, same audit trail.",
+        },
+      ],
+      chaining: {
+        title: "Connectors attach to nodes, not to the whole chain",
+        body:
+          "A connector fires as a parallel action when a specific chain node completes. It never blocks the main flow — a slow Slack API call doesn't delay the PO confirmation. Failures are logged to a dead-letter queue and the chain keeps going.",
+        diagram: [
+          { node: "POST /purchase-orders", status: "success", connector: "→ Slack: #ops-alerts" },
+          { node: "PATCH /purchase-orders/:id/approve", status: "success", connector: "→ Google Sheets: append row" },
+        ],
+      },
+      auth:
+        "OAuth connections are per-app and tenant-scoped. Every restaurant's Google account stays isolated to that restaurant. You can see which chains have attached which connectors from the admin panel — one glance shows the full audit trail.",
+      positioning:
+        "This is why we're a runtime, not a framework. Lyzr, LangChain, and CrewAI give you connectors to your own tools. We give your customers connectors to theirs — as part of the same runtime that powers the core API chain.",
+    },
+
     pitch: {
       oneLiner:
         "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into a distribution layer for AI.",
@@ -167,11 +220,16 @@ const DEMOS = {
     },
 
     referenceCrm: {
-      heading: "A reference CRM, not a one-off demo",
+      eyebrow: "Make it yours",
+      heading: "This is a reference. Yours can look exactly like your product.",
       body:
-        "This demo uses Petpuja-shaped endpoints because they exemplify the vertical SaaS CRM pattern: read a record, create a downstream record, approve it, update the source. That's the same shape every vertical SaaS exposes — inventory in retail, patient records in clinics, work orders in field services, tickets in any B2B SaaS.",
+        "We built this demo against Petpuja-shaped endpoints because they're a legible reference — but the shape of your CRM's APIs doesn't matter. Whatever surface you expose, whatever flow you have in mind, we implement it against your actual APIs.",
+      offer:
+        "Share sandbox credentials for the endpoints involved in one flow. We'll build, test, and hand back a working personalized demo of that flow running against your CRM within 7–14 days.",
       callout:
-        "If your CRM exposes the same shape — read, mutate, approve — the agent you see here is the agent you ship.",
+        "No commitment, no integration sprint, no AI team of your own. Just the demo — working, in your brand, with your real API responses.",
+      footnote:
+        "If it's the right fit after you've seen it live, we ship it as a production agent on the same 7–14 day cycle.",
     },
   },
 };
@@ -695,7 +753,6 @@ export default function DemoDetail({ id }) {
 
         {/* ============================================
             C. PURPOSE — two-column "What we do / Why it matters"
-            Neutral surface, no color coding — supporting copy.
             ============================================ */}
         {demo.purpose && (
           <div
@@ -768,7 +825,6 @@ export default function DemoDetail({ id }) {
 
         {/* ============================================
             D. MOAT BANNER — the "so what"
-            Indigo. Strategic claim + funnel + pillars.
             ============================================ */}
         {demo.moat && (
           <div
@@ -816,7 +872,7 @@ export default function DemoDetail({ id }) {
               {demo.moat.subhead}
             </p>
 
-            {/* Funnel: 1 → 4200 → 87 → 1 push */}
+            {/* Funnel */}
             <div
               style={{
                 display: "grid",
@@ -940,7 +996,290 @@ export default function DemoDetail({ id }) {
         )}
 
         {/* ============================================
-            E. PITCH — YC one-liner, neutral surface
+            E. CONNECTORS — extension story
+            This section sits between the core demo and
+            the "reference CRM" CTA. It answers the
+            "what about third-party services?" question
+            without polluting the primary demo.
+            ============================================ */}
+        {demo.connectorsSection && (
+          <div
+            style={{
+              marginBottom: 32,
+              padding: "28px 32px",
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius)",
+              boxShadow: "var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+                color: "var(--text-muted)",
+                marginBottom: 8,
+              }}
+            >
+              {demo.connectorsSection.eyebrow}
+            </div>
+            <h2
+              style={{
+                margin: "0 0 10px 0",
+                fontSize: "clamp(20px, 2.5vw, 24px)",
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+                color: "var(--text)",
+                maxWidth: 820,
+              }}
+            >
+              {demo.connectorsSection.headline}
+            </h2>
+            <p
+              className="muted"
+              style={{
+                margin: "0 0 16px 0",
+                fontSize: 14,
+                lineHeight: 1.65,
+                maxWidth: 900,
+              }}
+            >
+              {demo.connectorsSection.subhead}
+            </p>
+            <p
+              style={{
+                margin: "0 0 24px 0",
+                fontSize: 13.5,
+                lineHeight: 1.65,
+                color: "var(--text)",
+                maxWidth: 900,
+              }}
+            >
+              {demo.connectorsSection.lead}
+            </p>
+
+            {/* Categories grid */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 12,
+                marginBottom: 24,
+              }}
+              className="connector-cat-grid"
+            >
+              {demo.connectorsSection.categories.map((cat) => (
+                <div
+                  key={cat.name}
+                  style={{
+                    padding: "14px 16px",
+                    background: "var(--surface-2)",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      marginBottom: 6,
+                    }}
+                  >
+                    <span style={{ fontSize: 18 }}>{cat.icon}</span>
+                    <span
+                      style={{
+                        fontSize: 13.5,
+                        fontWeight: 600,
+                        color: "var(--text)",
+                      }}
+                    >
+                      {cat.name}
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: "var(--text-muted)",
+                      fontFamily:
+                        "ui-monospace, SFMono-Regular, Menlo, monospace",
+                      marginBottom: 8,
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {cat.examples}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 12.5,
+                      lineHeight: 1.6,
+                      color: "var(--text)",
+                    }}
+                  >
+                    {cat.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Chaining diagram */}
+            <div
+              style={{
+                padding: "18px 20px",
+                background: "var(--surface-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-sm)",
+                marginBottom: 20,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 13.5,
+                  fontWeight: 600,
+                  color: "var(--text)",
+                  marginBottom: 6,
+                }}
+              >
+                {demo.connectorsSection.chaining.title}
+              </div>
+              <p
+                className="muted"
+                style={{
+                  margin: "0 0 14px 0",
+                  fontSize: 13,
+                  lineHeight: 1.6,
+                }}
+              >
+                {demo.connectorsSection.chaining.body}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+              >
+                {demo.connectorsSection.chaining.diagram.map((row, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "10px 12px",
+                      background: "var(--surface)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--radius-sm)",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <code
+                      style={{
+                        fontSize: 12,
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                        color: "var(--text)",
+                        flex: 1,
+                        minWidth: 200,
+                      }}
+                    >
+                      {row.node}
+                    </code>
+                    <span
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        letterSpacing: "0.04em",
+                        padding: "2px 8px",
+                        borderRadius: 4,
+                        background: "#dcfce7",
+                        color: "#166534",
+                        border: "1px solid #bbf7d0",
+                      }}
+                    >
+                      {row.status}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 12,
+                        color: "var(--text-muted)",
+                        fontFamily:
+                          "ui-monospace, SFMono-Regular, Menlo, monospace",
+                      }}
+                    >
+                      {row.connector}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Auth + positioning */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 16,
+              }}
+              className="connector-meta-grid"
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 6,
+                  }}
+                >
+                  Auth & isolation
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                    color: "var(--text)",
+                  }}
+                >
+                  {demo.connectorsSection.auth}
+                </p>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                    marginBottom: 6,
+                  }}
+                >
+                  Why it's a runtime, not a framework
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13,
+                    lineHeight: 1.65,
+                    color: "var(--text)",
+                  }}
+                >
+                  {demo.connectorsSection.positioning}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ============================================
+            F. PITCH — YC one-liner
             ============================================ */}
         {demo.pitch && (
           <div
@@ -980,7 +1319,7 @@ export default function DemoDetail({ id }) {
         )}
 
         {/* ============================================
-            F. CAPABILITY AT SCALE — neutral, dense list
+            G. CAPABILITY AT SCALE
             ============================================ */}
         {demo.capabilityAtScale && (
           <div
@@ -1062,8 +1401,7 @@ export default function DemoDetail({ id }) {
         )}
 
         {/* ============================================
-            G. CRM ANGLE — slate banner
-            The vendor-targeted pitch. Visually distinct.
+            H. CRM ANGLE — slate banner
             ============================================ */}
         {demo.crmAngle && (
           <div
@@ -1156,69 +1494,124 @@ export default function DemoDetail({ id }) {
         )}
 
         {/* ============================================
-            H. REFERENCE CRM — amber caveat box
-            The only amber section. Signals "read me".
+            I. REFERENCE CRM — amber caveat box
             ============================================ */}
         {demo.referenceCrm && (
           <div
             style={{
               marginBottom: 32,
-              padding: "20px 24px",
+              padding: "24px 28px",
               background: "#fffbeb",
               borderRadius: "var(--radius)",
               border: "1px solid #fde68a",
               borderLeft: "3px solid #f59e0b",
             }}
           >
-            <div
-              style={{
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-                fontWeight: 700,
-                color: "#92400e",
-                marginBottom: 6,
-              }}
-            >
-              Note on the reference implementation
-            </div>
+            {demo.referenceCrm.eyebrow && (
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
+                  color: "#92400e",
+                  marginBottom: 6,
+                }}
+              >
+                {demo.referenceCrm.eyebrow}
+              </div>
+            )}
             <h3
               style={{
-                margin: "0 0 8px 0",
-                fontSize: 17,
+                margin: "0 0 10px 0",
+                fontSize: 18,
                 lineHeight: 1.3,
                 color: "#78350f",
+                letterSpacing: "-0.01em",
               }}
             >
               {demo.referenceCrm.heading}
             </h3>
             <p
               style={{
-                margin: "0 0 12px 0",
-                fontSize: 13.5,
+                margin: "0 0 14px 0",
+                fontSize: 14,
                 lineHeight: 1.6,
                 color: "#78350f",
               }}
             >
               {demo.referenceCrm.body}
             </p>
-            <p
-              style={{
-                margin: 0,
-                fontSize: 13,
-                fontWeight: 500,
-                lineHeight: 1.6,
-                color: "#92400e",
-                fontStyle: "italic",
-              }}
-            >
-              {demo.referenceCrm.callout}
-            </p>
+
+            {demo.referenceCrm.offer && (
+              <div
+                style={{
+                  padding: "14px 16px",
+                  background: "#ffffff",
+                  border: "1px solid #fde68a",
+                  borderRadius: "var(--radius-sm)",
+                  marginBottom: 14,
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    fontWeight: 700,
+                    color: "#b45309",
+                    marginBottom: 4,
+                  }}
+                >
+                  What we need from you
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13.5,
+                    lineHeight: 1.6,
+                    color: "#78350f",
+                  }}
+                >
+                  {demo.referenceCrm.offer}
+                </p>
+              </div>
+            )}
+
+            {demo.referenceCrm.callout && (
+              <p
+                style={{
+                  margin: "0 0 8px 0",
+                  fontSize: 13.5,
+                  fontWeight: 500,
+                  lineHeight: 1.6,
+                  color: "#92400e",
+                  fontStyle: "italic",
+                }}
+              >
+                {demo.referenceCrm.callout}
+              </p>
+            )}
+
+            {demo.referenceCrm.footnote && (
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: 12.5,
+                  lineHeight: 1.5,
+                  color: "#a16207",
+                  paddingTop: 8,
+                  borderTop: "1px dashed #fcd34d",
+                }}
+              >
+                {demo.referenceCrm.footnote}
+              </p>
+            )}
           </div>
         )}
 
         {/* ============================================
-            I. FINAL CTA — bottom anchor
+            J. FINAL CTA — bottom anchor
             ============================================ */}
         <div
           style={{
@@ -1290,6 +1683,12 @@ export default function DemoDetail({ id }) {
             grid-template-columns: 1fr !important;
           }
           .crm-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .connector-cat-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .connector-meta-grid {
             grid-template-columns: 1fr !important;
           }
         }
