@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 export const TOKEN_KEY = 'crm_token';
-export const USER_KEY  = 'crm_user';
+export const USER_KEY = 'crm_user';
 
 // 1. Define the fallback based on the window object
 // If the window object exists and has the config, use it.
 // Otherwise, hardcode the URL so it NEVER falls back to localhost:5173.
-const FALLBACK_API_URL = 
-  (typeof window !== 'undefined' && window.__APP_CONFIG__?.API_BASE_full_URL) 
-    ? window.__APP_CONFIG__.API_BASE_full_URL 
-    : 'http://122.160.157.99:3001';
+const FALLBACK_API_URL =
+  (typeof window !== 'undefined' && window.__APP_CONFIG__?.API_BASE_full_URL)
+    ? window.__APP_CONFIG__.API_BASE_full_URL
+    : 'https://booking-backend-1-qgrd.onrender.com';
 
 function currentBaseUrl() {
   // Always re-check window in case the script loaded after this file was imported
@@ -26,20 +26,20 @@ function currentBaseUrl() {
 
 const api = axios.create({
   // Set the baseURL right away so it's applied to the instance
-  baseURL: FALLBACK_API_URL, 
+  baseURL: FALLBACK_API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
 api.interceptors.request.use((config) => {
   // Ensure the baseURL is set correctly for every request
   config.baseURL = currentBaseUrl();
-  
+
   // Attach token
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) config.headers.Authorization = `Bearer ${token}`;
   }
-  
+
   return config;
 });
 
@@ -63,7 +63,7 @@ export function saveSession(data) {
   const user_id = data.user_id || data.user?.id;
   const email = data.email || data.user?.email;
   const role = data.role || data.user?.role;
-  
+
   localStorage.setItem(TOKEN_KEY, token);
   localStorage.setItem(USER_KEY, JSON.stringify({ user_id, email, role }));
 }
