@@ -6,6 +6,7 @@ export const metadata = { title: 'Ref CRM' };
 
 export default function RootLayout({ children }) {
   const isDev = process.env.NODE_ENV === 'development';
+  console.log("Arewrwhrwerwe?",isDev)
   const bundleSrc = isDev
     ? '/local-bundle/bundle.js'
     : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';

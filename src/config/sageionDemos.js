@@ -23,9 +23,9 @@
 
 export const SAGEION_DEMO_APPS = {
   demo1: {
-    SAGEION_APP_NAME: "demo_booking17",
-    SAGEION_APP_ID: "APP-mwbqja5g-4ikvjv",
-    SAGEION_API_KEY: "cGV0cHVqYV9fU0VQUkFUT1JfX2RlbW9fYm9va2luZzE3",
+    SAGEION_APP_NAME: "business-management-demo",
+    SAGEION_APP_ID: "APP-mwdzm0h2-7dt86s",
+    SAGEION_API_KEY: "c2FnZWlvbmRlbW9fX1NFUFJBVE9SX19idXNpbmVzcy1tYW5hZ2VtZW50LWRlbW8=",
     SAGEION_REGION: "US",
     // API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
     API_BASE_URL: "http://122.160.157.99:3001/api",

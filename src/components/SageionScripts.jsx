@@ -6,10 +6,6 @@ import { useEffect } from 'react';
 // Module-scope set of appIds we've bootstrapped on this page load.
 // Prevents duplicate <script> tags and duplicate setUp() calls if
 // the component remounts for the same app.
-//
-// Reloading the page clears this set, which is the intended way to
-// switch to a different app. The SDK is a singleton — it cannot
-// hot-swap.
 const BOOTSTRAPPED_APP_IDS = new Set();
 
 export default function SageionScripts({ appConfig }) {
@@ -43,6 +39,17 @@ export default function SageionScripts({ appConfig }) {
       return;
     }
     BOOTSTRAPPED_APP_IDS.add(appId);
+
+    // ⭐ Font Awesome stylesheet — added idempotently so a
+    // remount doesn't stack duplicate <link> tags.
+    if (!document.getElementById('sageion-font-awesome')) {
+      const faLink = document.createElement('link');
+      faLink.id = 'sageion-font-awesome';
+      faLink.rel = 'stylesheet';
+      faLink.href =
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+      document.head.appendChild(faLink);
+    }
 
     const isDev = process.env.NODE_ENV === 'development';
     const bundleSrc = isDev
@@ -84,14 +91,7 @@ export default function SageionScripts({ appConfig }) {
 
     document.body.appendChild(bundleScript);
 
-    // ⭐ Cleanup: hide the floating bubble when this component unmounts.
-    // This runs when (app)/layout unmounts — i.e., on logout, or on any
-    // navigation out of the authed tree. The SDK singleton and its socket
-    // survive (they can't be destroyed), but the bubble is hidden so the
-    // user doesn't see a stale chat widget on /login or /demos.
-    //
-    // SageionBridge re-shows the bubble after initialize() when we
-    // re-enter an authed route.
+    // Cleanup: hide the floating bubble when this component unmounts.
     return () => {
       try {
         const bubble = document.querySelector('[id^="chat_modal_opener__"]');

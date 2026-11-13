@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 
 public/local-bundle
+
+# Next.js
+/.next/
+/out/
+
+# Dependencies
+/node_modules

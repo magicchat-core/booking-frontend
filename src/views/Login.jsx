@@ -48,7 +48,7 @@ export default function Login() {
           }}
         >
           <strong>Demo mode.</strong> Any email and password will work —
-          this site is a demo of an AI agent that runs inside a
+          this site is a demo of Sageion AI agent that runs inside a
           SaaS-style product, so we've added a login screen to mimic
           that flow. Credentials are accepted as-is; no verification
           is performed.
