@@ -32,6 +32,28 @@ export default function Login() {
       <form className="card login-card" onSubmit={submit}>
         <h1>🍛 Ref CRM</h1>
         <p className="muted">{mode === 'login' ? 'Sign in to continue' : 'Create a staff account'}</p>
+
+        {/* ⭐ Demo notice — informative only, no functional impact. */}
+        <div
+          role="note"
+          style={{
+            background: '#eef4ff',
+            border: '1px solid #cddfff',
+            color: '#1e3a8a',
+            padding: '10px 12px',
+            borderRadius: 6,
+            fontSize: 13,
+            lineHeight: 1.5,
+            marginBottom: 16,
+          }}
+        >
+          <strong>Demo mode.</strong> Any email and password will work —
+          this site is a demo of an AI agent that runs inside a
+          SaaS-style product, so we've added a login screen to mimic
+          that flow. Credentials are accepted as-is; no verification
+          is performed.
+        </div>
+
         <label>
           Email
           <input value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" />
