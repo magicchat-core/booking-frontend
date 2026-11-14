@@ -2,11 +2,13 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { getDemo } from '@/demos';
+import api from '@/api/client';
 
 export default function DemoGuide() {
   const [activeDemo, setActiveDemo] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedWorkflowId, setSelectedWorkflowId] = useState(null);
+  const [setupStatus, setSetupStatus] = useState('idle'); 
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,8 +26,6 @@ export default function DemoGuide() {
   if (!activeDemo || !activeDemo.guide) return null;
 
   const guide = activeDemo.guide;
-  
-  // Fallback in case there is only one flat workflow (backward compatibility)
   const workflows = guide.workflows || [{
     id: "default",
     title: "Main Workflow",
@@ -34,7 +34,6 @@ export default function DemoGuide() {
     steps: guide.steps || []
   }];
 
-  // Default to the first workflow if none selected
   const currentWorkflowId = selectedWorkflowId || workflows[0]?.id;
   const selectedWorkflow = workflows.find(w => w.id === currentWorkflowId);
   const activeStep = selectedWorkflow?.steps.find(s => pathname.includes(s.targetRoute));
@@ -49,9 +48,22 @@ export default function DemoGuide() {
     window.dispatchEvent(event);
   };
 
+  const handleSetup = async () => {
+    setSetupStatus('loading');
+    try {
+      await api.post(`/demos/${activeDemo.id}/setup`);
+      setSetupStatus('success');
+      // Reload the page so the user immediately sees the new stock levels
+      setTimeout(() => window.location.reload(), 1000);
+    } catch (err) {
+      console.error('Setup failed:', err);
+      alert('Failed to set up demo: ' + (err.response?.data?.error || err.message));
+      setSetupStatus('idle');
+    }
+  };
+
   return (
     <>
-      {/* Floating Toggle Button */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
         style={{ 
@@ -66,7 +78,6 @@ export default function DemoGuide() {
         {isOpen ? '✕ Close Guide' : '✨ Open Demo Guide'}
       </button>
 
-      {/* Full-Screen Split-View Modal */}
       {isOpen && (
         <div style={{
           position: 'fixed', inset: 0, zIndex: 9998,
@@ -83,7 +94,6 @@ export default function DemoGuide() {
             animation: 'fadeIn 0.2s ease-out'
           }}>
             
-            {/* LEFT PANEL: Generic Info & Workflow List */}
             <div style={{ 
               width: '350px', flexShrink: 0,
               background: '#f8fafc', borderRight: '1px solid #e2e8f0',
@@ -97,7 +107,6 @@ export default function DemoGuide() {
                   {guide.title || activeDemo.name}
                 </h2>
                 
-                {/* Generic Info Box */}
                 <div style={{ 
                   background: '#ffffff', border: '1px solid #e2e8f0', 
                   padding: '16px', borderRadius: '8px', marginBottom: 32,
@@ -110,7 +119,6 @@ export default function DemoGuide() {
                   Available Workflows
                 </div>
 
-                {/* Workflow Dropdown/List */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {workflows.map(wf => {
                     const isSelected = currentWorkflowId === wf.id;
@@ -139,7 +147,6 @@ export default function DemoGuide() {
                 </div>
               </div>
 
-              {/* Left Panel Footer */}
               <div style={{ padding: '24px', borderTop: '1px solid #e2e8f0', background: '#ffffff' }}>
                 <button 
                   onClick={dismiss} 
@@ -154,10 +161,8 @@ export default function DemoGuide() {
               </div>
             </div>
 
-            {/* RIGHT PANEL: Timeline Detail */}
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
               
-              {/* Right Header */}
               <div style={{ padding: '32px 40px', borderBottom: '1px solid #e2e8f0' }}>
                 <h3 style={{ margin: '0 0 8px 0', fontSize: 24, fontWeight: 700, color: '#0f172a' }}>
                   {selectedWorkflow?.title}
@@ -167,11 +172,9 @@ export default function DemoGuide() {
                 </p>
               </div>
 
-              {/* Right Content (Timeline) */}
               <div style={{ flex: 1, padding: '40px', overflowY: 'auto' }}>
                 <div style={{ position: 'relative', maxWidth: '700px' }}>
                   
-                  {/* Vertical connecting line */}
                   <div style={{ 
                     position: 'absolute', left: 19, top: 10, bottom: 20, 
                     width: 2, background: '#e2e8f0', zIndex: 0 
@@ -185,7 +188,6 @@ export default function DemoGuide() {
                         display: 'flex', gap: 24, marginBottom: 32 
                       }}>
                         
-                        {/* Step Circle */}
                         <div style={{ 
                           width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -200,7 +202,6 @@ export default function DemoGuide() {
                           {step.id}
                         </div>
 
-                        {/* Step Content */}
                         <div style={{ flex: 1, paddingTop: 8 }}>
                           <div style={{ 
                             fontSize: 18, fontWeight: 700, 
@@ -215,8 +216,31 @@ export default function DemoGuide() {
                           }}>
                             {step.instruction}
                           </div>
+
+                          {step.id === 1 && selectedWorkflow.setupRequired && (
+                            <div style={{ marginTop: 16 }}>
+                              {setupStatus === 'success' ? (
+                                <div style={{ padding: '12px 16px', background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', borderRadius: 8, fontSize: 14, fontWeight: 600 }}>
+                                  ✅ Demo state prepared successfully! Reloading...
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={handleSetup}
+                                  disabled={setupStatus === 'loading'}
+                                  style={{
+                                    padding: '12px 24px', background: '#3b82f6', color: 'white',
+                                    border: 'none', borderRadius: 8, fontSize: 15, fontWeight: 600,
+                                    cursor: setupStatus === 'loading' ? 'not-allowed' : 'pointer',
+                                    display: 'flex', alignItems: 'center', gap: 8,
+                                    boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
+                                  }}
+                                >
+                                  {setupStatus === 'loading' ? 'Preparing...' : '⚡ Auto-Setup Demo State'}
+                                </button>
+                              )}
+                            </div>
+                          )}
                           
-                          {/* Interactive Prompt Chip */}
                           {step.samplePrompt && (
                              <button 
                                onClick={() => injectPrompt(step.samplePrompt)}
