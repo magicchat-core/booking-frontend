@@ -5,37 +5,45 @@ export const demo1 = {
     "How three reference-CRM API endpoints become a working AI agent — configured in under 10 minutes, zero code.",
   status: "active",
 
-  // ⭐ NEW: The Step-by-Step Interactive Guide
+  // ⭐ NEW: The Step-by-Step Interactive Guide (Story-driven)
   guide: {
-    estimatedClicks: 3,
+    estimatedClicks: 4,
     workflowDetails: [
-      "We have pre-seeded your inventory so 'Mango Pulp' is below its safety threshold.",
-      "Your goal is to trigger the AI chat, ask for the stock, and approve the reorder to create a Purchase Order."
+      "The Business Problem: In a busy kitchen, the person using the stock (the chef) isn't the person who orders it, and definitely not the person who approves the budget.",
+      "Before Sageion: The chef notices low rice → tells the manager → manager logs in → creates a PO → waits for the owner to approve → someone manually updates the stock. 3 different people, 3 different screens.",
+      "The Sageion Way: The chef simply asks the AI. The AI checks the inventory (API 1), proposes a PO (API 2), and lets the owner approve it via a secure link to update the stock (API 3)."
     ],
     steps: [
       {
         id: 1,
-        title: "Check Low Stock",
-        instruction: "Look at the Inventory table. Notice 'Mango Pulp' is highlighted in yellow.",
+        title: "Prep the Demo (Make it Low)",
+        instruction: "First, let's simulate a shortage. Click 'Adjust' on Basmati Rice and pass -4 to push it below the threshold.",
         targetRoute: "/owner/inventory"
       },
       {
         id: 2,
-        title: "Ask the AI",
-        instruction: "Open the AI chat on the right and ask for the current stock of mango_pulp.",
+        title: "The Kitchen Queries the AI",
+        instruction: "Instead of navigating menus, the chef just asks the AI for the current stock.",
         targetRoute: "/owner/inventory",
-        samplePrompt: "Check the current stock level of mango_pulp"
+        samplePrompt: "Check the current stock level of rice"
       },
       {
         id: 3,
-        title: "Approve the Reorder",
-        instruction: "The AI will pause and give you an approval link. Click it, review the PO, and hit Approve.",
+        title: "The Manager Approves the PO",
+        instruction: "The AI realizes it's low, creates a pending Purchase Order, and drops an approval link in the chat. Click it and hit 'Approve'.",
+        targetRoute: "/owner/inventory"
+      },
+      {
+        id: 4,
+        title: "The Magic is Done",
+        instruction: "Look at the inventory table again. The stock has been automatically updated. All 3 APIs chained together in one conversation.",
         targetRoute: "/owner/inventory"
       }
     ]
   },
 
   buildWalkthrough: {
+    // ... (Keep the rest exactly as it is)
     title: "See how this agent was built",
     subtitle:
       "3 API endpoints selected, 2 branch mappings wired, 1 chain published. No editor, no CLI, no YAML.",
@@ -86,6 +94,7 @@ export const demo1 = {
   ],
 
   moat: {
+    // ... (Keep the rest exactly as it is)
     eyebrow: "The structural advantage",
     headline:
       "Ship one agent. Every restaurant on your platform inherits it.",
@@ -120,6 +129,7 @@ export const demo1 = {
   },
 
   connectorsSection: {
+    // ... (Keep the rest exactly as it is)
     eyebrow: "When the workflow needs more than your APIs",
     headline: "The same runtime reaches the third-party services your customers already use.",
     subhead:
@@ -172,6 +182,7 @@ export const demo1 = {
   },
 
   pitch: {
+    // ... (Keep the rest exactly as it is)
     oneLiner:
       "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into a distribution layer for AI.",
     whyNow:
@@ -179,6 +190,7 @@ export const demo1 = {
   },
 
   purpose: {
+    // ... (Keep the rest exactly as it is)
     whatWeDo:
       "Sageion turns the APIs a vertical SaaS already exposes into a production-grade AI agent. Select your endpoints, wire the branches, publish. No SDK, no prompt engineering, no new infrastructure.",
     whyItMatters:
@@ -186,6 +198,7 @@ export const demo1 = {
   },
 
   capabilityAtScale: {
+    // ... (Keep the rest exactly as it is)
     heading: "What happens when the agent inherits 4,200 tenants",
     intro:
       "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
@@ -214,6 +227,7 @@ export const demo1 = {
   },
 
   crmAngle: {
+    // ... (Keep the rest exactly as it is)
     heading: "Built for vertical SaaS CRMs, not for one restaurant",
     intro:
       "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant — they sell infrastructure to thousands. Sageion is architected for that reality.",
@@ -242,6 +256,7 @@ export const demo1 = {
   },
 
   referenceCrm: {
+    // ... (Keep the rest exactly as it is)
     eyebrow: "Make it yours",
     heading: "This is a reference. Yours can look exactly like your product.",
     body:
