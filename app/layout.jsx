@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   console.log("Arewrwhrwerwe?",isDev)
   const bundleSrc = isDev
     ? '/local-bundle/bundle.js'
-    : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+    : 'https://magicchat-core.github.io/dev-ssc-client-cdns/bundle.js';
 
   return (
     <html lang="en">

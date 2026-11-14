@@ -54,7 +54,7 @@ export default function SageionScripts({ appConfig }) {
     const isDev = process.env.NODE_ENV === 'development';
     const bundleSrc = isDev
       ? '/local-bundle/bundle.js'
-      : 'https://magicchat-core.github.io/prod-ssc-client-cdns/bundle.js';
+      : 'https://magicchat-core.github.io/dev-ssc-client-cdns/bundle.js';
 
     // 1. socket.io
     const socketScript = document.createElement('script');
