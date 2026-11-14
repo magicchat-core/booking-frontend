@@ -9,9 +9,6 @@ const AuthContext = createContext(null);
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   // ⭐ Distinguishes "no user" (logged out) from "not hydrated yet".
-  // Without this, ProtectedRoute fires router.replace('/login') on the
-  // very first render, before the hydrate effect below runs, and the
-  // user sees a spurious redirect on every page reload.
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -26,8 +23,15 @@ export function AuthProvider({ children }) {
     return data;
   }
 
-  async function register(email, password, role = 'staff') {
-    const { data } = await api.post('/auth/register', { email, password, role });
+  // ⭐ NEW: Request OTP for signup (used by Register.jsx)
+  async function sendOtp(email) {
+    const { data } = await api.post('/auth/send-otp', { email, purpose: 'signup' });
+    return data;
+  }
+
+  // ⭐ UPDATED: Register now requires the OTP (used by VerifyOtp.jsx)
+  async function register(email, password, otp) {
+    const { data } = await api.post('/auth/register', { email, password, otp });
     saveSession(data);
     setUser({ user_id: data.user_id, email: data.email, role: data.role });
     return data;
@@ -39,7 +43,7 @@ export function AuthProvider({ children }) {
   }
 
   const value = useMemo(
-    () => ({ user, loaded, login, register, logout }),
+    () => ({ user, loaded, login, register, sendOtp, logout }),
     [user, loaded],
   );
 

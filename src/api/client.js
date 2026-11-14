@@ -1,37 +1,65 @@
 import axios from 'axios';
+import { SAGEION_DEMO_APPS } from '@/config/sageionDemos';
 
 export const TOKEN_KEY = 'crm_token';
 export const USER_KEY = 'crm_user';
 
-// 1. Define the fallback based on the window object
-// If the window object exists and has the config, use it.
-// Otherwise, hardcode the URL so it NEVER falls back to localhost:5173.
-const FALLBACK_API_URL =
-  (typeof window !== 'undefined' && window.__APP_CONFIG__?.API_BASE_full_URL)
-    ? window.__APP_CONFIG__.API_BASE_full_URL
-    : 'https://booking-backend-1-qgrd.onrender.com';
-
-function currentBaseUrl() {
-  // Always re-check window in case the script loaded after this file was imported
-  if (typeof window !== 'undefined' && window.__APP_CONFIG__?.API_BASE_full_URL) {
-    return window.__APP_CONFIG__.API_BASE_full_URL;
+// ⭐ Resolve the currently active demo id. Set by DemoDetail.jsx's
+// "Try Me" button before it navigates to /owner, so by the time any
+// API call fires, this reflects the demo the visitor is exploring.
+//
+// Defaults to 'demo1' when no demo is set (e.g., a direct /owner
+// visit, or a fresh page load before "Try Me" has run). That's a
+// sensible fallback — demo1 is the canonical starting point.
+function getActiveDemoId() {
+  if (typeof window === 'undefined') return 'demo1';
+  try {
+    return localStorage.getItem('active_demo') || 'demo1';
+  } catch {
+    return 'demo1';
   }
-  // Fallback to the environment variable
+}
+
+// ⭐ Resolve the API base URL from SAGEION_DEMO_APPS[active_demo].
+//
+// Resolution order:
+//   1. active demo's API_BASE_full_URL
+//   2. NEXT_PUBLIC_API_BASE_full_URL env var
+//   3. any demo's API_BASE_full_URL (guards against a demo entry
+//      that omitted the field by mistake)
+//   4. hardcoded fallback
+//
+// Because active_demo can change mid-session (only via a full page
+// reload, per our design), this is re-evaluated on every request
+// from the interceptor below.
+function currentBaseUrl() {
+  const activeDemoId = getActiveDemoId();
+  const appConfig = SAGEION_DEMO_APPS[activeDemoId];
+  if (appConfig?.API_BASE_full_URL) {
+    return appConfig.API_BASE_full_URL;
+  }
+
   if (process.env.NEXT_PUBLIC_API_BASE_full_URL) {
     return process.env.NEXT_PUBLIC_API_BASE_full_URL;
   }
-  // Final fallback
-  return FALLBACK_API_URL;
+
+  const firstDemo = Object.values(SAGEION_DEMO_APPS)[0];
+  if (firstDemo?.API_BASE_full_URL) {
+    return firstDemo.API_BASE_full_URL;
+  }
+
+  return 'http://122.160.157.99:3001';
 }
 
 const api = axios.create({
-  // Set the baseURL right away so it's applied to the instance
-  baseURL: FALLBACK_API_URL,
+  // Base URL applied at create time — the interceptor re-resolves
+  // it per request in case active_demo changes.
+  baseURL: currentBaseUrl(),
   headers: { 'Content-Type': 'application/json' },
 });
 
 api.interceptors.request.use((config) => {
-  // Ensure the baseURL is set correctly for every request
+  // Re-resolve on every request.
   config.baseURL = currentBaseUrl();
 
   // Attach token
