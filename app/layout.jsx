@@ -4,6 +4,7 @@ import Script from 'next/script';
 
 export const metadata = { title: 'Ref CRM' };
 
+
 export default function RootLayout({ children }) {
   const isDev = process.env.NODE_ENV === 'development';
   console.log("Arewrwhrwerwe?",isDev)
