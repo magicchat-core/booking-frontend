@@ -47,6 +47,26 @@ export default function Demos() {
       title: "Skip the Custom Build Rabbit Hole",
       desc: "Think you need to build your own AI agent in-house? Don't waste months of R&D. Prove the ROI with our runtime before you write a single line of custom AI code.",
     },
+    {
+      icon: "🧠",
+      title: "Zero Hallucinations",
+      desc: "We don't rely on an LLM's memory. The agent is grounded in your actual API responses, ensuring 100% accuracy and truth-based answers.",
+    },
+    {
+      icon: "🔒",
+      title: "Zero-Retention Privacy",
+      desc: "We don't pull your data into our system. Everything runs at the boundary. Data is only saved if explicitly configured via the Admin UI for debugging.",
+    },
+    {
+      icon: "🕵️‍♂️",
+      title: "Full Node-Level Traceability",
+      desc: "Complete visibility into every workflow. See exactly which node was hit, the payload sent, and the response returned for a perfect audit trail.",
+    },
+    {
+      icon: "🎯",
+      title: "Your APIs as the Source of Truth",
+      desc: "The AI doesn't guess. It fetches live data directly from your REST endpoints, guaranteeing users only see what they are authorized to see.",
+    },
   ];
 
   return (
@@ -56,7 +76,7 @@ export default function Demos() {
       <div style={{ textAlign: "center", marginBottom: "56px", marginTop: "32px" }}>
         <div style={{ 
           display: "inline-block", padding: "6px 14px", 
-          background: "rgba(59, 130, 246, 0.15)", // Dark mode friendly badge bg
+          background: "rgba(59, 130, 246, 0.15)",
           color: "#60a5fa", fontWeight: "700", fontSize: "12px", 
           borderRadius: "100px", marginBottom: "20px", letterSpacing: "0.05em",
           border: "1px solid rgba(59, 130, 246, 0.3)"
@@ -71,7 +91,7 @@ export default function Demos() {
         </p>
       </div>
 
-      {/* ⭐ 2. VALUE PROPS: The "ROI-First" Grid */}
+      {/* ⭐ 2. VALUE PROPS: The 12-Card Grid */}
       <div style={{ 
         display: "grid", 
         gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", 
@@ -81,7 +101,7 @@ export default function Demos() {
         {features.map((prop, i) => (
           <div key={i} style={{ 
             padding: "24px", 
-            background: "#1e293b", // Dark card background
+            background: "#1e293b",
             border: "1px solid #334155", 
             borderRadius: "12px", 
             boxShadow: "0 4px 6px -1px rgba(0,0,0,0.2)",
@@ -175,7 +195,7 @@ export default function Demos() {
               We built this against a reference CRM, but yours can look exactly like your product. Share sandbox credentials for one flow, and we'll build a live, customized demo in <strong>7–14 days</strong>.
             </p>
             <a 
-              href="mailto:founders@sageion.com" // Replace with your actual link
+              href="mailto:founders@sageion.com"
               style={{ 
                 background: "#3b82f6", color: "#ffffff", padding: "14px 28px", 
                 borderRadius: "8px", fontWeight: "700", fontSize: "16px", 
