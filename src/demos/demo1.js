@@ -14,7 +14,7 @@ export const demo1 = {
         title: "Inventory Auto-Reorder Flow",
         description: "See how a simple AI chat can trigger a low-stock alert, generate a Purchase Order, and update inventory upon approval.",
         estimatedClicks: 4,
-        setupRequired: true, // ⭐ Tells the UI to show the Auto-Setup button
+        setupRequired: true,
         steps: [
           {
             id: 1,
@@ -52,7 +52,7 @@ export const demo1 = {
     videoUrl: null,
     videoPlaceholder: "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
     facts: [
-      { label: "APIs used", value: "3 reference-CRM endpoints" },
+      { label: "APIs used", value: "3 CRM endpoints" },
       { label: "Chain steps", value: "3 nodes · 2 branches" },
       { label: "Build time", value: "~7 minutes" },
       { label: "Code written", value: "0 lines" },
@@ -79,10 +79,17 @@ export const demo1 = {
     },
   ],
 
+  // ⭐ NEW: Direct comparison to competitors (Frameworks vs. Runtime)
+  purpose: {
+    whatWeDo: "The Old Way (Framework Trap): To build this, you'd normally need to hire an AI team, force your engineers to write wrapper code, generate a strict OpenAPI spec, and pray it doesn't break the next time you update your database schema.",
+    whyItMatters: "The Sageion Way (The Runtime): We don't ask you to rewrite your product. We don't need an OpenAPI spec just to start. We ingest your existing endpoints as-is, and output a production-grade AI agent. You keep your code, your team, and your exact security posture — we just add the AI layer.",
+  },
+
+  // ⭐ NEW: The structural moat rewritten for investors
   moat: {
     eyebrow: "The structural advantage",
-    headline: "Ship one agent. Every restaurant on your platform inherits it.",
-    subhead: "One base configuration. Thousands of downstream tenants. Per-tenant overrides for the chains that want them — without forking the agent, without per-customer integration work, without an AI team.",
+    headline: "You don't integrate AI. You inherit it.",
+    subhead: "Every vertical SaaS vendor is being forced by their customers to ship an AI layer. Building it in-house (or using frameworks) means months of engineering, brittle code changes, and a new AI team. Sageion gives you that layer as a product: your APIs go in, an agent comes out — and every one of your customers inherits it on day one.",
     scaleDiagram: {
       base: { count: "1", label: "base agent you maintain" },
       inherited: { count: "4,200", label: "restaurants inherit it automatically" },
@@ -90,9 +97,76 @@ export const demo1 = {
       pushes: { count: "1 push", label: "updates all 4,113 downstream apps" },
     },
     pillars: [
-      { step: "01", title: "Build once", body: "You build the agent against your CRM's APIs — chain editor, no code, ~7 minutes. One artifact to maintain forever." },
-      { step: "02", title: "Fan out", body: "Every restaurant, franchise location, and chain on your platform inherits the agent pre-scoped to their own tenant data. Day-one AI, zero per-customer setup." },
-      { step: "03", title: "Override per tenant", body: "Chains that want their own supplier list, thresholds, or auth get tenant-scoped config overrides — data, not code. The base agent stays single; variations stay isolated." },
+      {
+        step: "01",
+        title: "Lowest Friction to Start",
+        body: "No SDK. No prompt engineering. No CLI. If your CRM has REST endpoints, you are 7 minutes away from a working agent. We don't need a perfect API spec to get started — we just need the URLs.",
+      },
+      {
+        step: "02",
+        title: "Zero Code to Maintain",
+        body: "When your CRM updates, your AI shouldn't break. Because Sageion acts as a runtime (not a framework), it sits entirely outside your codebase. Change your database, add a field, ship a new UI — the agent adapts without a single line of code.",
+      },
+      {
+        step: "03",
+        title: "Effortless Fan-Out",
+        body: "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. 1 push updates all 4,200 downstream restaurants instantly.",
+      },
+    ],
+  },
+
+  // ⭐ NEW: Investor Hook
+  pitch: {
+    oneLiner:
+      "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into an AI distribution layer.",
+    whyNow:
+      "Frameworks like LangChain or Lyzr require a massive engineering lift. They are built for developers to write code. Sageion is built for SaaS vendors to scale. The market doesn't want more AI frameworks that require rewrites and maintenance. It wants a frictionless runtime that makes their existing product talk.",
+  },
+
+  // Sharpened to focus on "No rewrite"
+  crmAngle: {
+    heading: "Built for vertical SaaS CRMs, not for one restaurant",
+    intro: "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant — they sell infrastructure to thousands. Sageion is architected for that reality without asking you to rewrite a single line of code.",
+    points: [
+      {
+        title: "Your APIs, unmodified",
+        body: "Sageion consumes your existing REST endpoints — auth headers, path params, query strings, body payloads. Nothing is mocked, wrapped, or refactored.",
+      },
+      {
+        title: "Your customers, individually",
+        body: "Every app on your platform gets its own tenant-scoped agent. The same three APIs power a thousand distinct assistants without a thousand integration sprints.",
+      },
+      {
+        title: "Your governance, preserved",
+        body: "Per-app API keys, tenant-scoped auth configs, and OAuth connections flow through unchanged. Sageion never gets credentials it shouldn't.",
+      },
+      {
+        title: "Your team, freed up",
+        body: "No AI platform to build, no prompt engineering to maintain, no runtime to operate. The SaaS ships the feature; Sageion runs the underlying layer.",
+      },
+    ],
+  },
+
+  capabilityAtScale: {
+    heading: "What happens when the agent inherits 4,200 tenants",
+    intro: "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
+    points: [
+      {
+        title: "Tenant isolation at the API boundary",
+        body: "Every run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant leakage isn't a policy the model has to respect — it's a boundary the runtime enforces before any request goes out.",
+      },
+      {
+        title: "Your auth, your scopes, your governance",
+        body: "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture.",
+      },
+      {
+        title: "Rollout with zero coordination cost",
+        body: "Publishing a new version is one click. It propagates to every downstream tenant that hasn't pinned an override. Customized agents keep their customization; everyone else moves forward automatically.",
+      },
+      {
+        title: "Operate one agent, not thousands",
+        body: "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. Support, observability, and upgrades stay centralized — same as your existing product.",
+      },
     ],
   },
 
@@ -117,38 +191,6 @@ export const demo1 = {
     },
     auth: "OAuth connections are per-app and tenant-scoped. Every restaurant's Google account stays isolated to that restaurant. You can see which chains have attached which connectors from the admin panel — one glance shows the full audit trail.",
     positioning: "This is why we're a runtime, not a framework. Lyzr, LangChain, and CrewAI give you connectors to your own tools. We give your customers connectors to theirs — as part of the same runtime that powers the core API chain.",
-  },
-
-  pitch: {
-    oneLiner: "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into a distribution layer for AI.",
-    whyNow: "Every vertical SaaS — Petpuja, Posist, Rista, and hundreds of others — is being asked by their customers to ship an AI layer on top of their existing product. Building that layer in-house means months of platform engineering and a new AI team. Sageion gives them that layer as a product: their APIs go in, an agent comes out — and every one of their customers inherits it on day one.",
-  },
-
-  purpose: {
-    whatWeDo: "Sageion turns the APIs a vertical SaaS already exposes into a production-grade AI agent. Select your endpoints, wire the branches, publish. No SDK, no prompt engineering, no new infrastructure.",
-    whyItMatters: "For a vertical SaaS vendor, every customer gets an AI assistant on day one — powered by the vendor's own data and APIs, governed by the vendor's own auth and scope rules. For the end restaurant, the CRM they already pay for suddenly talks back.",
-  },
-
-  capabilityAtScale: {
-    heading: "What happens when the agent inherits 4,200 tenants",
-    intro: "Once the base agent is inherited by every downstream tenant, the operational math changes. Here is what Sageion takes off your team's plate.",
-    points: [
-      { title: "Tenant isolation at the API boundary", body: "Every run is bound to a tenant identity, an app scope, and a per-app API key. Cross-tenant leakage isn't a policy the model has to respect — it's a boundary the runtime enforces before any request goes out." },
-      { title: "Your auth, your scopes, your governance", body: "OAuth connections, secondary auth flows, per-app API keys, and attached tenant-wide resources flow through Sageion's scope-attachment model unchanged. Your security posture is your security posture." },
-      { title: "Rollout with zero coordination cost", body: "Publishing a new version is one click. It propagates to every downstream tenant that hasn't pinned an override. Customized agents keep their customization; everyone else moves forward automatically." },
-      { title: "Operate one agent, not thousands", body: "You don't provision one AI stack per customer. You provision one agent per workflow and the platform fans it out. Support, observability, and upgrades stay centralized — same as your existing product." },
-    ],
-  },
-
-  crmAngle: {
-    heading: "Built for vertical SaaS CRMs, not for one restaurant",
-    intro: "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant — they sell infrastructure to thousands. Sageion is architected for that reality.",
-    points: [
-      { title: "Your APIs, unmodified", body: "Sageion consumes your existing REST endpoints — auth headers, path params, query strings, body payloads. Nothing is mocked, wrapped, or refactored." },
-      { title: "Your customers, individually", body: "Every app on your platform gets its own tenant-scoped agent. The same three APIs power a thousand distinct assistants without a thousand integration sprints." },
-      { title: "Your governance, preserved", body: "Per-app API keys, tenant-scoped auth configs, and OAuth connections flow through unchanged. Sageion never gets credentials it shouldn't." },
-      { title: "Your team, freed up", body: "No AI platform to build, no prompt engineering to maintain, no runtime to operate. The SaaS ships the feature; Sageion runs the underlying layer." },
-    ],
   },
 
   referenceCrm: {

@@ -72,7 +72,7 @@ export default function DemoDetail({ id }) {
 
   const tryMe = () => {
     localStorage.setItem("active_demo", id);
-    window.location.assign("/owner");
+    window.location.assign("/owner/inventory");
   };
 
   return (
