@@ -1,12 +1,12 @@
 export const demo1 = {
   id: "demo1",
-  name: "Demo 1 — Inventory & Purchase Orders",
+  name: "Inventory & Purchase Orders (Simple Flow)",
   description:
-    "How three reference-CRM API endpoints become a working AI agent — configured in under 10 minutes, zero code.",
+    "Configure one basic, high-value workflow in under 10 minutes with zero code: Chef asks for stock → AI creates PO → Manager approves.",
   status: "active",
 
   guide: {
-    title: "Welcome to the Inventory & PO Demo",
+    title: "Inventory Auto-Reorder Workflow",
     genericInfo: "In a busy kitchen, the person using the stock (Chef), ordering it (Manager), and approving the budget (Owner) are usually different people. This demo shows how Sageion AI bridges that gap by orchestrating your existing CRM APIs into a seamless conversation.",
     workflows: [
       {
@@ -79,13 +79,13 @@ export const demo1 = {
     },
   ],
 
-  // ⭐ NEW: Direct comparison to competitors (Frameworks vs. Runtime)
+  // ⭐ Direct comparison: The old way vs. The Sageion way
   purpose: {
     whatWeDo: "The Old Way (Framework Trap): To build this, you'd normally need to hire an AI team, force your engineers to write wrapper code, generate a strict OpenAPI spec, and pray it doesn't break the next time you update your database schema.",
     whyItMatters: "The Sageion Way (The Runtime): We don't ask you to rewrite your product. We don't need an OpenAPI spec just to start. We ingest your existing endpoints as-is, and output a production-grade AI agent. You keep your code, your team, and your exact security posture — we just add the AI layer.",
   },
 
-  // ⭐ NEW: The structural moat rewritten for investors
+  // ⭐ The structural moat (Why investors should care)
   moat: {
     eyebrow: "The structural advantage",
     headline: "You don't integrate AI. You inherit it.",
@@ -115,7 +115,7 @@ export const demo1 = {
     ],
   },
 
-  // ⭐ NEW: Investor Hook
+  // ⭐ The Investor Hook (YC / Pitch ready)
   pitch: {
     oneLiner:
       "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into an AI distribution layer.",
