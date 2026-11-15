@@ -23,17 +23,16 @@
 
 export const SAGEION_DEMO_APPS = {
   demo1: {
-    SAGEION_APP_NAME: "demo_booking19",
-    SAGEION_APP_ID: "APP-mwg8lt4i-d7feo8",
-    SAGEION_API_KEY: "bWlueV9fU0VQUkFUT1JfX2RlbW9fYm9va2luZzE5",
+    SAGEION_APP_NAME: "business-management-demo",
+    SAGEION_APP_ID: "APP-mwdzm0h2-7dt86s",
+    SAGEION_API_KEY: "c2FnZWlvbmRlbW9fX1NFUFJBVE9SX19idXNpbmVzcy1tYW5hZ2VtZW50LWRlbW8=",
     SAGEION_REGION: "US",
     // API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
-    API_BASE_URL: "http://122.160.157.99:3001/api",
-    API_BASE_full_URL: "http://122.160.157.99:3001",
+    API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
+    API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
     // API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
   }
 };
-
 
 // Convenience: is there a Sageion app configured for this demo id?
 export function hasSageionApp(demoId) {
