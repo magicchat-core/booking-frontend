@@ -34,7 +34,6 @@ export const SAGEION_DEMO_APPS = {
   }
 };
 
-
 // Convenience: is there a Sageion app configured for this demo id?
 export function hasSageionApp(demoId) {
   return Boolean(SAGEION_DEMO_APPS[demoId]);
