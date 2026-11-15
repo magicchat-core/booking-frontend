@@ -3,11 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { getDemo } from "@/demos"; // ⭐ Import the dynamic registry
+import { getDemo } from "@/demos";
 
-// ============================================================
-// Small helpers — kept inline so the file stays single-file
-// ============================================================
 const METHOD_COLOR = {
   GET: { bg: "#dcfce7", fg: "#166534", border: "#bbf7d0" },
   POST: { bg: "#dbeafe", fg: "#1e40af", border: "#bfdbfe" },
@@ -41,15 +38,9 @@ function MethodPill({ method }) {
   );
 }
 
-// ============================================================
-// Demo Detail Wrapper
-// ============================================================
 export default function DemoDetail({ id }) {
   const router = useRouter();
-  
-  // ⭐ Fetch the demo dynamically from our new folder structure
   const demo = getDemo(id); 
-
   const [openAccordion, setOpenAccordion] = useState(0);
 
   if (!demo) {
@@ -72,6 +63,7 @@ export default function DemoDetail({ id }) {
 
   const tryMe = () => {
     localStorage.setItem("active_demo", id);
+    // Navigate to the first step's route (or inventory by default for this demo)
     window.location.assign("/owner/inventory");
   };
 
@@ -126,6 +118,7 @@ export default function DemoDetail({ id }) {
               {demo.description}
             </p>
           </div>
+          {/* ⭐ UPDATED CTA BUTTON */}
           <button
             className="btn btn-primary"
             onClick={tryMe}
@@ -136,7 +129,7 @@ export default function DemoDetail({ id }) {
               flexShrink: 0,
             }}
           >
-            Try me →
+            Launch Interactive Demo →
           </button>
         </div>
 
@@ -1416,6 +1409,7 @@ export default function DemoDetail({ id }) {
             Open the interactive demo and talk to the agent that these three
             APIs power.
           </p>
+          {/* ⭐ UPDATED CTA BUTTON */}
           <button
             className="btn btn-primary"
             onClick={tryMe}
@@ -1426,7 +1420,7 @@ export default function DemoDetail({ id }) {
               marginTop: 4,
             }}
           >
-            Try me →
+            Launch Interactive Demo →
           </button>
         </div>
       </div>
