@@ -49,7 +49,7 @@ export const demo1 = {
   buildWalkthrough: {
     title: "See how this agent was built",
     subtitle: "3 API endpoints selected, 2 branch mappings wired, 1 chain published. No editor, no CLI, no YAML.",
-    videoUrl: "https://youtube.com/watch?v=8PYsM8IX-3g&feature=shared",
+    videoUrl: "https://youtube.com/watch?v=8PYsM8IX-3g&feature=shared", // 👈 Your link is safely stored here
     videoPlaceholder: "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
     facts: [
       { label: "APIs used", value: "3 CRM endpoints" },
@@ -79,13 +79,11 @@ export const demo1 = {
     },
   ],
 
-  // ⭐ Direct comparison: The old way vs. The Sageion way
   purpose: {
     whatWeDo: "The Old Way (Framework Trap): To build this, you'd normally need to hire an AI team, force your engineers to write wrapper code, generate a strict OpenAPI spec, and pray it doesn't break the next time you update your database schema.",
     whyItMatters: "The Sageion Way (The Runtime): We don't ask you to rewrite your product. We don't need an OpenAPI spec just to start. We ingest your existing endpoints as-is, and output a production-grade AI agent. You keep your code, your team, and your exact security posture — we just add the AI layer.",
   },
 
-  // ⭐ The structural moat (Why investors should care)
   moat: {
     eyebrow: "The structural advantage",
     headline: "You don't integrate AI. You inherit it.",
@@ -115,7 +113,6 @@ export const demo1 = {
     ],
   },
 
-  // ⭐ The Investor Hook (YC / Pitch ready)
   pitch: {
     oneLiner:
       "Vertical SaaS CRMs already own the data. Sageion turns their raw APIs into an AI distribution layer.",
@@ -123,7 +120,6 @@ export const demo1 = {
       "Frameworks like LangChain or Lyzr require a massive engineering lift. They are built for developers to write code. Sageion is built for SaaS vendors to scale. The market doesn't want more AI frameworks that require rewrites and maintenance. It wants a frictionless runtime that makes their existing product talk.",
   },
 
-  // Sharpened to focus on "No rewrite"
   crmAngle: {
     heading: "Built for vertical SaaS CRMs, not for one restaurant",
     intro: "Petpuja, Posist, Rista, and the hundreds of other vertical SaaS CRMs don't sell software to one restaurant — they sell infrastructure to thousands. Sageion is architected for that reality without asking you to rewrite a single line of code.",
