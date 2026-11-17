@@ -49,7 +49,7 @@ export const demo1 = {
   buildWalkthrough: {
     title: "See how this agent was built",
     subtitle: "3 API endpoints selected, 2 branch mappings wired, 1 chain published. No editor, no CLI, no YAML.",
-    videoUrl: null,
+    videoUrl: "https://youtube.com/watch?v=8PYsM8IX-3g&feature=shared",
     videoPlaceholder: "YouTube walkthrough coming soon — drop the video URL in `demo.buildWalkthrough.videoUrl`",
     facts: [
       { label: "APIs used", value: "3 CRM endpoints" },
