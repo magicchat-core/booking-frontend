@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import VideoPlayer from "@/components/VideoPlayer";
 
 export default function DemoView({ demo }) {
@@ -12,12 +13,21 @@ export default function DemoView({ demo }) {
       
       {/* Top Navigation */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <button style={{ background: 'transparent', border: '1px solid #333', color: '#e5e5e5', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer' }}>
-          ← All demos
-        </button>
-        <button style={{ background: '#f59e0b', border: 'none', color: '#000', padding: '0.75rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>
-          Launch Interactive Demo →
-        </button>
+        
+        {/* Back to All Demos */}
+        <Link href="/demos" style={{ textDecoration: 'none' }}>
+          <button style={{ background: 'transparent', border: '1px solid #333', color: '#e5e5e5', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer' }}>
+            ← All demos
+          </button>
+        </Link>
+
+        {/* Launch Interactive Demo */}
+        <Link href="/owner/inventory" style={{ textDecoration: 'none' }}>
+          <button style={{ background: '#f59e0b', border: 'none', color: '#000', padding: '0.75rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>
+            Launch Interactive Demo →
+          </button>
+        </Link>
+        
       </div>
 
       {/* Header */}
