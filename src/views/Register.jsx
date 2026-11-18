@@ -1,14 +1,16 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/api/AuthContext';
+import api from '@/api/client';
 
-export default function Register() {
-  const { sendOtp } = useAuth();
+function RegisterForm() {
   const router = useRouter();
-  
+  const searchParams = useSearchParams();
+  const redirectUrl = searchParams.get('redirect') || '/owner/inventory';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,10 +20,11 @@ export default function Register() {
     e.preventDefault();
     setError(''); setBusy(true);
     try {
-      // Trigger the OTP email from the backend
-      await sendOtp(email);
-      // Move to the OTP verification screen, passing the email in the URL
-      router.push(`/verify-otp?email=${encodeURIComponent(email)}`);
+      // Assuming sendOtp is handled via API directly, or you can add it to AuthContext
+      await api.post('/auth/send-otp', { email });
+      
+      // Move to OTP screen, passing email AND redirect
+      router.push(`/verify-otp?email=${encodeURIComponent(email)}&redirect=${encodeURIComponent(redirectUrl)}`);
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {
@@ -65,10 +68,22 @@ export default function Register() {
           {busy ? 'Sending Code…' : 'Send Verification Code'}
         </button>
 
-        <Link href="/login" className="btn btn-ghost" style={{ textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: 10 }}>
+        <Link 
+          href={`/login?redirect=${encodeURIComponent(redirectUrl)}`} 
+          className="btn btn-ghost" 
+          style={{ textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: 10 }}
+        >
           ← Back to Sign in
         </Link>
       </form>
     </div>
+  );
+}
+
+export default function Register() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+      <RegisterForm />
+    </Suspense>
   );
 }

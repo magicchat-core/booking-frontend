@@ -21,6 +21,8 @@
 // validates by tenant + origin allowlist. Do NOT put any server-only
 // secret here.
 
+
+
 export const SAGEION_DEMO_APPS = {
   demo1: {
     SAGEION_APP_NAME: "demo1",
@@ -33,6 +35,7 @@ export const SAGEION_DEMO_APPS = {
     // API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
   }
 };
+
 
 // Convenience: is there a Sageion app configured for this demo id?
 export function hasSageionApp(demoId) {

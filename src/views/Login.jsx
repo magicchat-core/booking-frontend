@@ -1,14 +1,17 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/api/AuthContext';
 
-export default function Login() {
+function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
   
+  const redirectUrl = searchParams.get('redirect') || '/owner/inventory';
+
   const [email, setEmail] = useState('admin@crm.local');
   const [password, setPassword] = useState('secret123');
   const [error, setError] = useState('');
@@ -19,7 +22,7 @@ export default function Login() {
     setError(''); setBusy(true);
     try {
       await login(email, password);
-      router.push('/');
+      router.push(redirectUrl);
     } catch (err) {
       setError(err.response?.data?.error || err.message);
     } finally {
@@ -60,8 +63,9 @@ export default function Login() {
           {busy ? '…' : 'Sign in'}
         </button>
 
+        {/* ⭐ Link to dedicated register page, passing the redirect param */}
         <Link 
-          href="/register" 
+          href={`/register?redirect=${encodeURIComponent(redirectUrl)}`} 
           className="btn btn-ghost" 
           style={{ textAlign: 'center', textDecoration: 'none', display: 'block', marginTop: 10 }}
         >
@@ -69,5 +73,13 @@ export default function Login() {
         </Link>
       </form>
     </div>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
