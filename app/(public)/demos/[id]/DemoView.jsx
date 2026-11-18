@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import VideoPlayer from "@/components/VideoPlayer";
 import WorkflowVisualizer from "@/components/WorkflowVisualizer";
 
 export default function DemoView({ demo }) {
@@ -13,21 +14,16 @@ export default function DemoView({ demo }) {
       
       {/* Top Navigation */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        
-        {/* Back to All Demos */}
         <Link href="/demos" style={{ textDecoration: 'none' }}>
           <button style={{ background: 'transparent', border: '1px solid #333', color: '#e5e5e5', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer' }}>
             ← All demos
           </button>
         </Link>
-
-        {/* Launch Interactive Demo */}
         <Link href="/owner/inventory" style={{ textDecoration: 'none' }}>
           <button style={{ background: '#f59e0b', border: 'none', color: '#000', padding: '0.75rem 1.5rem', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer' }}>
             Launch Interactive Demo →
           </button>
         </Link>
-        
       </div>
 
       {/* Header */}
@@ -36,12 +32,19 @@ export default function DemoView({ demo }) {
         <p style={{ color: '#a3a3a3', maxWidth: '800px', lineHeight: '1.6' }}>{demo.description}</p>
       </div>
 
-      {/* ⭐ Full-width interactive architecture hero */}
-      {demo.workflowGraph && (
-        <div style={{ marginBottom: '2rem' }}>
-          <WorkflowVisualizer data={demo.workflowGraph} />
-        </div>
-      )}
+      {/* Full-width Hero: Video + Interactive Architecture */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '2rem' }}>
+        {demo.buildWalkthrough?.videoUrl && (
+          <div style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
+            <VideoPlayer url={demo.buildWalkthrough.videoUrl} />
+          </div>
+        )}
+        {demo.workflowGraph && (
+          <div style={{ width: '100%' }}>
+            <WorkflowVisualizer data={demo.workflowGraph} />
+          </div>
+        )}
+      </div>
 
       {/* Main Grid — Build Walkthrough | What the Agent Does */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
@@ -56,7 +59,6 @@ export default function DemoView({ demo }) {
             {demo.buildWalkthrough.subtitle}
           </p>
 
-          {/* Facts Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '1.5rem' }}>
             {demo.buildWalkthrough.facts.map((fact, idx) => (
               <div key={idx} style={{ border: '1px solid #262626', borderRadius: '8px', padding: '1rem', textAlign: 'center' }}>
@@ -66,7 +68,6 @@ export default function DemoView({ demo }) {
             ))}
           </div>
 
-          {/* APIs Wired */}
           <div>
             <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#a3a3a3', marginBottom: '0.5rem', fontWeight: 'bold' }}>
               APIs Wired in the Agent
@@ -119,18 +120,94 @@ export default function DemoView({ demo }) {
         </div>
       </div>
 
-      {/* Bottom Section: Purpose */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', backgroundColor: '#121212', borderRadius: '12px', padding: '1.5rem', border: '1px solid #262626' }}>
-        <div>
-          <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#a3a3a3', marginBottom: '0.5rem', fontWeight: 'bold' }}>What We Do</p>
-          <p style={{ color: '#e5e5e5', fontSize: '0.9rem', lineHeight: '1.6' }}>{demo.purpose.whatWeDo}</p>
-        </div>
-        <div>
-          <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#a3a3a3', marginBottom: '0.5rem', fontWeight: 'bold' }}>Why It Matters</p>
-          <p style={{ color: '#e5e5e5', fontSize: '0.9rem', lineHeight: '1.6' }}>{demo.purpose.whyItMatters}</p>
-        </div>
+      {/* =========================================================
+          Bottom Section: The High-Contrast Comparison
+          ========================================================= */}
+      <div style={{ marginTop: '5rem', marginBottom: '3rem', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#ffffff', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+          What used to take months can now be done in days.
+        </h2>
+        <p style={{ color: '#94a3b8', fontSize: '1.15rem', maxWidth: '800px', margin: '0 auto', lineHeight: '1.6' }}>
+          You already built the engine (your mature backend). We provide the rocket fuel (the AI agent runtime). Stop rebuilding the infrastructure to fly.
+        </p>
       </div>
 
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: '1fr 1fr', 
+        gap: '2rem', 
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
+        
+        {/* The Old Way (Pain Point) */}
+        <div style={{ 
+          backgroundColor: '#121212',
+          border: '1px solid #262626', 
+          borderRadius: '16px', 
+          padding: '2.5rem',
+          transition: 'border-color 0.2s',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444' }}>
+              ✕
+            </div>
+            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', margin: 0, fontWeight: '600' }}>
+              The Old Way (Framework Trap)
+            </h3>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Data migration required</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>You have to sync your CRM's database to an external vector store just to make the AI work.</div>
+            </div>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Silent failures pile up</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>LLMs guess based on probability. When they get a price or stock count wrong, they fail silently and slowly pile up as tickets you never expected.</div>
+            </div>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Wrapper code maintenance</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>When your schema changes, you have to rewrite your integration code, redeploy your backend, and hope nothing breaks.</div>
+            </div>
+          </div>
+        </div>
+
+        {/* The Sageion Way (Solution) */}
+        <div style={{ 
+          backgroundColor: '#121212',
+          border: '1px solid rgba(16, 185, 129, 0.3)', 
+          borderRadius: '16px', 
+          padding: '2.5rem',
+          boxShadow: '0 0 40px rgba(16, 185, 129, 0.05)',
+          transition: 'border-color 0.2s',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#10b981' }}>
+              ✓
+            </div>
+            <h3 style={{ fontSize: '1.25rem', color: '#ffffff', margin: 0, fontWeight: '600' }}>
+              The Sageion Way (The Runtime)
+            </h3>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Your data stays yours</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>We don't store personal data. We only map a <code style={{ backgroundColor: '#262626', padding: '0.1rem 0.3rem', borderRadius: '4px', fontFamily: 'monospace', color: '#e5e5e5' }}>uid</code>. You can debug explicit request/response logs via the Admin UI, but everything else remains at your API boundary.</div>
+            </div>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Zero hallucinations</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>We don't guess. The AI queries your existing REST APIs directly, guaranteeing that the user sees the exact live data from your database.</div>
+            </div>
+            <div>
+              <div style={{ color: '#ffffff', fontWeight: '600', marginBottom: '0.25rem' }}>Click, don't code</div>
+              <div style={{ color: '#a3a3a3', fontSize: '0.95rem', lineHeight: '1.5' }}>When your schema changes, just update the mapping in the Sageion Admin UI. No code deployments, no wrapper rewrites.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }
