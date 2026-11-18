@@ -29,8 +29,8 @@ export default function VideoPlayer({ url }) {
         position: "relative" 
       }}
     >
-      {/* We add a style block to ensure the inner iframe and wrapper fill the space */}
-      <style>{`
+      {/* ⭐ FIX: Use dangerouslySetInnerHTML to bypass React's text escaping */}
+      <style dangerouslySetInnerHTML={{ __html: `
         .video-container iframe,
         .video-container > div {
           width: 100% !important;
@@ -39,7 +39,7 @@ export default function VideoPlayer({ url }) {
           top: 0 !important;
           left: 0 !important;
         }
-      `}</style>
+      `}} />
       
       <div className="video-container" style={{ width: "100%", height: "100%" }}>
         <YouTubePlayer videoId={videoId} title="Sageion Demo Walkthrough" />
