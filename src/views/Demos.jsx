@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { getAllDemos } from "@/demos";
+import DemoBookingModal from "@/components/DemoBookingModal";
 
 export default function Demos() {
   const demos = getAllDemos();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const features = [
     {
@@ -91,30 +94,76 @@ export default function Demos() {
         </p>
       </div>
 
-      {/* ⭐ 2. VALUE PROPS: The 12-Card Grid */}
+      {/* ⭐ 2. NEW HIGHLIGHT SECTION: The Win-Win-Win Proposition (Moved up) */}
       <div style={{ 
-        display: "grid", 
-        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", 
-        gap: "20px", 
-        marginBottom: "64px" 
+        background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)", 
+        borderRadius: "20px", padding: "clamp(32px, 5vw, 56px)", 
+        border: "1px solid #334155",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+        marginBottom: "80px"
       }}>
-        {features.map((prop, i) => (
-          <div key={i} style={{ 
-            padding: "24px", 
-            background: "#1e293b",
-            border: "1px solid #334155", 
-            borderRadius: "12px", 
-            boxShadow: "0 4px 6px -1px rgba(0,0,0,0.2)",
-          }}>
-            <div style={{ fontSize: "28px", marginBottom: "14px" }}>{prop.icon}</div>
-            <div style={{ fontSize: "16px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>
-              {prop.title}
-            </div>
-            <div style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.6" }}>
-              {prop.desc}
-            </div>
+        
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: "800", margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2 }}>
+            You already built the engine. We provide the rocket fuel.
+          </h2>
+          <p style={{ fontSize: "16px", color: "#cbd5e1", maxWidth: "800px", margin: "0 auto", lineHeight: "1.6" }}>
+            Your mature Restaurant CRM backend is the fuel. We give you the AI ship. Together, we create a <strong>Win-Win-Win</strong> ecosystem that turns your platform into a premium AI profit center.
+          </p>
+        </div>
+
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", 
+          gap: "24px",
+          marginBottom: "40px"
+        }}>
+          {/* Win 1 */}
+          <div style={{ padding: "24px", background: "rgba(59,130,246,0.05)", border: "1px solid rgba(59,130,246,0.2)", borderRadius: "12px" }}>
+            <div style={{ fontSize: "24px", marginBottom: "12px" }}>🚀</div>
+            <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for You</h3>
+            <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
+              Skip the custom AI build. You provide the APIs, we provide the runtime. You instantly add a premium white-label feature, add your profit margin, and start billing seamlessly.
+            </p>
           </div>
-        ))}
+
+          {/* Win 2 */}
+          <div style={{ padding: "24px", background: "rgba(16,185,129,0.05)", border: "1px solid rgba(16,185,129,0.2)", borderRadius: "12px" }}>
+            <div style={{ fontSize: "24px", marginBottom: "12px" }}>🍽️</div>
+            <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for Restaurants</h3>
+            <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
+              They get a zero-hallucination AI agent that actually does the grunt work (inventory, POs, orders) grounded in their live data. And they only pay as they use.
+            </p>
+          </div>
+
+          {/* Win 3 */}
+          <div style={{ padding: "24px", background: "rgba(245,158,11,0.05)", border: "1px solid rgba(245,158,11,0.2)", borderRadius: "12px" }}>
+            <div style={{ fontSize: "24px", marginBottom: "12px" }}>⚙️</div>
+            <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for Sageion</h3>
+            <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
+              We power the ecosystem. As your restaurants scale their AI usage, our infrastructure scales with them, making the runtime more intelligent and robust.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", flexWrap: "wrap", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "32px" }}>
+          <p style={{ margin: 0, fontSize: "16px", color: "#e2e8f0", fontWeight: "500" }}>
+            Want to see this built against your actual CRM?
+          </p>
+          <button 
+            onClick={() => setIsBookingModalOpen(true)}
+            style={{ 
+              background: "#3b82f6", color: "#ffffff", padding: "12px 24px", 
+              borderRadius: "8px", fontWeight: "700", fontSize: "15px", 
+              border: "none", cursor: "pointer", transition: "all 0.2s",
+              boxShadow: "0 4px 12px rgba(59,130,246,0.3)"
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+            onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
+          >
+            Book a 15-Min Demo →
+          </button>
+        </div>
       </div>
 
       {/* ⭐ 3. DEMO CARDS: The Interactive Offer */}
@@ -172,68 +221,45 @@ export default function Demos() {
         </div>
       </div>
 
-      {/* ⭐ 4. THE TWO-PART BOTTOM SELL */}
-      <div style={{ 
-        background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)", 
-        borderRadius: "20px", padding: "clamp(32px, 5vw, 56px)", 
-        border: "1px solid #334155",
-        boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
-      }}>
+      {/* ⭐ 4. VALUE PROPS: The 12-Card Grid */}
+      <div style={{ marginBottom: "64px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+          <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
+            Why it works
+          </h2>
+          <div style={{ height: "1px", background: "#334155", flex: 1 }} />
+        </div>
+        
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", 
-          gap: "48px",
-          alignItems: "center"
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", 
+          gap: "20px" 
         }}>
-          
-          {/* Left Column: The Immediate Hook (Custom Demo) */}
-          <div>
-            <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: "800", margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2 }}>
-              Want this for your CRM?
-            </h2>
-            <p style={{ fontSize: "16px", color: "#cbd5e1", margin: "0 0 24px 0", lineHeight: "1.6" }}>
-              We built this against a reference CRM, but yours can look exactly like your product. Share sandbox credentials for one flow, and we'll build a live, customized demo in <strong>7–14 days</strong>.
-            </p>
-            <a 
-              href="mailto:founders@sageion.com"
-              style={{ 
-                background: "#3b82f6", color: "#ffffff", padding: "14px 28px", 
-                borderRadius: "8px", fontWeight: "700", fontSize: "16px", 
-                textDecoration: "none", display: "inline-block",
-                boxShadow: "0 4px 12px rgba(59,130,246,0.3)", transition: "all 0.2s"
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "translateY(0)"}
-            >
-              Book a 15-Min Demo →
-            </a>
-            <div style={{ fontSize: "13px", color: "#64748b", marginTop: "12px", fontWeight: "500" }}>
-              No integration sprint. No AI team required.
-            </div>
-          </div>
-
-          {/* Vertical Divider (hidden on mobile) */}
-          <div style={{ display: "none", width: "1px", height: "100%", background: "rgba(255,255,255,0.1)", margin: "0 auto" }} className="desktop-divider" />
-
-          {/* Right Column: The Long-Term Goldmine (White-label) */}
-          <div>
-            <div style={{ 
-              display: "inline-block", padding: "4px 12px", background: "rgba(59,130,246,0.2)", 
-              color: "#60a5fa", fontWeight: "700", fontSize: "12px", 
-              borderRadius: "100px", marginBottom: "16px", letterSpacing: "0.05em"
+          {features.map((prop, i) => (
+            <div key={i} style={{ 
+              padding: "24px", 
+              background: "#1e293b",
+              border: "1px solid #334155", 
+              borderRadius: "12px", 
+              boxShadow: "0 4px 6px -1px rgba(0,0,0,0.2)",
             }}>
-              THE GOLDMINE ADD-ON
+              <div style={{ fontSize: "28px", marginBottom: "14px" }}>{prop.icon}</div>
+              <div style={{ fontSize: "16px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>
+                {prop.title}
+              </div>
+              <div style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.6" }}>
+                {prop.desc}
+              </div>
             </div>
-            <h3 style={{ fontSize: "20px", fontWeight: "700", margin: "0 0 12px 0", color: "#f8fafc" }}>
-              Turn your CRM into an AI profit center.
-            </h3>
-            <p style={{ fontSize: "15px", color: "#cbd5e1", margin: 0, lineHeight: "1.6" }}>
-              We provide the runtime, the generative UI, and the per-tenant billing engine. You simply add your profit margin and immediately start selling this as a premium white-label add-on to your restaurant customers.
-            </p>
-          </div>
-
+          ))}
         </div>
       </div>
+
+      {/* ⭐ RENDER THE MODAL */}
+      <DemoBookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
 
       <style jsx>{`
         @media (min-width: 768px) {
