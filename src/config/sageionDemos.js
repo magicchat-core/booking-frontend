@@ -21,18 +21,21 @@
 // validates by tenant + origin allowlist. Do NOT put any server-only
 // secret here.
 
+
+
 export const SAGEION_DEMO_APPS = {
   demo1: {
-    SAGEION_APP_NAME: "demo_booking23",
-    SAGEION_APP_ID: "APP-mwm8n3tw-pabwxf",
-    SAGEION_API_KEY: "cGV0cHVqYV9fU0VQUkFUT1JfX2RlbW9fYm9va2luZzIz",
+    SAGEION_APP_NAME: "demo1",
+    SAGEION_APP_ID: "APP-mwjh9fzt-v8vc0y",
+    SAGEION_API_KEY: "c2FnZWlvbl9fU0VQUkFUT1JfX2RlbW8x",
     SAGEION_REGION: "US",
     // API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
-    API_BASE_URL: "http://localhost:3001/api",
-    API_BASE_full_URL: "http://localhost:3001",
+    API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
+    API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
     // API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
   }
 };
+
 
 // Convenience: is there a Sageion app configured for this demo id?
 export function hasSageionApp(demoId) {
