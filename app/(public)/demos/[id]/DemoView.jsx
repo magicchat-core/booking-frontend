@@ -1,9 +1,9 @@
-// app/demos/[id]/DemoView.jsx
+// app/(public)/demos/[id]/DemoView.jsx
 "use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
-import VideoPlayer from "@/components/VideoPlayer";
+import WorkflowVisualizer from "@/components/WorkflowVisualizer";
 
 export default function DemoView({ demo }) {
   const [openAccordion, setOpenAccordion] = useState(0);
@@ -36,7 +36,14 @@ export default function DemoView({ demo }) {
         <p style={{ color: '#a3a3a3', maxWidth: '800px', lineHeight: '1.6' }}>{demo.description}</p>
       </div>
 
-      {/* Main Grid */}
+      {/* ⭐ Full-width interactive architecture hero */}
+      {demo.workflowGraph && (
+        <div style={{ marginBottom: '2rem' }}>
+          <WorkflowVisualizer data={demo.workflowGraph} />
+        </div>
+      )}
+
+      {/* Main Grid — Build Walkthrough | What the Agent Does */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
         
         {/* Left Column: Build Walkthrough */}
@@ -48,11 +55,6 @@ export default function DemoView({ demo }) {
           <p style={{ color: '#a3a3a3', fontSize: '0.9rem', marginBottom: '1.5rem', lineHeight: '1.5' }}>
             {demo.buildWalkthrough.subtitle}
           </p>
-
-          {/* 🎥 THE VIDEO PLAYER */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <VideoPlayer url={demo.buildWalkthrough.videoUrl} />
-          </div>
 
           {/* Facts Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem', marginBottom: '1.5rem' }}>

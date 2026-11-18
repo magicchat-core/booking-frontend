@@ -46,6 +46,78 @@ export const demo1 = {
     { title: "Raise a purchase order", content: "If stock is low, the agent maps the response into a PO payload — supplier, material, quantity, unit — and calls the purchase-orders endpoint. A real PO is created in the CRM, not a mock." },
     { title: "Approve order & update inventory", content: "Once the supplier confirms, the agent calls the approve endpoint. The CRM marks the PO approved and increments stock in the same transaction. Three APIs, one conversation." },
   ],
+ 
+  
+    // ----------------------------------------------------------------
+  // workflowGraph — the source of truth for WorkflowVisualizer.
+  //
+  // Derived by hand from:
+  //   dev-ApiChains         chain_id = ceb2bfad-11cb-498e-94c0-15a95630633d
+  //   dev-ApiConfigs        api_config_id ∈ { 1f7de5e0…, 8810140e…, 9a9f4e37… }
+  //   dev-FinalApiUiUxResponse  config_id ∈ { 1f7de5e0…, 8810140e…, 9a9f4e37… }
+  //
+  // Edge semantics:
+  //   kind: "wired"  → the chain has branches[status] pointing at `to`
+  //   kind: "ghost"  → a UI template exists for `status`, but the chain
+  //                    has no branches[status] entry. Drawn as a dashed
+  //                    stub ending in a ⚠ "no branch configured" badge.
+  //   kind: "end"    → terminal node for the happy path.
+  //
+  // To regenerate from a fresh DynamoDB dump, see scripts/chain-to-graph.js.
+  // ----------------------------------------------------------------
+  workflowGraph: {
+    title: "Inventory Auto-Reorder Chain",
+    subtitle: "apichain1",
+    chain_id: "ceb2bfad-11cb-498e-94c0-15a95630633d",
+    tenant_id: "petpuja",
+    start: "n1",
+    end_label: "Inventory updated",
+
+    nodes: [
+      {
+        id: "n1",
+        user_label: "Checking INventory",
+        method: "GET",
+        path: "/inventory/rice",
+        api_config_id: "1f7de5e0-548c-418c-9f33-592b1a08fc9c",
+        manual: false,
+        outputs: ["200", "202"],
+        resp_snippet:
+          "current_qty - {{ response_data.current_qty }}\nlow_threshold - {{ response_data.low_threshold }}",
+      },
+      {
+        id: "n2",
+        user_label: "create purchase order",
+        method: "POST",
+        path: "/purchase-orders",
+        api_config_id: "8810140e-3fb6-4ed4-b07c-22b5b550c349",
+        manual: true,
+        outputs: ["201"],
+        resp_snippet:
+          "po_id - {{ response_data.po_id }}\nstatus - {{ response_data.status }}",
+      },
+      {
+        id: "n3",
+        user_label: "approval stage.",
+        method: "PATCH",
+        path: "/purchase-orders/{{po_id}}/approve",
+        api_config_id: "9a9f4e37-c619-4624-82c3-e9be1077f99b",
+        manual: false,
+        outputs: ["200"],
+        resp_snippet:
+          "success - {{ response_data.success }}\ninventory_updated - {{ response_data.inventory_updated }}",
+      },
+    ],
+
+    edges: [
+      { from: "n1", to: "n2", status: "200", label: "stock returned", kind: "wired" },
+      { from: "n1", to: null, status: "202", label: "stock ok",       kind: "ghost" },
+      { from: "n2", to: "n3", status: "201", label: "PO created",     kind: "wired" },
+      { from: "n3", to: null, status: "200", label: "approved",       kind: "end"   },
+    ],
+  },
+  
+
   purpose: {
     whatWeDo: "The Old Way (Framework Trap): To build this, you'd normally need to hire an AI team, force your engineers to write wrapper code, generate a strict OpenAPI spec, and pray it doesn't break the next time you update your database schema.",
     whyItMatters: "The Sageion Way (The Runtime): We don't ask you to rewrite your product. We don't need an OpenAPI spec just to start. We ingest your existing endpoints as-is, and output a production-grade AI agent. You keep your code, your team, and your exact security posture — we just add the AI layer.",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getDemo } from "@/demos";
+import WorkflowVisualizer from "../components/WorkflowVisualizer";
 
 const METHOD_COLOR = {
   GET: { bg: "#dcfce7", fg: "#166534", border: "#bbf7d0" },
@@ -41,6 +42,8 @@ function MethodPill({ method }) {
 export default function DemoDetail({ id }) {
   const router = useRouter();
   const demo = getDemo(id); 
+
+  console.log("demodrer",demo)
   const [openAccordion, setOpenAccordion] = useState(0);
 
   if (!demo) {
@@ -118,7 +121,6 @@ export default function DemoDetail({ id }) {
               {demo.description}
             </p>
           </div>
-          {/* ⭐ UPDATED CTA BUTTON */}
           <button
             className="btn btn-primary"
             onClick={tryMe}
@@ -134,7 +136,7 @@ export default function DemoDetail({ id }) {
         </div>
 
         {/* ============================================
-            B. HERO — Video (left) + Workflows (right)
+            B. HERO — Visualizer (left) + Workflows (right)
             ============================================ */}
         <div
           style={{
@@ -145,7 +147,7 @@ export default function DemoDetail({ id }) {
           }}
           className="hero-grid"
         >
-          {/* B1 — VIDEO COLUMN */}
+          {/* B1 — VISUALIZER COLUMN */}
           {demo.buildWalkthrough && (
             <div
               style={{
@@ -169,7 +171,7 @@ export default function DemoDetail({ id }) {
                     marginBottom: 4,
                   }}
                 >
-                  Build walkthrough
+                  Interactive Architecture
                 </div>
                 <h2
                   style={{
@@ -193,61 +195,14 @@ export default function DemoDetail({ id }) {
                 </p>
               </div>
 
-              {/* Video placeholder */}
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "16 / 9",
-                  background: "#0f172a",
-                  borderRadius: "var(--radius-sm)",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 10,
-                  color: "#cbd5e1",
-                  textAlign: "center",
-                  padding: 20,
-                  marginBottom: 16,
-                }}
-              >
-                {demo.buildWalkthrough.videoUrl ? (
-                  <iframe
-                    src={demo.buildWalkthrough.videoUrl}
-                    title="Build walkthrough"
-                    style={{ width: "100%", height: "100%", border: "none" }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+              {/* ⭐ NEW: The Animated Workflow Visualizer replaces the static video */}
+              <div style={{ marginBottom: 16 }}>
+                {demo.workflowGraph ? (
+                  <WorkflowVisualizer data={demo.workflowGraph} />
                 ) : (
-                  <>
-                    <svg
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#94a3b8"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
-                      <path d="M10 9l5 3-5 3V9z" fill="#94a3b8" />
-                    </svg>
-                    <div
-                      style={{
-                        fontSize: 12.5,
-                        fontWeight: 500,
-                        maxWidth: 380,
-                        lineHeight: 1.5,
-                        color: "#94a3b8",
-                      }}
-                    >
-                      {demo.buildWalkthrough.videoPlaceholder}
-                    </div>
-                  </>
+                  <div style={{ padding: '40px', textAlign: 'center', background: '#0f172a', borderRadius: '8px', border: '1px solid #334155' }}>
+                    <span className="muted">No workflow graph configured for this demo.</span>
+                  </div>
                 )}
               </div>
 
