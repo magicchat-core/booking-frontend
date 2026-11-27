@@ -25,14 +25,14 @@
 
 export const SAGEION_DEMO_APPS = {
   demo1: {
-    SAGEION_APP_NAME: "demo1",
-    SAGEION_APP_ID: "APP-mwjh9fzt-v8vc0y",
-    SAGEION_API_KEY: "c2FnZWlvbl9fU0VQUkFUT1JfX2RlbW8x",
+    SAGEION_APP_NAME: "demo_1",
+    SAGEION_APP_ID: "APP-mwz938v1-i881f7",
+    SAGEION_API_KEY: "c2FnZWlvbi1kZW1vX19TRVBSQVRPUl9fZGVtb18x",
     SAGEION_REGION: "US",
-    // API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
+    // API_BASE_URL: "https://squeeze-ankle-stalemate.ngrok-free.dev/api",
     API_BASE_URL: "https://booking-backend-1-qgrd.onrender.com/api",
     API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
-    // API_BASE_full_URL: "https://booking-backend-1-qgrd.onrender.com",
+    // API_BASE_full_URL: "https://squeeze-ankle-stalemate.ngrok-free.dev",
   }
 };
 
