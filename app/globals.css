@@ -16,7 +16,12 @@
 }
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; margin: 0; }
-body { background: var(--bg); color: var(--text); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
 a { color: inherit; text-decoration: none; }
 .mono { font-family: ui-monospace, 'SF Mono', Menlo, monospace; }
 .small { font-size: 0.8rem; }
@@ -113,8 +118,6 @@ input:focus, select:focus { outline: none; border-color: var(--brand); }
 .login-card h1 { margin: 0; text-align: center; }
 
 .tip { color: var(--muted); }
-
-
 
 /* Running tables */
 /* ── Running tables (owner view) ──────────────────────────────────────── */
@@ -215,4 +218,248 @@ input:focus, select:focus { outline: none; border-color: var(--brand); }
   40% { content: "."; }
   60% { content: ".."; }
   80%, 100% { content: "..."; }
+}
+
+
+/* =====================================================================
+   MOBILE — everything below is additive. Desktop rules above are
+   untouched. Breakpoints: 900px (tablet), 640px (phone), 480px (small).
+   ===================================================================== */
+
+/* Optional utilities you can add to any element via className. */
+.hide-mobile { display: initial; }
+.hide-desktop { display: none; }
+
+/* ---------- Tablet / small laptop (≤ 900px) ---------- */
+@media (max-width: 900px) {
+  .hide-mobile { display: none !important; }
+  .hide-desktop { display: initial !important; }
+
+  /* Shell: sidebar becomes a horizontal scrollable strip on top. */
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    height: 100dvh; /* mobile browser chrome */
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sidebar::-webkit-scrollbar { display: none; }
+
+  .brand {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    gap: 6px;
+    white-space: nowrap;
+    /* hide horizontal scrollbar while keeping scroll */
+  }
+  .nav-link {
+    padding: 8px 12px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+  }
+
+  /* Topbar: allow wrapping, smaller padding. */
+  .topbar {
+    padding: 10px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .who {
+    font-size: 0.8rem;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 18px 16px;
+    max-width: 100%;
+  }
+
+  /* Running tables: single column on tablet. */
+  .tables-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Chat log: taller on tablet for readability. */
+  .chat-log {
+    max-height: 50vh;
+  }
+
+  /* Login card: fluid. */
+  .login-card { width: min(340px, 92vw); }
+}
+
+/* ---------- Phone (≤ 640px) ---------- */
+@media (max-width: 640px) {
+  /* Content breathing room */
+  .content { padding: 14px 12px; }
+
+  /* Typography scale-down */
+  h1 { font-size: 1.35rem; }
+  h2 { font-size: 1.15rem; }
+  h3 { font-size: 1rem; }
+
+  /* Cards: tighter padding */
+  .card { padding: 14px 14px; margin: 10px 0; }
+
+  /* Stats grid: exactly 2-up on phones */
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .stat { padding: 14px; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: 0.78rem; }
+
+  /* Forms: stack vertically, full-width inputs */
+  .inline-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .inline-form label { width: 100%; }
+  .inline-form input,
+  .inline-form select,
+  .inline-form button {
+    width: 100%;
+  }
+  .row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .row > * { flex: 1 1 auto; }
+
+  /* Generic inputs: full width so they don't overflow */
+  input, select {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Touch-friendly buttons */
+  .btn {
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  .btn-small {
+    min-height: 32px;
+    padding: 6px 10px;
+  }
+
+  /* Tables: wrap in horizontal scroll (the .table parent .card
+     already has overflow context via .content; the table itself
+     keeps its intrinsic width). */
+  .table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+  .table thead, .table tbody,
+  .table th, .table td {
+    /* keep table semantics but allow horizontal scroll */
+  }
+  .table th, .table td { padding: 8px 10px; }
+  .table th { font-size: 0.72rem; }
+
+  /* Pills: keep readable */
+  .pill { font-size: 0.7rem; padding: 2px 7px; }
+
+  /* Alerts */
+  .alert { padding: 9px 12px; font-size: 0.88rem; }
+
+  /* Nav: slightly smaller on phones */
+  .nav-link { padding: 7px 10px; font-size: 0.8rem; }
+
+  /* Chat log shorter on phones so it fits above keyboard */
+  .chat-log {
+    max-height: 45vh;
+    padding: 10px;
+  }
+  .chat-text { font-size: 0.8rem; padding: 7px 9px; }
+
+  /* Running tables list rows: larger tap target */
+  .table-row { padding: 12px; }
+
+  /* Totals */
+  .totals.grand { font-size: 1rem; }
+}
+
+/* ---------- Small phone (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  /* Stats: single column for the smallest screens */
+  .grid { grid-template-columns: 1fr; }
+
+  /* Further trim padding */
+  .content { padding: 12px 10px; }
+  .card { padding: 12px 12px; }
+
+  h1 { font-size: 1.2rem; }
+  h2 { font-size: 1.05rem; }
+
+  /* Topbar: very compact */
+  .topbar { padding: 8px 12px; }
+  .who { font-size: 0.75rem; max-width: 55%; }
+
+  /* Sidebar: hide brand, keep only nav to save vertical space */
+  .brand { display: none; }
+  .sidebar { padding: 8px 10px; }
+  .nav-link { font-size: 0.78rem; padding: 6px 9px; }
+
+  /* Chat log a bit shorter */
+  .chat-log { max-height: 40vh; }
+}
+
+/* ---------- Touch device ergonomics ---------- */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link, .table-row, .btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Prevent iOS zoom on input focus (font-size ≥ 16px) */
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+/* ---------- Safe-area for the floating Sageion bubble ---------- */
+/* Sageion mounts its bubble to document.body, bottom-right. On iOS
+   the home indicator overlaps it; nudge it up a touch so it stays
+   tappable. This targets the SDK's known id prefix only. */
+@supports (padding: max(0px)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  [id^="chat_modal_opener__"] {
+    bottom: max(24px, env(safe-area-inset-bottom, 0px) + 12px) !important;
+    right: max(24px, env(safe-area-inset-right, 0px) + 12px) !important;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .chat-msg.pending .chat-text::after { content: "…"; }
 }

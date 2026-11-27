@@ -25,9 +25,9 @@
 
 export const SAGEION_DEMO_APPS = {
   demo1: {
-    SAGEION_APP_NAME: "testapp1forsteps",
-    SAGEION_APP_ID: "APP-mwoznitc-j5vx0f",
-    SAGEION_API_KEY: "c2FnZWlvbi1kZW1vX19TRVBSQVRPUl9fdGVzdGFwcDFmb3JzdGVwcw==",
+    SAGEION_APP_NAME: "demo_1",
+    SAGEION_APP_ID: "APP-mwz938v1-i881f7",
+    SAGEION_API_KEY: "c2FnZWlvbi1kZW1vX19TRVBSQVRPUl9fZGVtb18x",
     SAGEION_REGION: "US",
     // API_BASE_URL: "https://squeeze-ankle-stalemate.ngrok-free.dev/api",
     API_BASE_URL: "https://squeeze-ankle-stalemate.ngrok-free.dev/api",
