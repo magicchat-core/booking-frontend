@@ -75,8 +75,8 @@ export default function Demos() {
   return (
     <div style={{ padding: "clamp(24px, 5vw, 64px)", maxWidth: "1200px", margin: "0 auto", color: "#f8fafc" }}>
       
-      {/* ⭐ 1. HERO SECTION: The Hook */}
-      <div style={{ textAlign: "center", marginBottom: "56px", marginTop: "32px" }}>
+      {/* ⭐ 1. HERO SECTION: Clean and Casual */}
+      <div style={{ textAlign: "center", marginBottom: "56px", marginTop: "32px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ 
           display: "inline-block", padding: "6px 14px", 
           background: "rgba(59, 130, 246, 0.15)",
@@ -86,15 +86,18 @@ export default function Demos() {
         }}>
           THE SAGEION RUNTIME
         </div>
-        <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "800", margin: "0 0 20px 0", color: "#f8fafc", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-          Stop building AI infrastructure.<br/>Start shipping AI features using Your Existing Backend APIs.
+        <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "800", margin: "0 0 20px 0", color: "#f8fafc", letterSpacing: "-0.02em", lineHeight: 1.1, maxWidth: "900px" }}>
+          Stop building AI infrastructure.<br/>Start shipping AI features on your existing backend APIs.
         </h1>
-        <p style={{ margin: "0 auto", fontSize: "18px", color: "#94a3b8", maxWidth: "720px", lineHeight: "1.6" }}>
-          The framework trap requires months of engineering and brittle code. Sageion gives you a production runtime in minutes. Pick a live workflow below to see it in action.
+        
+        <p style={{ margin: "0 auto", fontSize: "18px", color: "#94a3b8", maxWidth: "760px", lineHeight: "1.6" }}>
+          This is a reference demo on a smaller CRM. It's built to let you experience how AI agents work — with the same principles as yours — so you can see exactly how this fits your own projects.
+          <br/><br/>
+          Save your team's energy, time, and money. Sageion acts as a hollow wrapper around your existing logic, meaning you make the absolute least changes (always in a separate branch) and avoid any vendor lock-in. You keep control of the AI layer, and can pause, resume, or tear it down at will.
         </p>
       </div>
 
-      {/* ⭐ 2. NEW HIGHLIGHT SECTION: The Win-Win-Win Proposition (Moved up) */}
+      {/* ⭐ 2. NEW HIGHLIGHT SECTION: The Win-Win-Win Proposition */}
       <div style={{ 
         background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)", 
         borderRadius: "20px", padding: "clamp(32px, 5vw, 56px)", 
@@ -166,13 +169,62 @@ export default function Demos() {
         </div>
       </div>
 
-      {/* ⭐ 3. DEMO CARDS: The Interactive Offer */}
+      {/* ⭐ 3. DEMO CARDS & TECHNICAL PROOF */}
       <div style={{ marginBottom: "80px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
             Explore the Interactive Workflows
           </h2>
           <div style={{ height: "1px", background: "#334155", flex: 1 }} />
+        </div>
+
+        {/* Moved technical proof here: less overwhelming up top, but present for devs */}
+        <div style={{ 
+          display: "flex", 
+          flexWrap: "wrap", 
+          gap: "12px", 
+          marginBottom: "24px" 
+        }}>
+          {[
+            "Acts as a hollow wrapper — no complex framework ingestion into your core logic.",
+            "No vendor lock-in. Keep your pure logic and easily tear down the AI layer if needed.",
+            "Make the absolute least changes (always in a separate branch).",
+            "Natively supports all types of API nodes (sync APIs, async APIs, and manual human-in-the-loop nodes) scenarios."
+          ].map((text, i) => (
+            <div key={i} style={{ 
+              background: "rgba(30, 41, 59, 0.5)", 
+              border: "1px solid #334155", 
+              borderRadius: "8px", 
+              padding: "8px 16px", 
+              fontSize: "13px", 
+              color: "#cbd5e1",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px"
+            }}>
+              <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
+              {text}
+            </div>
+          ))}
+        </div>
+        
+        {/* Refined Human-in-the-Loop notice box */}
+        <div style={{ 
+          background: "rgba(59, 130, 246, 0.05)", 
+          border: "1px solid rgba(59, 130, 246, 0.2)", 
+          borderLeft: "4px solid #3b82f6",
+          padding: "16px 20px", 
+          borderRadius: "0 8px 8px 0", 
+          marginBottom: "32px",
+          maxWidth: "800px",
+          display: "flex",
+          gap: "12px",
+          alignItems: "flex-start"
+        }}>
+          <span style={{ color: "#60a5fa", fontSize: "18px", lineHeight: "1.5" }}>ℹ️</span>
+          <p style={{ fontSize: "14px", color: "#cbd5e1", margin: 0, lineHeight: "1.6" }}>
+            <strong style={{ color: "#f8fafc" }}>Note:</strong> Some workflows ask you to sign up or log in. This allows the agent to call authenticated APIs with your permissions, hand the run back to you mid-workflow (this demo CRM does that by email: approve, pay, submit a code — whatever the step needs), and keep your CRM data isolated to you. You're the human-in-the-loop node: finish your step and the agent carries on.
+          </p>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
