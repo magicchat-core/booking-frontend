@@ -174,8 +174,8 @@ export default function Demos() {
           </h2>
           <div style={{ height: "1px", background: "#334155", flex: 1 }} />
         </div>
-        <p style={{ fontSize: "15px", color: "#94a3b8", margin: "0 0 24px 0", maxWidth: "720px", lineHeight: "1.6" }}>
-          Some workflows pause for a human-in-the-loop step — you may be asked to sign up or log in so the agent can call authenticated APIs with your permissions.
+        <p style={{ fontSize: "15px", color: "#94a3b8", margin: "0 0 24px 0", maxWidth: "760px", lineHeight: "1.6" }}>
+          Some workflows ask you to sign up or log in — so the agent can call authenticated APIs with your permissions, email you an async human step (approve, pay, submit a code — whatever the workflow calls for), and keep your CRM data isolated to you. You're the human-in-the-loop node: finish your step and the agent carries on.
         </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
