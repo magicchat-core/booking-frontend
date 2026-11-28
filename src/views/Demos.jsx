@@ -13,7 +13,7 @@ export default function Demos() {
     {
       icon: "⏱️",
       title: "10-Minute Setup",
-      desc: "Stop building AI infrastructure from scratch. Wire up a production-grade workflow in a single afternoon.",
+      desc: "Stop building AI infrastructure from scratch. Get a production-grade workflow live in a single afternoon.",
     },
     {
       icon: "💸",
@@ -87,7 +87,7 @@ export default function Demos() {
           THE SAGEION RUNTIME
         </div>
         <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "800", margin: "0 0 20px 0", color: "#f8fafc", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
-          Stop building AI infrastructure.<br/>Start shipping AI features.
+          Stop building AI infrastructure.<br/>Start shipping AI features using Your Existing Backend APIs.
         </h1>
         <p style={{ margin: "0 auto", fontSize: "18px", color: "#94a3b8", maxWidth: "720px", lineHeight: "1.6" }}>
           The framework trap requires months of engineering and brittle code. Sageion gives you a production runtime in minutes. Pick a live workflow below to see it in action.
@@ -105,10 +105,10 @@ export default function Demos() {
         
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h2 style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: "800", margin: "0 0 16px 0", color: "#f8fafc", lineHeight: 1.2 }}>
-            You already built the engine. We provide the rocket fuel.
+            You already have the fuel. We'll add the rocket.
           </h2>
           <p style={{ fontSize: "16px", color: "#cbd5e1", maxWidth: "800px", margin: "0 auto", lineHeight: "1.6" }}>
-            Your mature Restaurant CRM backend is the fuel. We give you the AI ship. Together, we create a <strong>Win-Win-Win</strong> ecosystem that turns your platform into a premium AI profit center.
+            Your mature Restaurant CRM backend is the fuel. We give you the AI brain that turns it into an AI agent — one runtime that supports thousands of customized experiences for different customers, all without changing the core business logic of your existing APIs or UI. Together, we create a <strong>Win-Win-Win</strong> ecosystem that turns your platform into a premium AI profit center.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export default function Demos() {
             <div style={{ fontSize: "24px", marginBottom: "12px" }}>🚀</div>
             <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for You</h3>
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
-              Skip the custom AI build. You provide the APIs, we provide the runtime. You instantly add a premium white-label feature, add your profit margin, and start billing seamlessly.
+              Skip the custom AI build. You provide the APIs, we provide the runtime. It drops in as a premium white-label feature — add your margin and start billing.
             </p>
           </div>
 
@@ -148,7 +148,7 @@ export default function Demos() {
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", flexWrap: "wrap", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "32px" }}>
           <p style={{ margin: 0, fontSize: "16px", color: "#e2e8f0", fontWeight: "500" }}>
-            Want to see this built against your actual CRM?
+            Want to see this running against your actual CRM?
           </p>
           <button 
             onClick={() => setIsBookingModalOpen(true)}
