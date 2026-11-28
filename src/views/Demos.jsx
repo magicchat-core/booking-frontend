@@ -168,12 +168,15 @@ export default function Demos() {
 
       {/* ⭐ 3. DEMO CARDS: The Interactive Offer */}
       <div style={{ marginBottom: "80px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
           <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
             Explore the Interactive Workflows
           </h2>
           <div style={{ height: "1px", background: "#334155", flex: 1 }} />
         </div>
+        <p style={{ fontSize: "15px", color: "#94a3b8", margin: "0 0 24px 0", maxWidth: "720px", lineHeight: "1.6" }}>
+          Some workflows pause for a human-in-the-loop step — you may be asked to sign up or log in so the agent can call authenticated APIs with your permissions.
+        </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {demos.map((d) => (
