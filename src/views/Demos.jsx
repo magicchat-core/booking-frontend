@@ -52,8 +52,8 @@ export default function Demos() {
     },
     {
       icon: "🧠",
-      title: "Zero Hallucinations",
-      desc: "We don't rely on an LLM's memory. The agent is grounded in your actual API responses, ensuring 100% accuracy and truth-based answers.",
+      title: "Deterministic Rendering Engine",
+      desc: "No LLM is in the data path. The agent extracts intent, fetches live data from your backend, and passes it through your pre-defined templates to render the UI. 100% deterministic, 0% hallucination.",
     },
     {
       icon: "🔒",
@@ -75,7 +75,7 @@ export default function Demos() {
   return (
     <div style={{ padding: "clamp(24px, 5vw, 64px)", maxWidth: "1200px", margin: "0 auto", color: "#f8fafc" }}>
       
-      {/* ⭐ 1. HERO SECTION: Clean and Casual */}
+      {/* ⭐ 1. HERO SECTION */}
       <div style={{ textAlign: "center", marginBottom: "56px", marginTop: "32px", display: "flex", flexDirection: "column", alignItems: "center" }}>
         <div style={{ 
           display: "inline-block", padding: "6px 14px", 
@@ -87,17 +87,44 @@ export default function Demos() {
           THE SAGEION RUNTIME
         </div>
         <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: "800", margin: "0 0 20px 0", color: "#f8fafc", letterSpacing: "-0.02em", lineHeight: 1.1, maxWidth: "900px" }}>
-          Stop building AI infrastructure.<br/>Start shipping AI features on your existing backend APIs.
+          Stop building AI infrastructure.<br/>Start shipping AI features on your <span style={{ color: "#60a5fa" }}>existing backend APIs</span>.
         </h1>
         
-        <p style={{ margin: "0 auto", fontSize: "18px", color: "#94a3b8", maxWidth: "760px", lineHeight: "1.6" }}>
+        <p style={{ margin: "0 auto 24px auto", fontSize: "18px", color: "#94a3b8", maxWidth: "760px", lineHeight: "1.6" }}>
           This is a reference demo on a smaller CRM. It's built to let you experience how AI agents work — with the same principles as yours — so you can see exactly how this fits your own projects.
           <br/><br/>
-          Save your team's energy, time, and money. Sageion acts as a hollow wrapper around your existing logic, meaning you make the absolute least changes (always in a separate branch) and avoid any vendor lock-in. You keep control of the AI layer, and can pause, resume, or tear it down at will.
+          Save your team's energy, time, and money. Sageion acts as a <span style={{ color: "#60a5fa", fontWeight: "600" }}>hollow wrapper</span> around your existing logic, meaning you make the <span style={{ color: "#34d399", fontWeight: "600" }}>absolute least changes</span> (always in a separate branch) and <span style={{ color: "#fbbf24", fontWeight: "600" }}>avoid any vendor lock-in</span>. You keep control of the AI layer, and can <span style={{ color: "#c084fc", fontWeight: "600" }}>pause, resume, or tear it down at will</span>.
+          <br/><br/>
+          <span style={{ display: "inline-block", marginTop: "12px", padding: "12px 16px", background: "rgba(59, 130, 246, 0.1)", borderRadius: "8px", border: "1px dashed rgba(59, 130, 246, 0.4)", color: "#e2e8f0", fontSize: "16px" }}>
+            💡 <strong style={{ color: "#f8fafc" }}>The hidden goldmine:</strong> Those mature endpoints sitting at 30% traffic? They're about to become the conversational features your business has always wanted — with zero extra backend effort.
+          </span>
         </p>
+
+        {/* Color-coded feature badges */}
+        <div style={{ 
+          display: "flex", 
+          flexWrap: "wrap", 
+          gap: "12px", 
+          justifyContent: "center", 
+          maxWidth: "900px",
+          margin: "0 auto"
+        }}>
+          <div style={{ background: "rgba(59, 130, 246, 0.1)", border: "1px solid rgba(59, 130, 246, 0.3)", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", color: "#cbd5e1", display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ color: "#60a5fa", fontWeight: "bold" }}>✓</span> Hollow wrapper (no framework ingestion)
+          </div>
+          <div style={{ background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.3)", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", color: "#cbd5e1", display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ color: "#34d399", fontWeight: "bold" }}>✓</span> Least changes (always a separate branch)
+          </div>
+          <div style={{ background: "rgba(245, 158, 11, 0.1)", border: "1px solid rgba(245, 158, 11, 0.3)", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", color: "#cbd5e1", display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ color: "#fbbf24", fontWeight: "bold" }}>✓</span> No vendor lock-in
+          </div>
+          <div style={{ background: "rgba(168, 85, 247, 0.1)", border: "1px solid rgba(168, 85, 247, 0.3)", borderRadius: "8px", padding: "8px 16px", fontSize: "14px", color: "#cbd5e1", display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ color: "#c084fc", fontWeight: "bold" }}>✓</span> Deterministic rendering (no LLM in data path)
+          </div>
+        </div>
       </div>
 
-      {/* ⭐ 2. NEW HIGHLIGHT SECTION: The Win-Win-Win Proposition */}
+      {/* ⭐ 2. NEW HIGHLIGHT SECTION: Win-Win-Win */}
       <div style={{ 
         background: "linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)", 
         borderRadius: "20px", padding: "clamp(32px, 5vw, 56px)", 
@@ -111,7 +138,7 @@ export default function Demos() {
             You already have the fuel. We'll add the rocket.
           </h2>
           <p style={{ fontSize: "16px", color: "#cbd5e1", maxWidth: "800px", margin: "0 auto", lineHeight: "1.6" }}>
-            Your mature Restaurant CRM backend is the fuel. We give you the AI brain that turns it into an AI agent — one runtime that supports thousands of customized experiences for different customers, all without changing the core business logic of your existing APIs or UI. Together, we create a <strong>Win-Win-Win</strong> ecosystem that turns your platform into a premium AI profit center.
+            Your mature Restaurant CRM backend is the fuel. We give you the AI brain that turns it into an AI agent — one runtime that supports thousands of customized experiences for different customers, all without changing the core business logic of your existing APIs or UI. Together, we create a <strong style={{ color: "#60a5fa" }}>Win-Win-Win</strong> ecosystem that turns your platform into a premium AI profit center.
           </p>
         </div>
 
@@ -126,16 +153,16 @@ export default function Demos() {
             <div style={{ fontSize: "24px", marginBottom: "12px" }}>🚀</div>
             <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for You</h3>
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
-              Skip the custom AI build. You provide the APIs, we provide the runtime. It drops in as a premium white-label feature — add your margin and start billing.
+              Skip the custom AI build. You provide the APIs, we provide the runtime. Turn your <span style={{ color: "#60a5fa", fontWeight: "600" }}>dormant, low-traffic APIs</span> into premium white-label AI features — add your margin and start billing.
             </p>
           </div>
 
           {/* Win 2 */}
           <div style={{ padding: "24px", background: "rgba(16,185,129,0.05)", border: "1px solid rgba(16,185,129,0.2)", borderRadius: "12px" }}>
             <div style={{ fontSize: "24px", marginBottom: "12px" }}>🍽️</div>
-            <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for Restaurants</h3>
+            <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for End Users</h3>
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
-              They get a zero-hallucination AI agent that actually does the grunt work (inventory, POs, orders) grounded in their live data. And they only pay as they use.
+              They get a <span style={{ color: "#34d399", fontWeight: "600" }}>deterministic AI agent (Zero Hallucinations)</span> that performs all agent actions set by the CRM provider, just from a chat interface. Data comes straight from your backend and is rendered via your templates — no LLM decides the output.
             </p>
           </div>
 
@@ -144,7 +171,7 @@ export default function Demos() {
             <div style={{ fontSize: "24px", marginBottom: "12px" }}>⚙️</div>
             <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#f8fafc", marginBottom: "8px" }}>Win for Sageion</h3>
             <p style={{ fontSize: "14px", color: "#cbd5e1", lineHeight: "1.5" }}>
-              We power the ecosystem. As your restaurants scale their AI usage, our infrastructure scales with them, making the runtime more intelligent and robust.
+              We power the ecosystem. As your restaurants scale their AI usage, our infrastructure scales with them, making the runtime <span style={{ color: "#fbbf24", fontWeight: "600" }}>more intelligent and robust</span>.
             </p>
           </div>
         </div>
@@ -169,7 +196,7 @@ export default function Demos() {
         </div>
       </div>
 
-      {/* ⭐ 3. DEMO CARDS & TECHNICAL PROOF */}
+      {/* ⭐ 3. DEMO CARDS */}
       <div style={{ marginBottom: "80px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
           <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
@@ -178,35 +205,9 @@ export default function Demos() {
           <div style={{ height: "1px", background: "#334155", flex: 1 }} />
         </div>
 
-        {/* Moved technical proof here: less overwhelming up top, but present for devs */}
-        <div style={{ 
-          display: "flex", 
-          flexWrap: "wrap", 
-          gap: "12px", 
-          marginBottom: "24px" 
-        }}>
-          {[
-            "Acts as a hollow wrapper — no complex framework ingestion into your core logic.",
-            "No vendor lock-in. Keep your pure logic and easily tear down the AI layer if needed.",
-            "Make the absolute least changes (always in a separate branch).",
-            "Natively supports all types of API nodes (sync APIs, async APIs, and manual human-in-the-loop nodes) scenarios."
-          ].map((text, i) => (
-            <div key={i} style={{ 
-              background: "rgba(30, 41, 59, 0.5)", 
-              border: "1px solid #334155", 
-              borderRadius: "8px", 
-              padding: "8px 16px", 
-              fontSize: "13px", 
-              color: "#cbd5e1",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px"
-            }}>
-              <span style={{ color: "#3b82f6", fontWeight: "bold" }}>✓</span>
-              {text}
-            </div>
-          ))}
-        </div>
+        <p style={{ fontSize: "15px", color: "#cbd5e1", marginBottom: "16px", maxWidth: "800px", lineHeight: "1.6" }}>
+          Notice how these workflows take standard CRUD APIs (checking stock, creating a PO) and chain them together into a valuable AI agent. These APIs already had UIs somewhere in your CRM. What's new is that now they can be invoked through a <strong style={{ color: "#f8fafc" }}>single chat interface</strong>—by simply asking a question or clicking a link—without navigating your entire CRM.
+        </p>
         
         {/* Refined Human-in-the-Loop notice box */}
         <div style={{ 
@@ -221,9 +222,11 @@ export default function Demos() {
           gap: "12px",
           alignItems: "flex-start"
         }}>
-          <span style={{ color: "#60a5fa", fontSize: "18px", lineHeight: "1.5" }}>ℹ️</span>
+          <div style={{ background: "#3b82f6", color: "#fff", borderRadius: "50%", width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: "bold", flexShrink: 0, marginTop: "2px" }}>
+            i
+          </div>
           <p style={{ fontSize: "14px", color: "#cbd5e1", margin: 0, lineHeight: "1.6" }}>
-            <strong style={{ color: "#f8fafc" }}>Note:</strong> Some workflows ask you to sign up or log in. This allows the agent to call authenticated APIs with your permissions, hand the run back to you mid-workflow (this demo CRM does that by email: approve, pay, submit a code — whatever the step needs), and keep your CRM data isolated to you. You're the human-in-the-loop node: finish your step and the agent carries on.
+            <strong style={{ color: "#f8fafc" }}>Note:</strong> Some workflows ask you to sign up or log in. This allows the agent to call authenticated APIs with your permissions, hand the run back to you mid-workflow (this demo CRM does that by email: approve, pay, submit a code — whatever the step needs), and keep your CRM data isolated to you. You're the <span style={{ color: "#60a5fa", fontWeight: "600" }}>human-in-the-loop node</span>: finish your step and the agent carries on.
           </p>
         </div>
 
@@ -273,7 +276,7 @@ export default function Demos() {
         </div>
       </div>
 
-      {/* ⭐ 4. VALUE PROPS: The 12-Card Grid */}
+      {/* ⭐ 4. VALUE PROPS */}
       <div style={{ marginBottom: "64px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
           <h2 style={{ fontSize: "24px", fontWeight: "700", color: "#f8fafc", margin: 0 }}>
